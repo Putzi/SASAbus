@@ -29,6 +29,7 @@ package it.sasabz.android.sasabus.classes.dbobjects;
 import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.adapter.MySQLiteDBAdapter;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -41,15 +42,15 @@ public class BacinoList {
 	 * This function returns a vector of all the objects momentanly avaiable in the database                                                                                                                     
 	 * @return a vector of objects if all goes right, alternativ it returns a MyError                                                                                                                              
 	 */
-	public static  Vector <DBObject>  getList()
+	public static  ArrayList<DBObject>  getList()
 	{
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());
 		Cursor cursor = sqlite.rawQuery("select * from  bacini", null);
-		Vector <DBObject> list = null;
+		ArrayList<DBObject> list = null;
 		if(cursor.moveToFirst())
 		{
 			int i = 0;
-			list = new Vector<DBObject>();
+			list = new ArrayList<DBObject>();
 			do {
 				Bacino element = new Bacino(cursor);
 				list.add(i, element);
@@ -65,7 +66,7 @@ public class BacinoList {
 	{
 		Bacino ret = null;
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());
-		Vector<DBObject> list = getList();
+		ArrayList<DBObject> list = getList();
 		Iterator<DBObject> iter = list.iterator();
 		boolean gefunden = false;
 		while(iter.hasNext() && !gefunden)

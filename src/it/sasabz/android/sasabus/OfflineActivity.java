@@ -56,6 +56,8 @@ public class OfflineActivity extends FragmentActivity{
 		
 		ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 		
+		
+		
 		Fragment fragment;
 		fragment = fragmentManager.findFragmentById(R.id.onlinefragment);
 		if(fragment != null)

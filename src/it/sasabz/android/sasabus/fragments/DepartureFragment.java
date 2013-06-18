@@ -25,8 +25,6 @@
 
 package it.sasabz.android.sasabus.fragments;
 
-import java.util.Vector;
-
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.adapter.MyListAdapter;
@@ -36,27 +34,33 @@ import it.sasabz.android.sasabus.classes.dbobjects.Linea;
 import it.sasabz.android.sasabus.classes.dbobjects.Palina;
 import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
 
+import java.util.ArrayList;
+
+import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
+@SuppressLint("ValidFragment")
 public class DepartureFragment extends Fragment implements OnItemClickListener{
 
     
-    private Vector<DBObject> list = null;
+    private ArrayList<DBObject> list = null;
     
     private Linea linea;
     
     private Bacino bacino = null;
     
-    private DepartureFragment() {
+	private DepartureFragment() {
     	
     }
     

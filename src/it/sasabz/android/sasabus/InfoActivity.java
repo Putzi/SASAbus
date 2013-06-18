@@ -156,9 +156,9 @@ public class InfoActivity extends ListActivity {
 	public void fillList(ArrayList<DBObject> list)
 	{
 		this.list = list;
-//		MyListAdapter infos = new MyListAdapter(SASAbus.getContext(),
-//				R.id.text, R.layout.news_row, list);
-//		setListAdapter(infos);
+		MyListAdapter infos = new MyListAdapter(SASAbus.getContext(),
+				R.id.text, R.layout.news_row, list);
+		setListAdapter(infos);
 		progdial.dismiss();
 	}
 	

@@ -25,6 +25,7 @@
 
 package it.sasabz.android.sasabus.fragments;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import it.sasabz.android.sasabus.R;
@@ -47,7 +48,7 @@ import android.widget.TextView;
 public class BacinoFragment extends Fragment implements OnItemClickListener{
 
     
-    private Vector<DBObject> list = null;
+    private ArrayList<DBObject> list = null;
     
     public BacinoFragment() {
     }

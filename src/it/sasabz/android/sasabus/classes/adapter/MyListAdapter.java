@@ -25,6 +25,7 @@ package it.sasabz.android.sasabus.classes.adapter;
 
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import android.content.Context;
@@ -40,7 +41,7 @@ import android.widget.TextView;
  */
 public class MyListAdapter extends BaseAdapter {
 	private final Context context;
-	private final Vector<DBObject> list;
+	private final ArrayList<DBObject> list;
 	private final int layoutId;
 	private final int whereId;
 
@@ -50,11 +51,11 @@ public class MyListAdapter extends BaseAdapter {
 	 * @param context is the context to work with
 	 * @param whereId is the resource id where to place the string
 	 * @param layoutId is the layout id of the list_view
-	 * @param list is the list of dbobject's which are to putting in the list_view
+	 * @param list2 is the list of dbobject's which are to putting in the list_view
 	 */
-	public MyListAdapter(Context context, int whereId, int layoutId, Vector<DBObject> list) {
+	public MyListAdapter(Context context, int whereId, int layoutId, ArrayList<DBObject> list2) {
 		this.context = context;
-		this.list = list;
+		this.list = list2;
 		this.layoutId = layoutId;
 		this.whereId = whereId;
 	}

@@ -30,6 +30,7 @@ import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.Config;
 import it.sasabz.android.sasabus.classes.adapter.MySQLiteDBAdapter;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Vector;
@@ -168,7 +169,7 @@ public class PalinaList {
 	 * Returns a list of all bus-stops avaiable in the database
 	 * @return a vector of all bus-stops in the database
 	 */
-	public static Vector <DBObject> getListLinea(int linea, String table_prefix)
+	public static ArrayList<DBObject> getListLinea(int linea, String table_prefix)
 	{
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());
 		String [] args = {Integer.toString(linea)};
@@ -193,10 +194,10 @@ public class PalinaList {
 				"AND orarii.palinaId = paline.id " +
 				"order by paline.nome_it", args);
 		}
-		Vector <DBObject> list = null;
+		ArrayList<DBObject> list = null;
 		if(cursor.moveToFirst())
 		{
-			list = new Vector<DBObject>();
+			list = new ArrayList<DBObject>();
 			do {
 				Palina element = new Palina(cursor);
 				list.add(element);
@@ -215,7 +216,7 @@ public class PalinaList {
 	 * @param linea is the number of the line tho connect 
 	 * @return a vector of all bus-stops in the database which were connected via linea to the destination
 	 */
-	public static Vector <DBObject> getListDestinazione(String destinazione, int linea, String table_prefix)
+	public static ArrayList<DBObject> getListDestinazione(String destinazione, int linea, String table_prefix)
 	{	
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());
 		String [] args = {Integer.toString(linea),destinazione};
@@ -265,10 +266,10 @@ public class PalinaList {
 					"order by p.nome_de";
 		}
 		Cursor cursor = sqlite.rawQuery(query, args);
-		Vector <DBObject> list = null;
+		ArrayList<DBObject> list = null;
 		if(cursor.moveToFirst())
 		{
-			list = new Vector<DBObject>();
+			list = new ArrayList<DBObject>();
 			do {
 				Palina element = new Palina(cursor);
 				list.add(element);

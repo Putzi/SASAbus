@@ -30,6 +30,7 @@ import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.Config;
 import it.sasabz.android.sasabus.classes.adapter.MySQLiteDBAdapter;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import android.database.Cursor;
@@ -69,15 +70,15 @@ public class LineaList {
 	 * @param bacino is the bacino where we are searching the linee 
 	 * @return a vector of DBObjects with the linee located in the bacino
 	 */
-	public static Vector <DBObject> getList(String table_prefix)
+	public static ArrayList<DBObject> getList(String table_prefix)
 	{
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());
 		String[] args = null;
 		Cursor cursor = sqlite.rawQuery("select * from " + table_prefix + "linee order by num_lin", args);
-		Vector <DBObject> list = null;
+		ArrayList<DBObject> list = null;
 		if(cursor.moveToFirst())
 		{
-			list = new Vector<DBObject>();
+			list = new ArrayList<DBObject>();
 			do {
 				Linea element = new Linea(cursor);
 				list.add(element);
@@ -138,7 +139,7 @@ public class LineaList {
 	}
 	
 	
-	public static Vector<DBObject> sort(Vector <DBObject> list)
+	public static ArrayList<DBObject> sort(ArrayList<DBObject> list)
 	{
 		int j, i;
 		try {
@@ -146,8 +147,8 @@ public class LineaList {
 			{
 				for(i=0;i < j-1;++i)
 				{
-					Linea current = (Linea)list.elementAt(i);
-					Linea next = (Linea)list.elementAt(i+1);
+					Linea current = (Linea)list.get(i);
+					Linea next = (Linea)list.get(i+1);
 					if(current.compareTo(next) > 0)
 					{
 						list.remove(i);

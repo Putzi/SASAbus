@@ -46,7 +46,7 @@ import android.util.Log;
 /**
  *Downlaods latest Infos about service variations
  */
-public class InformationList extends AsyncTask<Integer, Void, Vector<DBObject>> {
+public class InformationList extends  AsyncTask<Integer, Void, ArrayList<DBObject>> {
 	
 	private final InfoActivity activity;
 	
@@ -58,8 +58,8 @@ public class InformationList extends AsyncTask<Integer, Void, Vector<DBObject>> 
 	}
 
 	@Override
-	protected Vector<DBObject> doInBackground(Integer... params) {
-		Vector <DBObject> list = null;
+	protected ArrayList<DBObject> doInBackground(Integer... params) {
+		ArrayList<DBObject> list = null;
 		try
 		{
 			
@@ -97,7 +97,7 @@ public class InformationList extends AsyncTask<Integer, Void, Vector<DBObject>> 
 				Information info = new Information(Integer.parseInt(id), titel_de, titel_it, nachricht_de, nachricht_it, Integer.parseInt(stadt));
 				if(list == null)
 				{
-					list = new Vector<DBObject>();
+					list = new ArrayList<DBObject>();
 				}
 				list.add(info);
 			}
@@ -110,11 +110,9 @@ public class InformationList extends AsyncTask<Integer, Void, Vector<DBObject>> 
 	}
 	
 	@Override
-	protected void onPostExecute(Vector<DBObject> result) {
+	protected void onPostExecute(ArrayList<DBObject> result) {
 		super.onPostExecute(result);
-//		activity.fillList(result);
-
+		activity.fillList(result);
 	}
-	
 	
 }

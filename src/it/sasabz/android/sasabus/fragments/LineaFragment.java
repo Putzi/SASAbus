@@ -25,6 +25,7 @@
 
 package it.sasabz.android.sasabus.fragments;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import it.sasabz.android.sasabus.R;
@@ -50,7 +51,7 @@ import android.widget.TextView;
 public class LineaFragment extends Fragment implements OnItemClickListener {
 	
 	//this vector provides the list of lines in the entire activity
-    private Vector<DBObject> list = null;
+    private ArrayList<DBObject> list = null;
     
     private Bacino bacino = null;
     

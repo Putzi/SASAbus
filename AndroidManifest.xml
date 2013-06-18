@@ -28,7 +28,7 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity> -->
-		<activity android:name=".CheckDatabaseActivity" android:label="@string/check_database" 
+		<activity android:name=".DownloadDatabaseActivity" android:label="@string/check_database" 
 		    		android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />

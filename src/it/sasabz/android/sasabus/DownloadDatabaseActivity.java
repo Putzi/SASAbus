@@ -42,7 +42,12 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 
-public class CheckDatabaseActivity extends Activity {
+/**
+ * launches background service (FileRetriever) to download new data if available
+ * <li>shows splashscreen while downloading</li>
+ * <li>shows dialogs with download results</li>
+ */
+public class DownloadDatabaseActivity extends Activity {
 
 	
 	/*
@@ -194,7 +199,7 @@ public class CheckDatabaseActivity extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int id) {
 				finish();
-				Intent intent = new Intent(getContext(), CheckDatabaseActivity.class);
+				Intent intent = new Intent(getContext(), DownloadDatabaseActivity.class);
 				startActivity(intent);
 			}
 		});

@@ -69,7 +69,9 @@ public class MyXMLConnectionAdapter extends BaseAdapter {
 		if (list != null)
 		{
 		    LayoutInflater vi = (LayoutInflater)SASAbus.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			if (position == 0) 
+		    v = vi.inflate(R.layout.con_transfer_row_first, null);
+		    /*
+		    if (position == 0) 
 			{
 				if (list.size() == 1) 
 				{
@@ -90,13 +92,12 @@ public class MyXMLConnectionAdapter extends BaseAdapter {
 				{
 					v = vi.inflate(R.layout.con_transfer_row_follower, null);
 				}
-			}
+			}*/
 			XMLConnection conreq = list.get(position);
 			if(conreq != null)
 			{
 				SimpleDateFormat simple = new SimpleDateFormat("HH:mm");
-				if (position == 0)
-				{
+				
 					TextView departure = (TextView) v
 							.findViewById(R.id.departure);
 					departure.setText(Html.fromHtml("<b>"
@@ -104,7 +105,7 @@ public class MyXMLConnectionAdapter extends BaseAdapter {
 							+ " "
 							+ conreq.getDeparture().getStation()
 									.getHaltestelle() + "</b> "));
-				}
+				
 
 				TextView arrival = (TextView) v.findViewById(R.id.arrival);
 				arrival.setText(Html.fromHtml("<b>"

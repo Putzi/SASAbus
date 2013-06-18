@@ -26,7 +26,7 @@
 package it.sasabz.android.sasabus.classes.services;
 
 
-import it.sasabz.android.sasabus.CheckDatabaseActivity;
+import it.sasabz.android.sasabus.DownloadDatabaseActivity;
 
 import it.sasabz.android.sasabus.SASAbus;
 
@@ -82,7 +82,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 	private Resources res;
 
 	private String filename;
-	private CheckDatabaseActivity activity;
+	private DownloadDatabaseActivity activity;
 	
 	private String download = null;
 	private String unzipping = null;
@@ -98,7 +98,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 	 * @param dbFile is the file to save the unzipped db file
 	 * @param md5File is the file to save the downloaded md5 file
 	 */
-	public FileRetriever(CheckDatabaseActivity activity, String filename) {
+	public FileRetriever(DownloadDatabaseActivity activity, String filename) {
 		super();
 		this.filename = filename;
 		this.activity = activity;
@@ -106,7 +106,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 
 	}
 	
-	public FileRetriever(CheckDatabaseActivity activity, String filename, String download, String unzipping) {
+	public FileRetriever(DownloadDatabaseActivity activity, String filename, String download, String unzipping) {
 		super();
 		this.activity = activity;
 		this.res = activity.getResources();
@@ -154,7 +154,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 		//Check if the sd-card is mounted
 		if (!Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
-			return Long.valueOf(CheckDatabaseActivity.NO_SD_CARD);
+			return Long.valueOf(DownloadDatabaseActivity.NO_SD_CARD);
 		}
 		File dbDir = new File(Environment.getExternalStorageDirectory(),
 				dbDirName);
@@ -241,13 +241,13 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 				else 
 				{
 					//if no db-update is available will be shown a message
-					return Long.valueOf(CheckDatabaseActivity.NO_DB_UPDATE_AVAILABLE);
+					return Long.valueOf(DownloadDatabaseActivity.NO_DB_UPDATE_AVAILABLE);
 				}
 			} 
 			else 
 			{
 				//shows dialog for no network connection
-				return Long.valueOf(CheckDatabaseActivity.NO_NETWORK_CONNECTION);
+				return Long.valueOf(DownloadDatabaseActivity.NO_NETWORK_CONNECTION);
 			}
 		}
 		else 
@@ -256,12 +256,12 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			if (!MD5Utils.checksumOK(dbFile, md5File)) 
 			{
 				//shows dialog that occours a md5-error
-				return Long.valueOf(CheckDatabaseActivity.MD5_ERROR_DIALOG);
+				return Long.valueOf(DownloadDatabaseActivity.MD5_ERROR_DIALOG);
 			}
 			else 
 			{
 				//shows dialog that download success
-				return Long.valueOf(CheckDatabaseActivity.DOWNLOAD_SUCCESS_DIALOG);
+				return Long.valueOf(DownloadDatabaseActivity.DOWNLOAD_SUCCESS_DIALOG);
 			}
 		}
 	}
@@ -389,7 +389,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 				ex.printStackTrace();
 			}
 			
-			return CheckDatabaseActivity.DOWNLOAD_RETRY;
+			return DownloadDatabaseActivity.DOWNLOAD_RETRY;
 		}
 		try
 		{
@@ -401,7 +401,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			e.printStackTrace();
 		}
 		progressDialog.dismiss();
-		return CheckDatabaseActivity.DB_OK;
+		return DownloadDatabaseActivity.DB_OK;
 	}
 		
 	
@@ -432,7 +432,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			{
 				ex.printStackTrace();
 			}
-			return CheckDatabaseActivity.DOWNLOAD_RETRY;
+			return DownloadDatabaseActivity.DOWNLOAD_RETRY;
 		}
 		try
 		{
@@ -445,7 +445,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 		}
 
 		progressDialog.dismiss();
-		return CheckDatabaseActivity.DB_OK;
+		return DownloadDatabaseActivity.DB_OK;
 	}
 	
 	private int unzip()
@@ -467,11 +467,11 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 		if(!MD5Utils.checksumOK(dbFile, md5File))
 		{
 			progressDialog.dismiss();
-			return CheckDatabaseActivity.MD5_ERROR_DIALOG;
+			return DownloadDatabaseActivity.MD5_ERROR_DIALOG;
 		}
 		
 		progressDialog.dismiss();
-		return CheckDatabaseActivity.DB_OK;
+		return DownloadDatabaseActivity.DB_OK;
 	}
 	
 	private int download(String dbZIPFileName, String md5FileName)
@@ -491,11 +491,11 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			catch (Exception e)
 			{
 				e.printStackTrace();
-				return CheckDatabaseActivity.DOWNLOAD_RETRY;
+				return DownloadDatabaseActivity.DOWNLOAD_RETRY;
 			}
 			
 			// download dbZIPFile
-			while(downloadFile(ftp, dbZIPFileName, md5FileName) != CheckDatabaseActivity.DB_OK 
+			while(downloadFile(ftp, dbZIPFileName, md5FileName) != DownloadDatabaseActivity.DB_OK 
 					&& downloadcounter < MAX_DOWNLOAD)
 			{
 				++downloadcounter;
@@ -504,7 +504,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			
 	
 			// download md5sum
-			while(downloadMD5File(ftp, dbZIPFileName, md5FileName) != CheckDatabaseActivity.DB_OK 
+			while(downloadMD5File(ftp, dbZIPFileName, md5FileName) != DownloadDatabaseActivity.DB_OK 
 					&& downloadcounter < MAX_DOWNLOAD)
 			{
 				++downloadcounter;
@@ -519,7 +519,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			}
 			if(downloadcounter >= MAX_DOWNLOAD)
 			{
-				return CheckDatabaseActivity.DOWNLOAD_RETRY;
+				return DownloadDatabaseActivity.DOWNLOAD_RETRY;
 			}
 			
 			// unzip dbZIPFile
@@ -532,9 +532,9 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 				++downloadcounter;
 				return download(dbZIPFileName, md5FileName);
 			}
-			return CheckDatabaseActivity.DOWNLOAD_ERROR_DIALOG;
+			return DownloadDatabaseActivity.DOWNLOAD_ERROR_DIALOG;
 		}
-		return CheckDatabaseActivity.DB_OK;
+		return DownloadDatabaseActivity.DB_OK;
 	}
 
 	/**
@@ -559,11 +559,11 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 		
 		if(this.filename.equals(activity.getResources().getString(R.string.app_name_db) + ".db"))
 		{
-			activity.showDialog(result.intValue(), CheckDatabaseActivity.FR_DB);
+			activity.showDialog(result.intValue(), DownloadDatabaseActivity.FR_DB);
 		}
 		else
 		{
-			activity.showDialog(result.intValue(), CheckDatabaseActivity.FR_OSM);
+			activity.showDialog(result.intValue(), DownloadDatabaseActivity.FR_OSM);
 		}
 		
 		

@@ -31,7 +31,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 
-import it.sasabz.android.sasabus.CheckDatabaseActivity;
+import it.sasabz.android.sasabus.DownloadDatabaseActivity;
 import it.sasabz.android.sasabus.InfoActivity;
 import it.sasabz.android.sasabus.MapSelectActivity;
 import it.sasabz.android.sasabus.R;
@@ -530,7 +530,7 @@ public class OnlineSearchFragment extends Fragment {
         }
         else if (haveNetworkConnection())
         {
-        	Intent download = new Intent(this.getActivity(), CheckDatabaseActivity.class);
+        	Intent download = new Intent(this.getActivity(), DownloadDatabaseActivity.class);
 			startActivity(download);
         }
         else
@@ -560,7 +560,7 @@ public class OnlineSearchFragment extends Fragment {
 		case NO_SD_CARD:
 			return createErrorDialog(R.string.sd_card_not_mounted);
 		case DOWNLOAD_FILES:
-			Intent down = new Intent(this.getActivity(), CheckDatabaseActivity.class);
+			Intent down = new Intent(this.getActivity(), DownloadDatabaseActivity.class);
 			myStartActivity(down);
 			return null;
 		default:
@@ -666,7 +666,7 @@ public class OnlineSearchFragment extends Fragment {
 			@Override
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.dismiss();
-				Intent download = new Intent(getThis().getActivity(), CheckDatabaseActivity.class);
+				Intent download = new Intent(getThis().getActivity(), DownloadDatabaseActivity.class);
 				myStartActivity(download);
 			}
 		});

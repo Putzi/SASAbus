@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 
-import it.sasabz.android.sasabus.CheckDatabaseActivity;
+import it.sasabz.android.sasabus.DownloadDatabaseActivity;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.Config;
@@ -22,7 +22,10 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
-
+/**
+ *Checks if updates of maps or bus schedules are available.
+ *Gets launched on startup by TabActivity
+ */
 public class CheckUpdate extends AsyncTask<Void, String, Long> {
 
 	private final OnlineSearchFragment activity;
@@ -110,7 +113,7 @@ public class CheckUpdate extends AsyncTask<Void, String, Long> {
 		// Check if the sd-card is mounted
 		if (!Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
-			return Long.valueOf(CheckDatabaseActivity.NO_SD_CARD);
+			return Long.valueOf(DownloadDatabaseActivity.NO_SD_CARD);
 		}
 
 		// creates all files (zip, md5 and db)

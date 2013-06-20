@@ -3,120 +3,180 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="@dimen/activity_padding" >
+
+    <!-- <LinearLayout -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:gravity="left|center_vertical" -->
+    <!-- android:paddingBottom="15dip" -->
+    <!-- android:paddingTop="15dip" > -->
+
+
+    <!-- <Button -->
+    <!-- android:id="@+id/favorites" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:drawableLeft="@drawable/glyphicons_049_star" -->
+    <!-- android:text="@string/favorit_pick" /> -->
+
+
+    <!-- <Button -->
+    <!-- android:id="@+id/map" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:drawableLeft="@drawable/glyphicons_242_google_maps" -->
+    <!-- android:text="@string/map_pick" /> -->
+    <!-- </LinearLayout> -->
 
     <LinearLayout
+        android:id="@+id/linearlayout_search_input_fields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left|center_vertical"
-        android:paddingBottom="15dip"
-        android:paddingTop="15dip" >
-
-        <Button
-            android:id="@+id/favorites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/glyphicons_049_star"
-            android:text="@string/favorit_pick" />
-
-        <Button
-            android:id="@+id/map"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/glyphicons_242_google_maps"
-            android:text="@string/map_pick" />
-    </LinearLayout>
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/from_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dip"
-                android:text="@string/from_txt"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <AutoCompleteTextView
-                android:id="@+id/from_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/from_txt" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/to_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/to_txt"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <AutoCompleteTextView
-                android:id="@+id/to_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/to_txt" />
-        </TableRow>
-    </TableLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="15dip"
-        android:paddingTop="15dip" >
-
-        <TextView
-            android:id="@+id/time"
+        android:orientation="vertical">
+        
+        <!-- container of buttons and input field for departure-->
+        <RelativeLayout
+            android:id="@+id/linearlayout_search_departure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:hint="@string/time_txt"
-            android:paddingRight="-50dip"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_marginTop="@dimen/search_input_fields_margin"
+            android:layout_marginBottom="@dimen/search_input_fields_margin">
 
-        <ImageButton
-            android:id="@+id/datepicker"
+	        <LinearLayout
+	            android:id="@+id/linearlayout_search_buttons_departure"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:layout_alignParentRight="true">
+
+				<ImageButton
+				    android:id="@+id/imagebutton_bus_stops_nearby_departure"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    style="@style/bus_stop_select_buttons"
+				    android:src="@drawable/bus_stops_nearby_icon"
+				    android:contentDescription="@string/nearby_button" />
+				
+				<ImageButton
+				    android:id="@+id/imagebutton_map_departure"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    style="@style/bus_stop_select_buttons"
+				    android:src="@drawable/map_icon"
+				    android:contentDescription="@string/map_button" />
+				
+				<ImageButton
+				    android:id="@+id/imagebutton_favorites_departure"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    style="@style/bus_stop_select_buttons"
+				    android:src="@drawable/favorites_icon"
+				    android:contentDescription="@string/favorites_button" />
+			</LinearLayout>
+			
+	        <LinearLayout
+                android:id="@+id/linearlayout_search_inputfield_departure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toLeftOf="@id/linearlayout_search_buttons_departure">
+
+		        <AutoCompleteTextView
+		            android:id="@+id/from_text"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:hint="@string/departure_bus_stop" />
+	       	</LinearLayout>
+			
+        </RelativeLayout>
+        
+        <!-- container of buttons and input field for arrival-->
+        <RelativeLayout
+            android:id="@+id/linearlayout_search_arrival"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/search_input_fields_margin"
+            android:layout_marginBottom="@dimen/search_input_fields_margin">
+
+	        <LinearLayout
+	            android:id="@+id/linearlayout_search_buttons_arrival"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:layout_alignParentRight="true">
+
+				<ImageButton
+				    android:id="@+id/imagebutton_bus_stops_nearby_arrival"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    style="@style/bus_stop_select_buttons"
+				    android:src="@drawable/bus_stops_nearby_icon"
+				    android:contentDescription="@string/nearby_button" />
+				
+				<ImageButton
+				    android:id="@+id/imagebutton_map_arrival"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    style="@style/bus_stop_select_buttons"
+				    android:src="@drawable/map_icon"
+				    android:contentDescription="@string/map_button" />
+				
+				<ImageButton
+				    android:id="@+id/imagebutton_favorites_arrival"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    style="@style/bus_stop_select_buttons"
+				    android:src="@drawable/favorites_icon"
+				    android:contentDescription="@string/favorites_button" />
+			</LinearLayout>
+			
+	        <LinearLayout
+                android:id="@+id/linearlayout_search_inputfield_arrival"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toLeftOf="@id/linearlayout_search_buttons_arrival">
+
+		        <AutoCompleteTextView
+		            android:id="@+id/to_text"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:hint="@string/arrival_bus_stop" />
+	       	</LinearLayout>
+			
+        </RelativeLayout>
+        
+    </LinearLayout> <!-- search input fields -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:src="@drawable/calendar_icon_new" />
-    </LinearLayout>
+            android:layout_marginRight="30dp"
+            style="@style/search_button"
+            android:text="@string/date" />
+        
+        <Button
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/search_button"
+            android:text="@string/time" />
+
+    </LinearLayout> <!-- Date and time buttons -->
 
     <Button
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/glyphicons_027_search"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:layout_marginTop="20dp"
         android:text="@string/search_connection" />
 
 </LinearLayout>

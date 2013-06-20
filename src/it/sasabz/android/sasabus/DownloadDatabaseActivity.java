@@ -158,7 +158,6 @@ public class DownloadDatabaseActivity extends Activity {
 				{
 					startActivity();
 				}
-				
 			}
 		});
 		return builder.create();

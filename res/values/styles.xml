@@ -21,5 +21,15 @@
     <style name="next_bus_button_theme">
         <item name="android:textStyle">normal</item>
     </style>
+    
+    <style name="bus_stop_select_buttons">
+        <item name="android:background">@drawable/selector_search_buttons</item>
+        <item name="android:padding">5dp</item>
+    </style>
+    
+     <style name="search_button">
+        <item name="android:background">@drawable/selector_search_buttons</item>
+        <item name="android:padding">5dp</item>
+    </style>
 
 </resources>

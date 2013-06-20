@@ -160,7 +160,11 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 
 <string name="offline">Offline</string>
 <string name="online">Mit Internet</string>
+<string name="next_bus">Nächster Bus</string>
 <string name="info">Info</string>
+
+<string name="bus_stops_nearby">Bushaltestellen in der Nähe</string>
+<string name="bus_stop_from_map">Bushaltestelle aus Karte</string>
 
 </resources>
 

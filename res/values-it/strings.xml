@@ -157,6 +157,10 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 
 <string name="offline">Offline</string>
 <string name="online">Con Internet</string>
+<string name="next_bus">Prossimo bus</string>
 <string name="info">Info</string>
+
+<string name="bus_stops_nearby">Fermate nei dintorni</string>
+<string name="bus_stop_from_map">Fermata dalla mappa</string>
 
 </resources>

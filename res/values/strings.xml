@@ -167,7 +167,11 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 
 <string name="offline">Offline</string>
 <string name="online">Online</string>
+<string name="next_bus">Next Bus</string>
 <string name="info">Info</string>
+
+<string name="bus_stops_nearby">Bus stops nearby</string>
+<string name="bus_stop_from_map">Bus stop from map</string>
 
 </resources>
 

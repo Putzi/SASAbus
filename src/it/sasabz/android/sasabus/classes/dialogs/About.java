@@ -30,6 +30,7 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -37,9 +38,9 @@ import android.content.pm.PackageManager;
 
 public class About {
 
-	private Activity mActivity;
+	private Context mActivity;
 
-	public About(Activity context) {
+	public About(Context context) {
 		mActivity = context;
 	}
 

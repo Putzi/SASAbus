@@ -31,6 +31,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
 
+import com.actionbarsherlock.app.SherlockFragment;
+
 import it.sasabz.android.sasabus.DownloadDatabaseActivity;
 import it.sasabz.android.sasabus.MapSelectActivity;
 import it.sasabz.android.sasabus.R;
@@ -42,6 +44,7 @@ import it.sasabz.android.sasabus.classes.dbobjects.Palina;
 import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
 import it.sasabz.android.sasabus.classes.dialogs.SelectFavoritenDialog;
 import it.sasabz.android.sasabus.classes.services.CheckUpdate;
+import it.sasabz.android.sasabus.utility.Utility;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -69,7 +72,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class OnlineSearchFragment extends Fragment {
+public class OnlineSearchFragment extends SherlockFragment {
 
 	
 	public final static int DOWNLOAD_AVAILABLE = 0;
@@ -527,7 +530,7 @@ public class OnlineSearchFragment extends Fragment {
 	        updatecheck.execute();
 	        
         }
-        else if (haveNetworkConnection())
+        else if (Utility.hasNetworkConnection(getSherlockActivity()))
         {
         	Intent download = new Intent(this.getActivity(), DownloadDatabaseActivity.class);
 			startActivity(download);
@@ -537,13 +540,6 @@ public class OnlineSearchFragment extends Fragment {
         	createErrorDialog(R.string.no_network_connection);
         }
 	}
-
-    
-    @Override
-    public void onResume()
-    {
-    	super.onResume();
-    }
     
     public void showDialog(int id, int res)
 	{
@@ -588,7 +584,7 @@ public class OnlineSearchFragment extends Fragment {
     
     public void myStartActivity(Intent intent)
     {
-    	if(!haveNetworkConnection())
+    	if(!Utility.hasNetworkConnection(getSherlockActivity()))
     	{
     		createOfflineAlertDialog();
     		return;
@@ -600,30 +596,6 @@ public class OnlineSearchFragment extends Fragment {
 		}
     	super.startActivity(intent);
     }
-    
-    /**
-	 * this method checks if a networkconnection is active or not
-	 * @return boolean if the network is reachable or not
-	 */
-	private boolean haveNetworkConnection() 
-	{
-		boolean haveConnectedWifi = false;
-		boolean haveConnectedMobile = false;
-
-		ConnectivityManager cm = (ConnectivityManager) (getActivity().getSystemService(Context.CONNECTIVITY_SERVICE));
-		NetworkInfo[] netInfo = cm.getAllNetworkInfo();
-		for (NetworkInfo ni : netInfo) {
-			//testing WIFI connection
-			if (ni.getTypeName().equalsIgnoreCase("WIFI"))
-				if (ni.isConnected())
-					haveConnectedWifi = true;
-			//testing GPRS/EDGE/UMTS/HDSPA/HUSPA/LTE connection
-			if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
-				if (ni.isConnected())
-					haveConnectedMobile = true;
-		}
-		return haveConnectedWifi || haveConnectedMobile;
-	}
     
 	private void createOfflineAlertDialog()
 	{

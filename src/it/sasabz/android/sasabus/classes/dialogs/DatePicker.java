@@ -38,7 +38,7 @@ public class DatePicker extends SherlockDialogFragment implements OnDateSetListe
 
 		//Get the date from the Button and set it to the picker
 		String dateAlreadySetString = buttonDate.getText().toString();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.ITALIAN);
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.ITALY);
 		Date dateAlreadySet = null;
 		try
 		{

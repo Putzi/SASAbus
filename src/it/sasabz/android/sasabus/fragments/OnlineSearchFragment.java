@@ -27,9 +27,9 @@ package it.sasabz.android.sasabus.fragments;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Vector;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
@@ -490,9 +490,10 @@ public class OnlineSearchFragment extends SherlockFragment {
 	        {
 	        	Log.v("HomeActivity", "No location found!!");
 	        }
-	        Vector<DBObject> palinalist = PalinaList.getNameList(); 
+	        ArrayList<DBObject> palinalist = PalinaList.getNameList(); 
 	        MyAutocompleteAdapter adapterfrom = new MyAutocompleteAdapter(this.getActivity(), android.R.layout.simple_list_item_1, palinalist);
 	        MyAutocompleteAdapter adapterto = new MyAutocompleteAdapter(this.getActivity(), android.R.layout.simple_list_item_1, palinalist);
+	        
 	        
 	        from.setAdapter(adapterfrom);
 	        to.setAdapter(adapterto);

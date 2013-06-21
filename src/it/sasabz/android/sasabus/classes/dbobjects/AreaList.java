@@ -31,28 +31,29 @@ import it.sasabz.android.sasabus.classes.adapter.MySQLiteDBAdapter;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
 
 import android.database.Cursor;
 
-public class BacinoList {
+/**
+ *List of Areas (bacini)
+ */
+public class AreaList {
 	
 	 
-	/**                                                                                                                                                                                                          
-	 * This function returns a vector of all the objects momentanly avaiable in the database                                                                                                                     
-	 * @return a vector of objects if all goes right, alternativ it returns a MyError                                                                                                                              
+	/** 
+	 * Searches for all areas in the database                                                                                                                                                                                                                                                                                                                       
+	 * @return an ArrayList of Areas currently available in the database
+	 * @throws MyError                                                                                                                              
 	 */
-	public static  ArrayList<DBObject>  getList()
-	{
+	public static ArrayList<DBObject> getList() {
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());
 		Cursor cursor = sqlite.rawQuery("select * from  bacini", null);
 		ArrayList<DBObject> list = null;
-		if(cursor.moveToFirst())
-		{
+		if(cursor.moveToFirst()) {
 			int i = 0;
 			list = new ArrayList<DBObject>();
 			do {
-				Bacino element = new Bacino(cursor);
+				Area element = new Area(cursor);
 				list.add(i, element);
 				++i;
 			} while(cursor.moveToNext());
@@ -62,31 +63,36 @@ public class BacinoList {
 		return list;
 	}
 	
-	public static Bacino getBacino(String start, String stop, String linecode)
-	{
-		Bacino ret = null;
+	/**
+	 * Searches in the database for a specific area
+	 * @param start name of the bus stop where to start
+	 * @param stop name of the bus stop where to stop
+	 * @param linecode number of the line
+	 * @return the area that matches the given parameters
+	 */
+	public static Area getArea(String start, String stop, String linecode) {
+		Area area = null;
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());
 		ArrayList<DBObject> list = getList();
-		Iterator<DBObject> iter = list.iterator();
-		boolean gefunden = false;
-		while(iter.hasNext() && !gefunden)
-		{
-			Bacino bac = (Bacino)iter.next();
+		Iterator<DBObject> iterator = list.iterator();
+		boolean found = false;
+		while(iterator.hasNext() && !found) {
+			Area nextArea = (Area)iterator.next();
 			String[] args = {linecode, start, stop};
 			Cursor cursor = sqlite.rawQuery("select * " +
     				"from "+
     				"(select id, lineaId " +
-    				"from " + bac.getTable_prefix() + "corse as corse "+
+    				"from " + nextArea.getTable_prefix() + "corse as corse "+
     				"where " +
     				"lineaId = (" +
-    				"Select id from " + bac.getTable_prefix() + "linee where num_lin = ?) ) as c, " +
+    				"Select id from " + nextArea.getTable_prefix() + "linee where num_lin = ?) ) as c, " +
     				"(select progressivo, orario, corsaId "+
-    				"from " + bac.getTable_prefix() + "orarii "+
+    				"from " + nextArea.getTable_prefix() + "orarii "+
     				"where palinaId IN (" +
     				"select id from paline where nome_de = ?" +
     				")) as o1, " +
     				"(select progressivo , corsaId "+
-    				"from " + bac.getTable_prefix() + "orarii " +
+    				"from " + nextArea.getTable_prefix() + "orarii " +
     				"where palinaId IN (" +
     				"select id from paline where nome_de = ?" +
     				")) as o2 " +
@@ -95,31 +101,32 @@ public class BacinoList {
     				"and c.id = o2.corsaId " +
     				"LIMIT 1 ", 
     				args);
-			if(cursor.moveToFirst())
-			{
-				ret = bac;
-				gefunden = true;
+			if(cursor.moveToFirst()) {
+				area = nextArea;
+				found = true;
 			}
 			cursor.close();
-
 		}
 		sqlite.close();
-		return ret;
+		return area;
 	}
 	
-	public static  Bacino  getById(int id)
-	{
+	/**
+	 * Searches in the database of a specific area by its id
+	 * @param id the id of the area
+	 * @return the area that matches the given parameters
+	 */
+	public static  Area  getById(int id) {
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());
 		String args[] = {Integer.toString(id)};
 		Cursor cursor = sqlite.rawQuery("select * from  bacini where id = ?", args);
-		Bacino bacino = null;
-		if(cursor.moveToFirst())
-		{
-			bacino = new Bacino(cursor);
+		Area area = null;
+		if(cursor.moveToFirst()) {
+			area = new Area(cursor);
 		}
 		cursor.close();
 		sqlite.close();
-		return bacino;
+		return area;
 	}
 
 }

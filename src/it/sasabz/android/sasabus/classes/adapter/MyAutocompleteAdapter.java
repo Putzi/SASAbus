@@ -25,6 +25,7 @@ package it.sasabz.android.sasabus.classes.adapter;
 
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Vector;
@@ -40,17 +41,17 @@ import android.widget.Filterable;
 import android.widget.TextView;
 
 /**
- * @author Markus Windegger (markus@mowiso.com)
- * 
+ *Adapter for the autocomplete input fields in the search tab 
+ *
  */
 public class MyAutocompleteAdapter extends BaseAdapter implements Filterable {
 	private final Context context;
-	private final Vector<DBObject> origlist;
-	private Vector<DBObject> datalist = new Vector<DBObject>();
+	private final ArrayList<DBObject> arrayListOriginalList;
+	private ArrayList<DBObject> arrayListDataList = new ArrayList<DBObject>();
 	private final int layoutId;
 
 	/**
-	 * This constructor creates an object with the following parameters
+	 * Creates a new MyAutocompleteAdapter
 	 * 
 	 * @param context
 	 *            is the context to work with
@@ -63,105 +64,94 @@ public class MyAutocompleteAdapter extends BaseAdapter implements Filterable {
 	 *            list_view
 	 */
 	public MyAutocompleteAdapter(Context context, int layoutId,
-			Vector<DBObject> list) {
+			ArrayList<DBObject> list) {
 		this.context = context;
-		this.origlist = list;
+		this.arrayListOriginalList = list;
 		this.layoutId = layoutId;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View v = convertView;
-		if (v == null)
-		{
-			LayoutInflater vi = LayoutInflater.from(context);
-			v = vi.inflate(layoutId, null);
+		View view = convertView;
+		if (view == null) {
+			LayoutInflater layoutInflater = LayoutInflater.from(context);
+			view = layoutInflater.inflate(layoutId, null);
 		}
-		TextView textView = (TextView) v.findViewById(android.R.id.text1);
-		textView.setTextColor(context.getResources().getColor(android.R.color.black));
-		if (datalist != null)
-		{
-			DBObject listItem = datalist.get(position);
-			if (listItem != null)
-			{
-				textView.setText(datalist.get(position).toString());
+		TextView textView = (TextView) view.findViewById(android.R.id.text1);
+//		textView.setTextColor(context.getResources().getColor(android.R.color.black));
+		if (arrayListDataList != null) {
+			DBObject listItem = arrayListDataList.get(position);
+			if (listItem != null) {
+				textView.setText(arrayListDataList.get(position).toString());
 			}
 		}
-		return v;
+		return view;
 	}
-
+	
 	@Override
 	public int getCount() {
-		if (datalist == null)
+		if (arrayListDataList == null){
 			return 0;
-		return datalist.size();
+		}
+		return arrayListDataList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		if (datalist == null || position >= datalist.size())
+		if (arrayListDataList == null || position >= arrayListDataList.size()) {
 			return null;
-		return datalist.get(position);
+		}
+		return arrayListDataList.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		if (datalist == null)
+		if (arrayListDataList == null) {
 			return -1;
-		return datalist.get(position).getId();
+		}
+		return arrayListDataList.get(position).getId();
 	}
 
 	@Override
 	public Filter getFilter() {
-		Filter myFilter = null;
-		myFilter = new Filter() {
+		Filter myFilter = new Filter() {
 			@Override
 			protected FilterResults performFiltering(CharSequence constraint) {
 				FilterResults filterResults = new FilterResults();
-				Vector<DBObject> temp_datalist = new Vector<DBObject>();
-				if (constraint != null)
-				{
-					Iterator<DBObject> iter = origlist.iterator();
+				ArrayList<DBObject> temporary_datalist = new ArrayList<DBObject>();
+				if (constraint != null) {
+					Iterator<DBObject> iter = arrayListOriginalList.iterator();
 					String[] constraints = constraint.toString().split(" ");
-					while (iter.hasNext())
-					{
+					while (iter.hasNext()) {
 						DBObject object = iter.next();
-						String s = object.toString();
+						String objectString = object.toString();
 						boolean match = false;
-						for (int i = 0; i < constraints.length
-								&& (match || i == 0); ++i)
-						{
-							match = s
-									.toLowerCase(Locale.getDefault())
-									.contains(
-											constraints[i]
-													.toString()
-													.toLowerCase(
-															Locale.getDefault()));
+						for (int i = 0; i < constraints.length && (match || i == 0); ++i){
+							match = objectString
+								.toLowerCase(Locale.getDefault())
+								.contains(constraints[i]
+											.toString()
+											.toLowerCase(Locale.getDefault()));
 						}
-						if (match)
-						{
-							temp_datalist.add(object);
+						if (match){
+							temporary_datalist.add(object);
 						}
 					}
 				}
-				filterResults.values = temp_datalist;
-				filterResults.count = temp_datalist.size();
+				filterResults.values = temporary_datalist;
+				filterResults.count = temporary_datalist.size();
 				return filterResults;
 			}
 
 			@Override
-			protected void publishResults(CharSequence contraint,
-					FilterResults results) {
-				try
-				{
-					if (results.values instanceof Vector<?>)
-						datalist = (Vector<DBObject>) results.values;
+			protected void publishResults(CharSequence contraint, FilterResults results) {
+				try{
+					if (results.values instanceof ArrayList<?>) {
+						arrayListDataList = (ArrayList<DBObject>) results.values;
+					}
 					notifyDataSetChanged();
-				} 
-				catch (Exception e)
-				{
-					Log.v("MyAutocompleteAdapter", "Error", e);
+				} catch (Exception e) {
+					Log.e("MyAutocompleteAdapter", "Error", e);
 				}
 			}
 		};

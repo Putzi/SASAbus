@@ -34,8 +34,8 @@ import java.util.Calendar;
 import it.sasabz.android.sasabus.MapViewActivity;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.classes.adapter.MyWayListAdapter;
-import it.sasabz.android.sasabus.classes.dbobjects.Bacino;
-import it.sasabz.android.sasabus.classes.dbobjects.BacinoList;
+import it.sasabz.android.sasabus.classes.dbobjects.Area;
+import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
 import it.sasabz.android.sasabus.classes.dbobjects.Linea;
 import it.sasabz.android.sasabus.classes.dbobjects.LineaList;
 import it.sasabz.android.sasabus.classes.dbobjects.Palina;
@@ -79,7 +79,7 @@ public class WayFragment extends Fragment {
 	 */
 	private int pos;
 	
-	private Bacino bacino = null;
+	private Area bacino = null;
 	
 	private Palina arrival = null;
 	
@@ -88,7 +88,7 @@ public class WayFragment extends Fragment {
 	private WayFragment() {
 	}
 
-	public WayFragment(Bacino bacino, Linea linea, Palina arrival, Passaggio orario)
+	public WayFragment(Area bacino, Linea linea, Palina arrival, Passaggio orario)
 	{
 		this();
 		this.bacino = bacino;
@@ -111,7 +111,7 @@ public class WayFragment extends Fragment {
 		{
 			throw new Exception();
 		}
-		bacino = BacinoList.getBacino(departure.getName_de(), arrival.getName_de(), line);
+		bacino = AreaList.getArea(departure.getName_de(), arrival.getName_de(), line);
 		if(bacino == null)
 		{
 			throw new Exception();

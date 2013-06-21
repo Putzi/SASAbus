@@ -29,7 +29,7 @@ import java.util.Vector;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.adapter.MyPassaggioListAdapter;
-import it.sasabz.android.sasabus.classes.dbobjects.Bacino;
+import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.Linea;
 import it.sasabz.android.sasabus.classes.dbobjects.Palina;
 import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
@@ -67,12 +67,12 @@ public class OrarioFragment extends Fragment implements OnItemClickListener {
 	//is the next departure time of the bus
 	private int pos;
 	
-	private Bacino bacino = null;
+	private Area bacino = null;
 
 	private OrarioFragment() {
 	}
 
-	public OrarioFragment(Bacino bacino, Linea linea, Palina departure, Palina arrival)
+	public OrarioFragment(Area bacino, Linea linea, Palina departure, Palina arrival)
 	{
 		this();
 		this.bacino = bacino;

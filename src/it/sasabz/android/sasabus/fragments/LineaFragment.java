@@ -31,8 +31,8 @@ import java.util.Vector;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.adapter.MyListAdapter;
-import it.sasabz.android.sasabus.classes.dbobjects.Bacino;
-import it.sasabz.android.sasabus.classes.dbobjects.BacinoList;
+import it.sasabz.android.sasabus.classes.dbobjects.Area;
+import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
 import it.sasabz.android.sasabus.classes.dbobjects.Linea;
 import it.sasabz.android.sasabus.classes.dbobjects.LineaList;
@@ -53,7 +53,7 @@ public class LineaFragment extends Fragment implements OnItemClickListener {
 	//this vector provides the list of lines in the entire activity
     private ArrayList<DBObject> list = null;
     
-    private Bacino bacino = null;
+    private Area bacino = null;
     
     private LineaFragment() {
     }
@@ -61,7 +61,7 @@ public class LineaFragment extends Fragment implements OnItemClickListener {
     public LineaFragment(int bacino)
     {
     	this();
-    	this.bacino = BacinoList.getById(bacino);
+    	this.bacino = AreaList.getById(bacino);
     }
     
     @Override

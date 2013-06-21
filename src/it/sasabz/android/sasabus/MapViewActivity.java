@@ -43,8 +43,8 @@ import org.mapsforge.core.GeoPoint;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.classes.MyArrayItemizedOverlay;
 import it.sasabz.android.sasabus.classes.MyOverlayItem;
-import it.sasabz.android.sasabus.classes.dbobjects.Bacino;
-import it.sasabz.android.sasabus.classes.dbobjects.BacinoList;
+import it.sasabz.android.sasabus.classes.dbobjects.Area;
+import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
 import it.sasabz.android.sasabus.classes.dbobjects.Linea;
 import it.sasabz.android.sasabus.classes.dbobjects.LineaList;
 import it.sasabz.android.sasabus.classes.dbobjects.Palina;
@@ -77,7 +77,7 @@ public class MapViewActivity extends MapActivity {
 	// provides the lineaid for this object
 	private int linea = -1;
 
-	private Bacino bacino = null;
+	private Area bacino = null;
 
 	// provides the orarioId for this object
 	private int orarioId = -1;
@@ -116,7 +116,7 @@ public class MapViewActivity extends MapActivity {
 			return;
 		}
 
-		bacino = BacinoList.getById(bacinonr);
+		bacino = AreaList.getById(bacinonr);
 		Linea line = LineaList.getById(linea, bacino.getTable_prefix());
 
 		Resources res = getResources();

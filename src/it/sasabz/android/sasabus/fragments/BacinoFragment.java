@@ -31,7 +31,7 @@ import java.util.Vector;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.adapter.MyListAdapter;
-import it.sasabz.android.sasabus.classes.dbobjects.BacinoList;
+import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -77,7 +77,7 @@ public class BacinoFragment extends Fragment implements OnItemClickListener{
      * this method gets the list from the bacinolist and then fills the list with the bacini
      */
     private void fillData(View result) {
-        list = BacinoList.getList();
+        list = AreaList.getList();
         ListView listview = (ListView)result.findViewById(android.R.id.list);
         MyListAdapter bacini = new MyListAdapter(SASAbus.getContext(), R.id.text, R.layout.bacino_row, list);
         listview.setAdapter(bacini);

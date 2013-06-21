@@ -35,6 +35,7 @@
 package it.sasabz.android.sasabus;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -62,8 +63,8 @@ import it.sasabz.android.sasabus.classes.MyArrayItemizedSelectOverlay;
 import it.sasabz.android.sasabus.classes.MyOverlayItem;
 import it.sasabz.android.sasabus.classes.MyOverlaySelectItem;
 import it.sasabz.android.sasabus.classes.adapter.MySQLiteDBAdapter;
-import it.sasabz.android.sasabus.classes.dbobjects.Bacino;
-import it.sasabz.android.sasabus.classes.dbobjects.BacinoList;
+import it.sasabz.android.sasabus.classes.dbobjects.Area;
+import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
 import it.sasabz.android.sasabus.classes.dbobjects.Linea;
 import it.sasabz.android.sasabus.classes.dbobjects.LineaList;
@@ -137,7 +138,7 @@ public class MapSelectActivity extends MapActivity {
 						+ res.getString(R.string.app_name_osm) + ".map"));
 		mapView.setRenderTheme(InternalRenderTheme.OSMARENDER);
 
-		Vector<DBObject> pallist = PalinaList.getMapList();
+		ArrayList<DBObject> pallist = PalinaList.getMapList();
 		
 		Iterator<DBObject> iter = pallist.iterator();
 

@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.adapter.MyListAdapter;
-import it.sasabz.android.sasabus.classes.dbobjects.Bacino;
+import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
 import it.sasabz.android.sasabus.classes.dbobjects.Linea;
 import it.sasabz.android.sasabus.classes.dbobjects.Palina;
@@ -61,12 +61,12 @@ public class ArrivalFragment extends Fragment implements OnItemClickListener {
 	// saves the list of possible parture bus-stops for this object
 	private ArrayList<DBObject> list;
 
-	private Bacino bacino = null;
+	private Area bacino = null;
 
 	private ArrivalFragment() {
 	}
 
-	public ArrivalFragment(Bacino bacino, Linea linea, Palina departure) {
+	public ArrivalFragment(Area bacino, Linea linea, Palina departure) {
 		this();
 		this.departure = departure;
 		this.linea = linea;

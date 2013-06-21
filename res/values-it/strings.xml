@@ -170,7 +170,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="map_button">Selezionare fermata dalla mappa</string>
 <string name="favorites_button">Fermate preferiti</string>
 
-<string name="date">gg/mm/aaaa</string>
-<string name="time">oo/mm</string>
+<string name="date_pattern">gg/mm/aaaa</string>
+<string name="time_pattern">oo/mm</string>
 
 </resources>

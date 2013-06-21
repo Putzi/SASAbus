@@ -84,7 +84,7 @@
                 android:layout_toLeftOf="@id/linearlayout_search_buttons_departure">
 
 		        <AutoCompleteTextView
-		            android:id="@+id/from_text"
+		            android:id="@+id/autocompletetextview_Departure"
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
 		            android:hint="@string/departure_bus_stop" />
@@ -140,7 +140,7 @@
                 android:layout_toLeftOf="@id/linearlayout_search_buttons_arrival">
 
 		        <AutoCompleteTextView
-		            android:id="@+id/to_text"
+		            android:id="@+id/autocompletetextview_Arrival"
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
 		            android:hint="@string/arrival_bus_stop" />
@@ -160,19 +160,19 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
             style="@style/search_button"
-            android:text="@string/date" />
+            android:text="@string/date_pattern" />
         
         <Button
             android:id="@+id/button_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/search_button"
-            android:text="@string/time" />
+            android:text="@string/time_pattern" />
 
     </LinearLayout> <!-- Date and time buttons -->
 
     <Button
-        android:id="@+id/search"
+        android:id="@+id/button_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@android:drawable/ic_menu_search"

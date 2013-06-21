@@ -9,12 +9,16 @@ import java.util.SimpleTimeZone;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.classes.dialogs.DatePicker;
 import it.sasabz.android.sasabus.classes.dialogs.TimePicker;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 
 import com.actionbarsherlock.app.SherlockFragment;
@@ -33,6 +37,8 @@ public class SearchFragment extends SherlockFragment{
 		
 		insertCurrentTimeIntoButton(view);
 		addOnclickListenerForTime(view);
+		
+		addOnclickListenerForSearchButton(view);
 		
 		return view;
 	}
@@ -123,6 +129,48 @@ public class SearchFragment extends SherlockFragment{
 		
 		timePicker.buttonTime = (Button) view;
 		timePicker.show(getSherlockActivity().getSupportFragmentManager(), "Time Picker");
+	}
+	
+	
+	//Search Button
+	private void addOnclickListenerForSearchButton(View view) {
+		Button buttonSearch = (Button) view.findViewById(R.id.button_search);
+		buttonSearch.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//Get the views for departure stop, arrival stop, date and time
+				AutoCompleteTextView autoCompleteTextViewDeparture = 
+						(AutoCompleteTextView) v.findViewById(R.id.autocompletetextview_Departure);
+				AutoCompleteTextView autoCompleteTextViewArrival = 
+						(AutoCompleteTextView) v.findViewById(R.id.autocompletetextview_Arrival);
+				Button buttonDate = (Button) v.findViewById(R.id.button_date);
+				Button buttonTime = (Button) v.findViewById(R.id.button_time);
+				
+				//Get the contents of the views
+				String departurePredefined = autoCompleteTextViewDeparture.getHint().toString();
+				String departure = autoCompleteTextViewDeparture.getText().toString();
+				String arrival = autoCompleteTextViewArrival.getText().toString();
+				String date = buttonDate.getText().toString();
+				String time = buttonTime.getText().toString();
+				
+				//Check if the input fields are not empty
+				if (!departure.trim().equals("") || !departurePredefined.trim().equals("") && arrival.trim().equals("")){
+					
+					//check wheter the user has inserted a departure bus stop,
+					//or wheter we should use the predefined one, which is 
+					//the closest bus stop to the last known location
+					if(!departurePredefined.trim().equals("")){
+						departure = departurePredefined;
+					}
+					
+					departure = "(" + departure.replace(" -", ")");
+					arrival = "(" + arrival.replace(" -", ")");
+					
+				}
+				
+			}
+		});
+		
 	}
 	
 }

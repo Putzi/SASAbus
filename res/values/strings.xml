@@ -180,8 +180,8 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="map_button">Select bus stop from map</string>
 <string name="favorites_button">Favorite bus stops</string>
 
-<string name="date">dd/mm/yyyy</string>
-<string name="time">hh/mm</string>
+<string name="date_pattern">dd/mm/yyyy</string>
+<string name="time_pattern">hh/mm</string>
 
 </resources>
 

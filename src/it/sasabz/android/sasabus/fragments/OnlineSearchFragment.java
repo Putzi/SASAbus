@@ -110,6 +110,11 @@ public class OnlineSearchFragment extends SherlockFragment {
     	return result;
     }
     
+    
+    /**
+	 * when the fragment is paused (user switched to another tab)
+	 * hide the keyboard
+	 */
     @Override
     public void onPause() {
     	super.onPause();

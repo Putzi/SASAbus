@@ -173,8 +173,8 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="map_button">Bushaltestelle aus Karte auswählen</string>
 <string name="favorites_button">Favorisierte Bushaltestellen</string>
 
-<string name="date">tt/mm/jjjj</string>
-<string name="time">hh/mm</string>
+<string name="date_pattern">tt/mm/jjjj</string>
+<string name="time_pattern">hh/mm</string>
 
 </resources>
 

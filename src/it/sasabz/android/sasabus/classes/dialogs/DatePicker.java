@@ -66,16 +66,23 @@ public class DatePicker extends SherlockDialogFragment implements OnDateSetListe
 	public void onDateSet(android.widget.DatePicker view, int year,
 			int monthOfYear, int dayOfMonth) {
 		
-		//in Android the month starts with 0, 
+		//In Android the month starts with 0, 
 		//therefore we have to add 1
-		Integer actualMonth = monthOfYear+1;
+		monthOfYear++;
 		
-		String actualMonthString = actualMonth.toString();
-		if (actualMonthString.length() < 2) {
-			actualMonthString = "0"+actualMonthString;
+		//Add a 0 if the month has only 1 digit
+		String actualMonth = Integer.valueOf(monthOfYear).toString();
+		if (actualMonth.length() < 2){
+			actualMonth = "0" + actualMonth;
 		}
 		
-		buttonDate.setText(dayOfMonth+"."+actualMonthString+"."+year);
+		//Add a 0 if the day has only 1 digit
+		String actualDayOfMonth = Integer.valueOf(dayOfMonth).toString();
+		if (actualDayOfMonth.length() < 2){
+			actualDayOfMonth = "0" + actualDayOfMonth;
+		}
+		
+		buttonDate.setText(actualDayOfMonth+"."+actualMonth+"."+year);
 	}
 	
 }

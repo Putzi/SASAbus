@@ -30,7 +30,6 @@ import it.sasabz.android.sasabus.classes.Config;
 import it.sasabz.android.sasabus.classes.adapter.MySQLiteDBAdapter;
 
 import java.util.ArrayList;
-import java.util.Vector;
 
 import android.database.Cursor;
 
@@ -42,7 +41,7 @@ public class BusLineList {
 	
 	/**                                                                                                                                                                                                          
 	 * Searches for all bus lines (linee) in the database                                                                                                                     
-	 * @return an ArrayList of bus lines (linee) currently available in the database                                                                                           
+	 * @return an ArrayList of all bus lines (linee) currently available in the database                                                                                           
 	 */
 	public static ArrayList<DBObject> getList() {
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());

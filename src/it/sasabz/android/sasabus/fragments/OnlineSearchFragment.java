@@ -40,8 +40,8 @@ import it.sasabz.android.sasabus.classes.DateTimePicker;
 import it.sasabz.android.sasabus.classes.adapter.MyAutocompleteAdapter;
 import it.sasabz.android.sasabus.classes.adapter.MySQLiteDBAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import it.sasabz.android.sasabus.classes.dialogs.SelectFavoritenDialog;
 import it.sasabz.android.sasabus.classes.services.CheckUpdate;
 import it.sasabz.android.sasabus.utility.Utility;
@@ -475,7 +475,7 @@ public class OnlineSearchFragment extends SherlockFragment {
 	        {
 	        	try
 	        	{
-	        		Palina palina = PalinaList.getPalinaGPS(lastloc);
+	        		BusStop palina = BusStopList.getBusStopByGPS(lastloc);
 	        		if(palina != null)
 	        		{
 	        			from.setHint(palina.toString());
@@ -490,7 +490,7 @@ public class OnlineSearchFragment extends SherlockFragment {
 	        {
 	        	Log.v("HomeActivity", "No location found!!");
 	        }
-	        ArrayList<DBObject> palinalist = PalinaList.getNameList(); 
+	        ArrayList<DBObject> palinalist = BusStopList.getNameList(); 
 	        MyAutocompleteAdapter adapterfrom = new MyAutocompleteAdapter(this.getActivity(), android.R.layout.simple_list_item_1, palinalist);
 	        MyAutocompleteAdapter adapterto = new MyAutocompleteAdapter(this.getActivity(), android.R.layout.simple_list_item_1, palinalist);
 	        

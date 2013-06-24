@@ -25,7 +25,7 @@ package it.sasabz.android.sasabus.classes.dialogs;
 
 import it.sasabz.android.sasabus.MapSelectActivity;
 import it.sasabz.android.sasabus.R;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -33,7 +33,7 @@ import android.view.View;
 import android.widget.Button;
 import it.sasabz.android.sasabus.R.string;
 import it.sasabz.android.sasabus.classes.adapter.MyXMLConnectionAdapter;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
 import it.sasabz.android.sasabus.classes.hafas.XMLConnection;
 import it.sasabz.android.sasabus.classes.hafas.XMLJourney;
 import it.sasabz.android.sasabus.fragments.OrarioFragment;
@@ -72,9 +72,9 @@ public class SelectDialog extends Dialog{
 
 	private MapSelectActivity activity = null;
 	
-	private Palina palina = null;
+	private BusStop palina = null;
 	
-	public SelectDialog(MapSelectActivity activity, Palina palina) {
+	public SelectDialog(MapSelectActivity activity, BusStop palina) {
 		super(activity);
 		this.activity = activity;
 		this.palina = palina;

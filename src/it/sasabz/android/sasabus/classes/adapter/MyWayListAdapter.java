@@ -27,7 +27,7 @@
 package it.sasabz.android.sasabus.classes.adapter;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
 
 import java.util.Vector;
@@ -90,7 +90,7 @@ public class MyWayListAdapter extends BaseAdapter {
 			currentTime.setToNow();
 			currentTime.set(0, currentTime.minute, currentTime.hour, currentTime.monthDay, currentTime.month, currentTime.year);
 			Time sasaTime = list.get(position).getOrario();
-			departure.setText(list.get(position).getOrario().format("%H:%M") + " "+ PalinaList.getById(list.get(position).getIdPalina()).toString());
+			departure.setText(list.get(position).getOrario().format("%H:%M") + " "+ BusStopList.getBusStopById(list.get(position).getIdPalina()).toString());
 			if (actpos < position)
 			{
 				//v.setBackgroundColor(Color.rgb(0, 70, 0));

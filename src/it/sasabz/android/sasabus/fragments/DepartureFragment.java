@@ -31,8 +31,8 @@ import it.sasabz.android.sasabus.classes.adapter.MyListAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 
 import java.util.ArrayList;
 
@@ -99,7 +99,7 @@ public class DepartureFragment extends Fragment implements OnItemClickListener{
      * this method gets a list of palinas and fills the list_view with the palinas
      */
     private void fillData(View result) {
-    	list = PalinaList.getListLinea(linea.getId(), bacino.getTable_prefix());
+    	list = BusStopList.getBusLineList(linea.getId(), bacino.getTable_prefix());
     	MyListAdapter destinazioni = new MyListAdapter(SASAbus.getContext(), R.id.text, R.layout.departure_row, list);
     	ListView listview = (ListView)result.findViewById(android.R.id.list);
     	listview.setAdapter(destinazioni);
@@ -109,7 +109,7 @@ public class DepartureFragment extends Fragment implements OnItemClickListener{
    
 	@Override
 	public void onItemClick(AdapterView<?> av, View v, int position, long id) {
-    	Palina departure = (Palina)list.get(position);
+    	BusStop departure = (BusStop)list.get(position);
     	
     	/*Intent selDest = new Intent(this, SelectArrivalActivity.class);
     	selDest.putExtra("arrival", arrival.getName_de());

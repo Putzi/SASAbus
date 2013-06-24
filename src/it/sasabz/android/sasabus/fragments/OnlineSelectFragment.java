@@ -31,8 +31,8 @@ import java.util.Vector;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.classes.adapter.MyXMLStationListAdapter;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import it.sasabz.android.sasabus.classes.hafas.XMLRequest;
 import it.sasabz.android.sasabus.classes.hafas.XMLStation;
 import it.sasabz.android.sasabus.classes.hafas.services.XMLStationList;
@@ -60,8 +60,8 @@ public class OnlineSelectFragment extends Fragment{
     private String from = "";
     private String to = "";
     private String date = "";
-    private Palina fromPalina = null;
-    private Palina toPalina = null;
+    private BusStop fromPalina = null;
+    private BusStop toPalina = null;
     private Date datum = null;
     private Spinner from_spinner = null;
     private Spinner to_spinner = null;
@@ -105,8 +105,8 @@ public class OnlineSelectFragment extends Fragment{
 		String lang = "it";
 		if((Locale.getDefault().getLanguage()).indexOf(Locale.GERMAN.toString()) != -1)
 			lang = "de";
-		fromPalina = PalinaList.getTranslation(from, lang);
-		toPalina = PalinaList.getTranslation(to, lang);
+		fromPalina = BusStopList.getBusStopTranslation(from, lang);
+		toPalina = BusStopList.getBusStopTranslation(to, lang);
 		SimpleDateFormat simple = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 		boolean plus12 = false;
 		if(date.contains("PM"))
@@ -144,12 +144,12 @@ public class OnlineSelectFragment extends Fragment{
         statlist = new XMLStationList(this);
         if(toPalina != null)
         {
-        	to = toPalina.getHaltestelle();
+        	to = toPalina.getBusStop();
         	Log.v("ONLINE-SELECT-TO", to);
         }
         if(fromPalina != null)
         {
-        	from = fromPalina.getHaltestelle();
+        	from = fromPalina.getBusStop();
         	Log.v("ONLINE-SELECT-FROM", from);
         }
         statlist.execute(from, to);

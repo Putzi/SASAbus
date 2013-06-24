@@ -33,8 +33,8 @@ import it.sasabz.android.sasabus.classes.Favorit;
 import it.sasabz.android.sasabus.classes.FavoritenDB;
 import it.sasabz.android.sasabus.classes.FavoritenList;
 import it.sasabz.android.sasabus.classes.adapter.MyFavoritenListAdapter;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import it.sasabz.android.sasabus.fragments.OnlineSearchFragment;
 import android.app.Dialog;
 import android.database.sqlite.SQLiteDatabase;
@@ -98,7 +98,7 @@ public class SelectFavoritenDialog extends Dialog implements OnItemClickListener
         if((Locale.getDefault().getLanguage()).indexOf(Locale.GERMAN.toString()) != -1)
 		{
 			String italienischfrom = namefrom.substring(0, namefrom.indexOf("-")).trim();
-			Palina stationfrom = PalinaList.getTranslation(italienischfrom, "it");
+			BusStop stationfrom = BusStopList.getBusStopTranslation(italienischfrom, "it");
 			if(stationfrom != null)
 			{
 				namefromloc = stationfrom.getName_de();
@@ -112,7 +112,7 @@ public class SelectFavoritenDialog extends Dialog implements OnItemClickListener
 						geteilt.substring(geteilt.indexOf(")") + 1).trim();
 			}
 			String italienischto = nameto.substring(0, nameto.indexOf("-")).trim();
-			Palina stationto = PalinaList.getTranslation(italienischto, "it");
+			BusStop stationto = BusStopList.getBusStopTranslation(italienischto, "it");
 			if(stationto != null)
 			{
 				nametoloc = stationto.getName_de();

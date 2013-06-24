@@ -38,8 +38,8 @@ import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLineList;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
 import it.sasabz.android.sasabus.classes.dbobjects.PassaggioList;
 import android.app.AlertDialog;
@@ -81,21 +81,21 @@ public class WayFragment extends Fragment {
 	
 	private Area bacino = null;
 	
-	private Palina arrival = null;
+	private BusStop arrival = null;
 	
-	private Palina departure = null;
+	private BusStop departure = null;
 
 	private WayFragment() {
 	}
 
-	public WayFragment(Area bacino, BusLine linea, Palina arrival, Passaggio orario)
+	public WayFragment(Area bacino, BusLine linea, BusStop arrival, Passaggio orario)
 	{
 		this();
 		this.bacino = bacino;
 		this.linea = linea;
 		this.arrival = arrival;
 		this.orario = orario;
-		departure = PalinaList.getById(orario.getIdPalina());
+		departure = BusStopList.getBusStopById(orario.getIdPalina());
 	}
 	
 	public WayFragment(String line, String from, String to, String orario_part, String orario_arr) throws Exception
@@ -105,8 +105,8 @@ public class WayFragment extends Fragment {
 			lang = "de";
 		Log.v("SHOW-WAY-ACTIVITY", "Partenza: " + from);
 		Log.v("SHOW-WAY-ACTIVITY", "Arrivo: " + to);
-		departure = PalinaList.getTranslation(from.trim(), lang);
-		arrival = PalinaList.getTranslation(to.trim(), lang);
+		departure = BusStopList.getBusStopTranslation(from.trim(), lang);
+		arrival = BusStopList.getBusStopTranslation(to.trim(), lang);
 		if(departure == null || arrival == null)
 		{
 			throw new Exception();

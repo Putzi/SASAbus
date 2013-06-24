@@ -51,8 +51,8 @@ import it.sasabz.android.sasabus.classes.MyArrayItemizedSelectOverlay;
 import it.sasabz.android.sasabus.classes.MyOverlaySelectItem;
 import it.sasabz.android.sasabus.classes.adapter.MySQLiteDBAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import it.sasabz.android.sasabus.R.drawable;
 import it.sasabz.android.sasabus.R.id;
 import it.sasabz.android.sasabus.R.layout;
@@ -68,8 +68,8 @@ import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLineList;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
 import it.sasabz.android.sasabus.classes.dbobjects.PassaggioList;
 import it.sasabz.android.sasabus.classes.dialogs.About;
@@ -138,7 +138,7 @@ public class MapSelectActivity extends MapActivity {
 						+ res.getString(R.string.app_name_osm) + ".map"));
 		mapView.setRenderTheme(InternalRenderTheme.OSMARENDER);
 
-		ArrayList<DBObject> pallist = PalinaList.getMapList();
+		ArrayList<DBObject> pallist = BusStopList.getMapList();
 		
 		Iterator<DBObject> iter = pallist.iterator();
 
@@ -151,7 +151,7 @@ public class MapSelectActivity extends MapActivity {
 		
 		while (iter.hasNext())
 		{
-			Palina pal = (Palina)iter.next();
+			BusStop pal = (BusStop)iter.next();
 			GeoPoint point = new GeoPoint(pal.getLatitude(),
 					pal.getLongitude());
 			if(partPoint == null)
@@ -176,7 +176,7 @@ public class MapSelectActivity extends MapActivity {
 	        {
 	        	try
 	        	{
-	        		Palina palina = PalinaList.getPalinaGPS(lastloc);
+	        		BusStop palina = BusStopList.getBusStopByGPS(lastloc);
 	        		if(palina != null)
 	        		{
 	        			partPoint = new GeoPoint(palina.getLatitude(), palina.getLongitude());

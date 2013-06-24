@@ -47,8 +47,8 @@ import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLineList;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
 import it.sasabz.android.sasabus.classes.dbobjects.PassaggioList;
 import it.sasabz.android.sasabus.classes.dialogs.About;
@@ -104,9 +104,9 @@ public class MapViewActivity extends MapActivity {
 			Log.v("PECH", "PECH KOPP");
 		}
 
-		Palina part = PalinaList.getById(partenza);
+		BusStop part = BusStopList.getBusStopById(partenza);
 		part.setId(partenza);
-		Palina dest = PalinaList.getById(destinazione);
+		BusStop dest = BusStopList.getBusStopById(destinazione);
 		dest.setId(destinazione);
 		
 		if (part == null || dest == null)
@@ -198,7 +198,7 @@ public class MapViewActivity extends MapActivity {
 		while (iter.hasNext())
 		{
 			Passaggio passa = iter.next();
-			Palina pal = PalinaList.getById(passa.getIdPalina());
+			BusStop pal = BusStopList.getBusStopById(passa.getIdPalina());
 			pal.setId(passa.getIdPalina());
 			if (pal.getId() != dest.getId() && pal.getId() != part.getId())
 			{

@@ -25,8 +25,8 @@ package it.sasabz.android.sasabus.classes;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.SASAbus;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -84,7 +84,7 @@ public class Favorit {
 	public String getPartenzaString() {
 		String ret = "";
 		String fromItalienisch = getPartenza().substring(0, getPartenza().indexOf("-")).trim();
-		Palina fromStation = PalinaList.getTranslation(fromItalienisch, "it");
+		BusStop fromStation = BusStopList.getBusStopTranslation(fromItalienisch, "it");
 		if(fromStation != null)
 		{
 			ret = fromStation.toString(); 
@@ -102,7 +102,7 @@ public class Favorit {
 	public String getDestinazioneString() {
 		String ret = "";
 		String toItalienisch = getDestinazione().substring(0, getDestinazione().indexOf("-")).trim();
-		Palina toStation = PalinaList.getTranslation(toItalienisch, "it");
+		BusStop toStation = BusStopList.getBusStopTranslation(toItalienisch, "it");
 		if(toStation != null)
 		{
 			ret = toStation.toString(); 
@@ -131,8 +131,8 @@ public class Favorit {
 		Resources res = SASAbus.getContext().getResources();
 		String toItalienisch = getDestinazione().substring(0, getDestinazione().indexOf("-")).trim();
 		String fromItalienisch = getPartenza().substring(0, getPartenza().indexOf("-")).trim();
-		Palina toStation = PalinaList.getTranslation(toItalienisch, "it");
-		Palina fromStation = PalinaList.getTranslation(fromItalienisch, "it");
+		BusStop toStation = BusStopList.getBusStopTranslation(toItalienisch, "it");
+		BusStop fromStation = BusStopList.getBusStopTranslation(fromItalienisch, "it");
 		if(toStation != null && fromStation != null)
 		{
 			ret = res.getString(R.string.from) + " " + fromStation.toString() + " - " + 

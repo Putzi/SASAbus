@@ -23,8 +23,8 @@
  */
 package it.sasabz.android.sasabus.classes.hafas;
 
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import it.sasabz.android.sasabus.classes.network.SASAbusXML;
 
 import java.util.Locale;
@@ -97,7 +97,7 @@ public class XMLStation {
 		if((Locale.getDefault().getLanguage()).indexOf(Locale.GERMAN.toString()) != -1)
 		{
 			String italienisch = this.name.substring(0, this.name.indexOf("-")).trim();
-			Palina station = PalinaList.getTranslation(italienisch, "it");
+			BusStop station = BusStopList.getBusStopTranslation(italienisch, "it");
 			if(station != null)
 			{
 				ret = station.getName_de();

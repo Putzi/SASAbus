@@ -33,8 +33,8 @@ import it.sasabz.android.sasabus.classes.adapter.MyListAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
-import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
 import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -56,7 +56,7 @@ public class ArrivalFragment extends Fragment implements OnItemClickListener {
 	private BusLine linea;
 
 	// saves the arrival global for this object
-	private Palina departure;
+	private BusStop departure;
 
 	// saves the list of possible parture bus-stops for this object
 	private ArrayList<DBObject> list;
@@ -66,7 +66,7 @@ public class ArrivalFragment extends Fragment implements OnItemClickListener {
 	private ArrivalFragment() {
 	}
 
-	public ArrivalFragment(Area bacino, BusLine linea, Palina departure) {
+	public ArrivalFragment(Area bacino, BusLine linea, BusStop departure) {
 		this();
 		this.departure = departure;
 		this.linea = linea;
@@ -101,7 +101,7 @@ public class ArrivalFragment extends Fragment implements OnItemClickListener {
 	 * this method fills the possible parture busstops into the list_view
 	 */
 	private void fillData(View result) {
-		list = PalinaList.getListDestinazione(departure.getName_de(),
+		list = BusStopList.getBustStopListByArrival(departure.getName_de(),
 				linea.getId(), bacino.getTable_prefix());
 		MyListAdapter paline = new MyListAdapter(SASAbus.getContext(),
 				R.id.text, R.layout.arrival_row, list);
@@ -113,7 +113,7 @@ public class ArrivalFragment extends Fragment implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> av, View v, int position, long id) {
 		// TODO Auto-generated method stub
-		Palina arrival = (Palina) list.get(position);
+		BusStop arrival = (BusStop) list.get(position);
 		FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction ft = fragmentManager.beginTransaction();
 

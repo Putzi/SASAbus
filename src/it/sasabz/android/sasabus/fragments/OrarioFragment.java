@@ -31,7 +31,7 @@ import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.adapter.MyPassaggioListAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
 import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
 import it.sasabz.android.sasabus.classes.dbobjects.PassaggioList;
 import android.content.res.Resources;
@@ -56,10 +56,10 @@ public class OrarioFragment extends Fragment implements OnItemClickListener {
 	private BusLine linea;
 
 	//provides the destination for this object
-	private Palina departure;
+	private BusStop departure;
 		
 	//provides the departure in this object
-	private Palina  arrival;
+	private BusStop  arrival;
 	
 	//provides the list for this object of all passages during the actual day
 	private Vector<Passaggio> list = null;
@@ -72,7 +72,7 @@ public class OrarioFragment extends Fragment implements OnItemClickListener {
 	private OrarioFragment() {
 	}
 
-	public OrarioFragment(Area bacino, BusLine linea, Palina departure, Palina arrival)
+	public OrarioFragment(Area bacino, BusLine linea, BusStop departure, BusStop arrival)
 	{
 		this();
 		this.bacino = bacino;

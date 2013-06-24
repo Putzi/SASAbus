@@ -25,7 +25,7 @@ package it.sasabz.android.sasabus.classes;
 
 import it.sasabz.android.sasabus.MapSelectActivity;
 import it.sasabz.android.sasabus.R;
-import it.sasabz.android.sasabus.classes.dbobjects.Palina;
+import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
 import it.sasabz.android.sasabus.classes.dialogs.SelectDialog;
 
 import org.mapsforge.android.maps.overlay.OverlayItem;
@@ -39,9 +39,9 @@ public class MyOverlaySelectItem extends OverlayItem{
 	
 	private MapSelectActivity activity = null;
 	
-	private Palina palina = null;
+	private BusStop palina = null;
 	
-	public MyOverlaySelectItem(GeoPoint point, Drawable bus, MapSelectActivity activity, Palina palina) {
+	public MyOverlaySelectItem(GeoPoint point, Drawable bus, MapSelectActivity activity, BusStop palina) {
 		super(point, "", palina.toString(), bus);
 		this.activity = activity;
 		this.palina = palina;

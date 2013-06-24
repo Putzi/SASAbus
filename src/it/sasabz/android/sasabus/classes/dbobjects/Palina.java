@@ -45,16 +45,6 @@ public class Palina extends DBObject{
 	
 	private double latitude = 0;
 	
-	
-	/**
-	 * Standardconstructor
-	 */
-	public Palina()
-	{
-		super();
-	}
-	
-	
 
 	/**
 	 * This is the constructor to fill the object entirely with id, name in it an de
@@ -91,18 +81,17 @@ public class Palina extends DBObject{
 	/**
 	 * This constructer fills the palina-object with information from a cursor
 	 * if the position flag is set, then it fills the position variables longitude and latitude
-	 * @param c is the cursor with the information from the db
+	 * @param cursor is the cursor with the information from the db
 	 */
-	public Palina(Cursor c)
-	{
-		if (c.getColumnIndex("id") != -1)
-			this.setId(c.getInt(c.getColumnIndex("id")));
-		this.setName_de(c.getString(c.getColumnIndex("nome_de")));
-		this.setName_it(c.getString(c.getColumnIndex("nome_it")));
-		if(c.getColumnIndex("longitudine") != -1)
-			this.setLongitude(c.getDouble(c.getColumnIndex("longitudine")));
-		if (c.getColumnIndex("latitudine") != -1)
-			this.setLatitude(c.getDouble(c.getColumnIndex("latitudine")));
+	public Palina(Cursor cursor) {
+		if (cursor.getColumnIndex("id") != -1)
+			this.setId(cursor.getInt(cursor.getColumnIndex("id")));
+		this.setName_de(cursor.getString(cursor.getColumnIndex("nome_de")));
+		this.setName_it(cursor.getString(cursor.getColumnIndex("nome_it")));
+		if(cursor.getColumnIndex("longitudine") != -1)
+			this.setLongitude(cursor.getDouble(cursor.getColumnIndex("longitudine")));
+		if (cursor.getColumnIndex("latitudine") != -1)
+			this.setLatitude(cursor.getDouble(cursor.getColumnIndex("latitudine")));
 	}
 
 	public String getHaltestelle()

@@ -45,8 +45,8 @@ import it.sasabz.android.sasabus.classes.MyArrayItemizedOverlay;
 import it.sasabz.android.sasabus.classes.MyOverlayItem;
 import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
-import it.sasabz.android.sasabus.classes.dbobjects.Linea;
-import it.sasabz.android.sasabus.classes.dbobjects.LineaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
+import it.sasabz.android.sasabus.classes.dbobjects.BusLineList;
 import it.sasabz.android.sasabus.classes.dbobjects.Palina;
 import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
 import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
@@ -117,7 +117,7 @@ public class MapViewActivity extends MapActivity {
 		}
 
 		bacino = AreaList.getById(bacinonr);
-		Linea line = LineaList.getById(linea, bacino.getTable_prefix());
+		BusLine line = BusLineList.getBusLineById(linea, bacino.getTable_prefix());
 
 		Resources res = getResources();
 

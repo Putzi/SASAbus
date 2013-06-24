@@ -49,7 +49,7 @@ public class Area extends DBObject {
 	 * @param area_it name of the area (bacino) in Italian
 	 * @param area_de name of the area (bacino) in German
 	 */
-	public Area (int identifier, String area_it, String area_de){
+	public Area(int identifier, String area_it, String area_de){
 		super(identifier);
 		this.area_it = area_it;
 		this.area_de = area_de;

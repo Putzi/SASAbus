@@ -32,7 +32,7 @@ import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.adapter.MyListAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
-import it.sasabz.android.sasabus.classes.dbobjects.Linea;
+import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
 import it.sasabz.android.sasabus.classes.dbobjects.Palina;
 import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
 import android.annotation.SuppressLint;
@@ -53,7 +53,7 @@ import android.widget.TextView;
 public class ArrivalFragment extends Fragment implements OnItemClickListener {
 
 	// saves the linea global for this object
-	private Linea linea;
+	private BusLine linea;
 
 	// saves the arrival global for this object
 	private Palina departure;
@@ -66,7 +66,7 @@ public class ArrivalFragment extends Fragment implements OnItemClickListener {
 	private ArrivalFragment() {
 	}
 
-	public ArrivalFragment(Area bacino, Linea linea, Palina departure) {
+	public ArrivalFragment(Area bacino, BusLine linea, Palina departure) {
 		this();
 		this.departure = departure;
 		this.linea = linea;

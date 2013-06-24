@@ -36,8 +36,8 @@ import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.classes.adapter.MyWayListAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
-import it.sasabz.android.sasabus.classes.dbobjects.Linea;
-import it.sasabz.android.sasabus.classes.dbobjects.LineaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
+import it.sasabz.android.sasabus.classes.dbobjects.BusLineList;
 import it.sasabz.android.sasabus.classes.dbobjects.Palina;
 import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
 import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
@@ -71,7 +71,7 @@ public class WayFragment extends Fragment {
 	private Vector<Passaggio> list = null;
 	
 	//provides the lineaid for this object
-	private Linea linea;
+	private BusLine linea;
 	
 	/*
 	 * is the position of the most actual bus-stop, where the bus at
@@ -88,7 +88,7 @@ public class WayFragment extends Fragment {
 	private WayFragment() {
 	}
 
-	public WayFragment(Area bacino, Linea linea, Palina arrival, Passaggio orario)
+	public WayFragment(Area bacino, BusLine linea, Palina arrival, Passaggio orario)
 	{
 		this();
 		this.bacino = bacino;
@@ -116,7 +116,7 @@ public class WayFragment extends Fragment {
 		{
 			throw new Exception();
 		}
-		linea = LineaList.getByNumLin(line, bacino.getTable_prefix());
+		linea = BusLineList.getBusLineByLineCode(line, bacino.getTable_prefix());
 		if(linea == null)
 		{
 			throw new Exception();

@@ -34,8 +34,8 @@ import it.sasabz.android.sasabus.classes.adapter.MyListAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
-import it.sasabz.android.sasabus.classes.dbobjects.Linea;
-import it.sasabz.android.sasabus.classes.dbobjects.LineaList;
+import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
+import it.sasabz.android.sasabus.classes.dbobjects.BusLineList;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -90,8 +90,8 @@ public class LineaFragment extends Fragment implements OnItemClickListener {
      * @param bacino is the bacino chosen for getting the lines
      */
     private void fillData(View result) {
-    	list = LineaList.getList(bacino.getTable_prefix());
-    	list = LineaList.sort(list);
+    	list = BusLineList.getList(bacino.getTable_prefix());
+    	list = BusLineList.sort(list);
     	MyListAdapter linee = new MyListAdapter(SASAbus.getContext(), R.id.text, R.layout.linea_row, list);
     	ListView listview = (ListView)result.findViewById(android.R.id.list);
     	listview.setAdapter(linee);
@@ -102,7 +102,7 @@ public class LineaFragment extends Fragment implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
 		// TODO Auto-generated method stub
-        Linea linea = (Linea)list.get(position); 
+        BusLine linea = (BusLine)list.get(position); 
         FragmentManager fragmentManager = getFragmentManager();
 		FragmentTransaction ft = fragmentManager.beginTransaction();
 		

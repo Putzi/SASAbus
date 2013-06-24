@@ -64,13 +64,13 @@ public class AreaList {
 	}
 	
 	/**
-	 * Searches in the database for a specific area
-	 * @param start name of the bus stop where to start
-	 * @param stop name of the bus stop where to stop
-	 * @param linecode number of the line
-	 * @return the area that matches the given parameters
+	 * Searches for a specific area in the database, in which the departure and arrival bus stop can be found
+	 * @param departure is name of the bus stop where to start
+	 * @param arrival is name of the bus stop where to stop
+	 * @param linecode is the number of the line
+	 * @return the Area object that matches the given parameters
 	 */
-	public static Area getArea(String start, String stop, String linecode) {
+	public static Area getArea(String departure, String arrival, String linecode) {
 		Area area = null;
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());
 		ArrayList<DBObject> list = getList();
@@ -78,7 +78,7 @@ public class AreaList {
 		boolean found = false;
 		while(iterator.hasNext() && !found) {
 			Area nextArea = (Area)iterator.next();
-			String[] args = {linecode, start, stop};
+			String[] args = {linecode, departure, arrival};
 			Cursor cursor = sqlite.rawQuery("select * " +
     				"from "+
     				"(select id, lineaId " +
@@ -112,9 +112,9 @@ public class AreaList {
 	}
 	
 	/**
-	 * Searches in the database of a specific area by its id
-	 * @param id the id of the area
-	 * @return the area that matches the given parameters
+	 * Searches in the database for a specific area by its ID
+	 * @param id is the id of the area
+	 * @return the Area object that matches the given id
 	 */
 	public static  Area  getById(int id) {
 		MySQLiteDBAdapter sqlite = MySQLiteDBAdapter.getInstance(SASAbus.getContext());

@@ -26,25 +26,23 @@
 
 package it.sasabz.android.sasabus.classes.dbobjects;
 
+/**
+ *Parent class for all database Objects
+ */
 public class DBObject {
 	
-	/*
-	 * The id is the integer which identifies the object in the database
-	 */
+	/** The id is the integer which identifies the object in the database */
 	private int id = 0;
-
+	
 	/**
-	 * This constructor creates an dbobject
+	 * Empty constructor
 	 */
-	public DBObject()
-	{
-		super();
-		//Nothing to do
+	public DBObject(){
+		
 	}
 	
 	/**
-	 * this creates a dbobject with an identifier, which is the id
-	 * provided in the database 
+	 * Creates a new DBobject
 	 * @param identifier is the identifier from the database
 	 */
 	public DBObject(int identifier)
@@ -54,7 +52,6 @@ public class DBObject {
 	}
 	
 	/**
-	 * 
 	 * @return the integer which identifies the object in the database
 	 */
 	public int getId() {
@@ -62,13 +59,10 @@ public class DBObject {
 	}
 
 	/**
-	 * 
 	 * @param id is the integer which identifies the object in the database
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
 	
 }

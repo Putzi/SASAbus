@@ -30,7 +30,7 @@ import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.adapter.MyListAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
-import it.sasabz.android.sasabus.classes.dbobjects.Linea;
+import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
 import it.sasabz.android.sasabus.classes.dbobjects.Palina;
 import it.sasabz.android.sasabus.classes.dbobjects.PalinaList;
 
@@ -56,7 +56,7 @@ public class DepartureFragment extends Fragment implements OnItemClickListener{
     
     private ArrayList<DBObject> list = null;
     
-    private Linea linea;
+    private BusLine linea;
     
     private Area bacino = null;
     
@@ -64,7 +64,7 @@ public class DepartureFragment extends Fragment implements OnItemClickListener{
     	
     }
     
-    public DepartureFragment(Area bacino, Linea linea)
+    public DepartureFragment(Area bacino, BusLine linea)
     {
     	this();
     	this.linea = linea;

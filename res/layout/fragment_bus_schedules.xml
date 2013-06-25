@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearlayout_fragment_bus_schedules"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:orientation="vertical"
+    android:padding="@dimen/activity_padding" >
+
+    <LinearLayout
+        android:id="@+id/linearlayout_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/imagebutton_area_map"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/map"
+            android:src="@drawable/map" />
+        
+        <Spinner
+            android:id="@+id/spinner_area"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:spinnerMode="dropdown"
+            android:entries="@array/areas" />
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/spinner_buslines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:spinnerMode="dropdown"
+        android:entries="@array/buslines" />
 
 </LinearLayout>

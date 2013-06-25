@@ -45,12 +45,9 @@ import android.support.v4.view.ViewPager;
 
 import it.sasabz.android.sasabus.classes.dialogs.About;
 import it.sasabz.android.sasabus.classes.dialogs.Credits;
-import it.sasabz.android.sasabus.fragments.BacinoFragment;
 import it.sasabz.android.sasabus.fragments.BusSchedulesFragment;
 import it.sasabz.android.sasabus.fragments.InfoFragment;
 import it.sasabz.android.sasabus.fragments.NextBusFragment;
-import it.sasabz.android.sasabus.fragments.OnlineSearchFragment;
-import it.sasabz.android.sasabus.fragments.OrarioFragment;
 import it.sasabz.android.sasabus.fragments.SearchFragment;
 import it.sasabz.android.sasabus.utility.Utility;
 

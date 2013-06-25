@@ -154,7 +154,7 @@ public class BusLine extends DBObject {
 	
 	
 	/**
-	 * Compares two BusLine objects and returns their difference value
+	 * Compares two {@link BusLine} objects and returns their difference value
 	 * @param busLine is the line to compare with
 	 * @return 0, if the two lines are equal, -1 if this line is less then, and 1 
 	 * if this line is greater then the line to compare with
@@ -166,45 +166,32 @@ public class BusLine extends DBObject {
 		try {
 			sortnum = Integer.parseInt(this.getBuslineNumber());
 		}
-		catch (NumberFormatException e)
-		{
-			try
-			{
+		catch (NumberFormatException e) {
+			try {
 				sortnum = Integer.parseInt(this.getBuslineNumber().substring(0, this.getBuslineNumber().length()-1));
 			}
-			catch(Exception ex)
-			{
+			catch(Exception ex) {
 				failure = true;
 			}
 			
 		}
 		int linsortnum = 0;
-		try
-		{
+		try {
 			linsortnum = Integer.parseInt(busLine.getBuslineNumber());
 		}
-		catch (NumberFormatException e)
-		{
-			try
-			{
+		catch (NumberFormatException e) {
+			try {
 				linsortnum = Integer.parseInt(busLine.getBuslineNumber().substring(0, busLine.getBuslineNumber().length()-1));
 			}
-			catch(Exception ex)
-			{
+			catch(Exception ex) {
 				failure_lin = true;
 			}
-			
 		}
-		if(failure && failure_lin)
-		{
+		if(failure && failure_lin) {
 			return this.getBuslineNumber().compareTo(busLine.getBuslineNumber());
-		}
-		else if(failure)
-		{
+		} else if(failure) {
 			return 1;
-		}
-		else if(failure_lin)
-		{
+		} else if(failure_lin) {
 			return -1;
 		}
 		if(sortnum == linsortnum)
@@ -216,7 +203,7 @@ public class BusLine extends DBObject {
 	
 	
 	/**
-	 * This toString takes control of the localized output
+	 * Takes control of the localized output
 	 */
 	@Override
 	public String toString()
@@ -227,6 +214,5 @@ public class BusLine extends DBObject {
 		}
 		return (this.getBuslineNumber()).trim();
 	}
-	
-	
+		
 }

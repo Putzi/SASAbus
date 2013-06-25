@@ -42,7 +42,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.widget.TabHost;
 
 import it.sasabz.android.sasabus.classes.dialogs.About;
 import it.sasabz.android.sasabus.classes.dialogs.Credits;
@@ -228,6 +227,7 @@ public class MainTabActivity extends SherlockFragmentActivity {
 
 		@Override
 		public void onPageScrollStateChanged(int state) {
+			
 		}
 
 		@Override
@@ -265,10 +265,12 @@ public class MainTabActivity extends SherlockFragmentActivity {
 
 		@Override
 		public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+			
 		}
 
 		@Override
 		public void onTabReselected(Tab tab, FragmentTransaction ft) {
+			
 		}
 
 	}

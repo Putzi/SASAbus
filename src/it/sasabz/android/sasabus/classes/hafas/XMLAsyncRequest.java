@@ -58,7 +58,7 @@ import android.os.AsyncTask;
  * @author Paolo Dongilli and Markus Windegger
  *
  */
-public class XMLAsyncRequest  extends AsyncTask<Void, String, String>{
+public class XMLAsyncRequest extends AsyncTask<Void, String, String>{
 	
 	private static final String TAG = "XML-LOGGER";
 	

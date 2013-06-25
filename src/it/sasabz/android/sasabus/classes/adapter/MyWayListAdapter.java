@@ -28,9 +28,9 @@ package it.sasabz.android.sasabus.classes.adapter;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
-import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
+import it.sasabz.android.sasabus.classes.dbobjects.Itinerary;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.text.format.Time;
@@ -46,7 +46,7 @@ import android.widget.TextView;
  */
 public class MyWayListAdapter extends BaseAdapter {
 	private final Context context;
-	private final Vector<Passaggio> list;
+	private final ArrayList<Itinerary> list;
 	private final int actpos;
 
 	
@@ -55,11 +55,11 @@ public class MyWayListAdapter extends BaseAdapter {
 	 * @param context is the context to work with
 	 * @param whereId is the resource id where to place the string
 	 * @param layoutId is the layout id of the list_view
-	 * @param list is the list of dbobject's which are to putting in the list_view
+	 * @param list2 is the list of dbobject's which are to putting in the list_view
 	 */
-	public MyWayListAdapter(Context context, Vector<Passaggio> list, int actPos) {
+	public MyWayListAdapter(Context context, ArrayList<Itinerary> list2, int actPos) {
 		this.context = context;
-		this.list = list;
+		this.list = list2;
 		this.actpos = actPos;
 	}
 
@@ -89,8 +89,8 @@ public class MyWayListAdapter extends BaseAdapter {
 			Time currentTime = new Time();
 			currentTime.setToNow();
 			currentTime.set(0, currentTime.minute, currentTime.hour, currentTime.monthDay, currentTime.month, currentTime.year);
-			Time sasaTime = list.get(position).getOrario();
-			departure.setText(list.get(position).getOrario().format("%H:%M") + " "+ BusStopList.getBusStopById(list.get(position).getIdPalina()).toString());
+			Time sasaTime = list.get(position).getTime();
+			departure.setText(list.get(position).getTime().format("%H:%M") + " "+ BusStopList.getBusStopById(list.get(position).getBusStopId()).toString());
 			if (actpos < position)
 			{
 				//v.setBackgroundColor(Color.rgb(0, 70, 0));

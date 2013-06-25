@@ -32,8 +32,8 @@
 package it.sasabz.android.sasabus;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
 
 import org.mapsforge.android.maps.MapActivity;
 import org.mapsforge.android.maps.MapView;
@@ -49,12 +49,11 @@ import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLineList;
 import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
 import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
-import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
-import it.sasabz.android.sasabus.classes.dbobjects.PassaggioList;
+import it.sasabz.android.sasabus.classes.dbobjects.Itinerary;
+import it.sasabz.android.sasabus.classes.dbobjects.ItineraryList;
 import it.sasabz.android.sasabus.classes.dialogs.About;
 import it.sasabz.android.sasabus.classes.dialogs.Credits;
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -121,7 +120,7 @@ public class MapViewActivity extends MapActivity {
 
 		Resources res = getResources();
 
-		Passaggio pas = PassaggioList.getById(orarioId,
+		Itinerary pas = ItineraryList.getById(orarioId,
 				bacino.getTable_prefix());
 
 		if (part == null || dest == null || line == null || pas == null)
@@ -185,10 +184,10 @@ public class MapViewActivity extends MapActivity {
 		mapView.getOverlays().add(arr);
 		mapView.getOverlays().add(dest_arr);
 
-		Vector<Passaggio> paslist = PassaggioList.getVectorWay(orarioId,
+		ArrayList<Itinerary> paslist = ItineraryList.getWay(orarioId,
 				dest.getName_de(), bacino.getTable_prefix());
 
-		Iterator<Passaggio> iter = paslist.iterator();
+		Iterator<Itinerary> iter = paslist.iterator();
 
 		Drawable inter = getResources().getDrawable(
 				R.drawable.glyphicons_238_pin);
@@ -197,9 +196,9 @@ public class MapViewActivity extends MapActivity {
 
 		while (iter.hasNext())
 		{
-			Passaggio passa = iter.next();
-			BusStop pal = BusStopList.getBusStopById(passa.getIdPalina());
-			pal.setId(passa.getIdPalina());
+			Itinerary passa = iter.next();
+			BusStop pal = BusStopList.getBusStopById(passa.getBusStopId());
+			pal.setId(passa.getBusStopId());
 			if (pal.getId() != dest.getId() && pal.getId() != part.getId())
 			{
 				GeoPoint point = new GeoPoint(pal.getLatitude(),

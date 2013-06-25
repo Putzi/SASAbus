@@ -1,10 +1,6 @@
 /**
  *
-<<<<<<< HEAD
  * MapSelectActivity.java
-=======
- * MapViewActivity.java
->>>>>>> 9953b151ccb50fe6b852c8ea73cf2811caaf01a1
  *
  * Created: Mar 15, 2012 22:40:06 PM
  *
@@ -25,11 +21,8 @@
  * You should have received a copy of the GNU General Public License
  * along with SasaBus. If not, see <http://www.gnu.org/licenses/>.
  *
-<<<<<<< HEAD
  * This activity provides a map to select one of the various bus stops
  *
-=======
->>>>>>> 9953b151ccb50fe6b852c8ea73cf2811caaf01a1
  */
 
 package it.sasabz.android.sasabus;
@@ -37,12 +30,9 @@ package it.sasabz.android.sasabus;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
 
 import org.mapsforge.android.maps.MapActivity;
 import org.mapsforge.android.maps.MapView;
-import org.mapsforge.android.maps.overlay.ArrayItemizedOverlay;
-import org.mapsforge.android.maps.overlay.OverlayItem;
 import org.mapsforge.android.maps.rendertheme.InternalRenderTheme;
 import org.mapsforge.core.GeoPoint;
 
@@ -53,25 +43,6 @@ import it.sasabz.android.sasabus.classes.adapter.MySQLiteDBAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
 import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
 import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
-import it.sasabz.android.sasabus.R.drawable;
-import it.sasabz.android.sasabus.R.id;
-import it.sasabz.android.sasabus.R.layout;
-import it.sasabz.android.sasabus.R.menu;
-import it.sasabz.android.sasabus.R.string;
-import it.sasabz.android.sasabus.classes.MyArrayItemizedOverlay;
-import it.sasabz.android.sasabus.classes.MyArrayItemizedSelectOverlay;
-import it.sasabz.android.sasabus.classes.MyOverlayItem;
-import it.sasabz.android.sasabus.classes.MyOverlaySelectItem;
-import it.sasabz.android.sasabus.classes.adapter.MySQLiteDBAdapter;
-import it.sasabz.android.sasabus.classes.dbobjects.Area;
-import it.sasabz.android.sasabus.classes.dbobjects.AreaList;
-import it.sasabz.android.sasabus.classes.dbobjects.DBObject;
-import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
-import it.sasabz.android.sasabus.classes.dbobjects.BusLineList;
-import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
-import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
-import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
-import it.sasabz.android.sasabus.classes.dbobjects.PassaggioList;
 import it.sasabz.android.sasabus.classes.dialogs.About;
 import it.sasabz.android.sasabus.classes.dialogs.Credits;
 
@@ -90,9 +61,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class MapSelectActivity extends MapActivity {
 	

@@ -25,15 +25,16 @@
 
 package it.sasabz.android.sasabus.fragments;
 
-import java.util.Vector;
+import java.util.ArrayList;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.adapter.MyPassaggioListAdapter;
 import it.sasabz.android.sasabus.classes.dbobjects.Area;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
 import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
-import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
-import it.sasabz.android.sasabus.classes.dbobjects.PassaggioList;
+import it.sasabz.android.sasabus.classes.dbobjects.Itinerary;
+import it.sasabz.android.sasabus.classes.dbobjects.ItineraryList;
+import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -62,7 +63,7 @@ public class OrarioFragment extends Fragment implements OnItemClickListener {
 	private BusStop  arrival;
 	
 	//provides the list for this object of all passages during the actual day
-	private Vector<Passaggio> list = null;
+	private ArrayList<Itinerary> list = null;
 	
 	//is the next departure time of the bus
 	private int pos;
@@ -70,6 +71,7 @@ public class OrarioFragment extends Fragment implements OnItemClickListener {
 	private Area bacino = null;
 
 	private OrarioFragment() {
+		
 	}
 
 	public OrarioFragment(Area bacino, BusLine linea, BusStop departure, BusStop arrival)
@@ -114,7 +116,7 @@ public class OrarioFragment extends Fragment implements OnItemClickListener {
 	 * @return a cursor to the time table
 	 */
 	private void fillData(View result) {
-		list = PassaggioList.getVector(linea.getId(), arrival.getName_de(), departure.getName_de(), bacino.getTable_prefix());
+		list = ItineraryList.getVector(linea.getId(), arrival.getName_de(), departure.getName_de(), bacino.getTable_prefix());
 		pos = getNextTimePosition(list);
         MyPassaggioListAdapter orari = new MyPassaggioListAdapter(SASAbus.getContext(), R.id.text, R.layout.standard_row, list, pos);
         ListView listview = (ListView)result.findViewById(android.R.id.list);
@@ -130,8 +132,8 @@ public class OrarioFragment extends Fragment implements OnItemClickListener {
 	 * @param c is the cursor to the list_view
 	 * @return the index of the next departure time
 	 */
-	private int getNextTimePosition(Vector<Passaggio> list) {
-		int count = list.size();
+	private int getNextTimePosition(ArrayList<Itinerary> list2) {
+		int count = list2.size();
 		if (count == 0) {
 			return -1;
 		} else if (count == 1) {
@@ -144,8 +146,8 @@ public class OrarioFragment extends Fragment implements OnItemClickListener {
 				Time sasaTime = new Time();
 				Time sasaTimeNext = new Time();
 				currentTime.setToNow();
-				sasaTime = list.get(i).getOrario();
-				sasaTimeNext = list.get(i + 1).getOrario();
+				sasaTime = list2.get(i).getTime();
+				sasaTimeNext = list2.get(i + 1).getTime();
 
 				if (sasaTime.after(currentTime)
 						|| sasaTime.equals(currentTime)
@@ -167,7 +169,7 @@ public class OrarioFragment extends Fragment implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> av, View v, int position, long id) {
 		// TODO Auto-generated method stub
-			Passaggio orario = list.get(position);
+			Itinerary orario = list.get(position);
 			FragmentManager fragmentManager = getFragmentManager();
 			FragmentTransaction ft = fragmentManager.beginTransaction();
 			

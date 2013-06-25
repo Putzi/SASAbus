@@ -24,8 +24,9 @@
 package it.sasabz.android.sasabus.classes.adapter;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
+import it.sasabz.android.sasabus.classes.dbobjects.Itinerary;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import android.content.Context;
@@ -41,7 +42,7 @@ import android.widget.TextView;
  */
 public class MyPassaggioListAdapter extends BaseAdapter {
 	private final Context context;
-	private final Vector<Passaggio> list;
+	private final ArrayList<Itinerary> list;
 	private final int layoutId;
 	private final int whereId;
 	private final int actpos;
@@ -52,11 +53,11 @@ public class MyPassaggioListAdapter extends BaseAdapter {
 	 * @param context is the context to work with
 	 * @param whereId is the resource id where to place the string
 	 * @param layoutId is the layout id of the list_view
-	 * @param list is the list of dbobject's which are to putting in the list_view
+	 * @param list2 is the list of dbobject's which are to putting in the list_view
 	 */
-	public MyPassaggioListAdapter(Context context, int whereId, int layoutId, Vector<Passaggio> list, int actpos) {
+	public MyPassaggioListAdapter(Context context, int whereId, int layoutId, ArrayList<Itinerary> list2, int actpos) {
 		this.context = context;
-		this.list = list;
+		this.list = list2;
 		this.layoutId = layoutId;
 		this.whereId = whereId;
 		this.actpos = actpos;
@@ -72,7 +73,7 @@ public class MyPassaggioListAdapter extends BaseAdapter {
 		if (list != null)
 		{
 			TextView textView = (TextView) v.findViewById(whereId);
-			textView.setText(list.get(position).getOrario().format("%H:%M"));
+			textView.setText(list.get(position).getTime().format("%H:%M"));
 			if(actpos + 1 == position)
 			{
 				textView.setBackgroundColor(this.context.getResources().getColor(R.color.sasa_orange));

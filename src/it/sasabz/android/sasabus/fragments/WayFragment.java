@@ -25,8 +25,8 @@
 
 package it.sasabz.android.sasabus.fragments;
 
+import java.util.ArrayList;
 import java.util.Locale;
-import java.util.Vector;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -40,8 +40,8 @@ import it.sasabz.android.sasabus.classes.dbobjects.BusLine;
 import it.sasabz.android.sasabus.classes.dbobjects.BusLineList;
 import it.sasabz.android.sasabus.classes.dbobjects.BusStop;
 import it.sasabz.android.sasabus.classes.dbobjects.BusStopList;
-import it.sasabz.android.sasabus.classes.dbobjects.Passaggio;
-import it.sasabz.android.sasabus.classes.dbobjects.PassaggioList;
+import it.sasabz.android.sasabus.classes.dbobjects.Itinerary;
+import it.sasabz.android.sasabus.classes.dbobjects.ItineraryList;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -65,10 +65,10 @@ public class WayFragment extends Fragment {
 
 	
 	//provides the linea for this object
-	private Passaggio orario;
+	private Itinerary orario;
 	
 	//provides the list for this object of all passages during the actual day
-	private Vector<Passaggio> list = null;
+	private ArrayList<Itinerary> list = null;
 	
 	//provides the lineaid for this object
 	private BusLine linea;
@@ -86,20 +86,19 @@ public class WayFragment extends Fragment {
 	private BusStop departure = null;
 
 	private WayFragment() {
+	
 	}
 
-	public WayFragment(Area bacino, BusLine linea, BusStop arrival, Passaggio orario)
-	{
+	public WayFragment(Area bacino, BusLine linea, BusStop arrival, Itinerary orario) {
 		this();
 		this.bacino = bacino;
 		this.linea = linea;
 		this.arrival = arrival;
 		this.orario = orario;
-		departure = BusStopList.getBusStopById(orario.getIdPalina());
+		departure = BusStopList.getBusStopById(orario.getBusStopId());
 	}
 	
-	public WayFragment(String line, String from, String to, String orario_part, String orario_arr) throws Exception
-	{
+	public WayFragment(String line, String from, String to, String orario_part, String orario_arr) throws Exception {
 		String lang = "it";
 		if((Locale.getDefault().getLanguage()).indexOf(Locale.GERMAN.toString()) != -1)
 			lang = "de";
@@ -121,7 +120,7 @@ public class WayFragment extends Fragment {
 		{
 			throw new Exception();
 		}
-		orario = PassaggioList.getPassaggio(linea.getId(), departure.getName_de(), arrival.getName_de(), 
+		orario = ItineraryList.getPassaggio(linea.getId(), departure.getName_de(), arrival.getName_de(), 
 				orario_part, orario_arr, bacino.getTable_prefix());
 		if (orario == null)
 		{
@@ -161,11 +160,11 @@ public class WayFragment extends Fragment {
 			public void onClick(View v) {
 				Intent mapview = new Intent(getActivity(), MapViewActivity.class);
 				
-				Passaggio part = PassaggioList.getById(orario.getId(), bacino.getTable_prefix());
-				Passaggio dest = PassaggioList.getWayEndpoint(orario.getId(), arrival.getName_de(), bacino.getTable_prefix());
+				Itinerary part = ItineraryList.getById(orario.getId(), bacino.getTable_prefix());
+				Itinerary dest = ItineraryList.getWayEndpoint(orario.getId(), arrival.getName_de(), bacino.getTable_prefix());
 				
-				mapview.putExtra("partenza", part.getIdPalina());
-				mapview.putExtra("destinazione", dest.getIdPalina());
+				mapview.putExtra("partenza", part.getBusStopId());
+				mapview.putExtra("destinazione", dest.getBusStopId());
 				mapview.putExtra("line", linea.getId());
 				mapview.putExtra("orarioId", orario.getId());
 				mapview.putExtra("position", pos);
@@ -203,7 +202,7 @@ public class WayFragment extends Fragment {
 	 * @return a cursor to the time table
 	 */
 	private void fillData(View result) {
-		list = PassaggioList.getVectorWay(orario.getId(), arrival.getName_de(), bacino.getTable_prefix());
+		list = ItineraryList.getWay(orario.getId(), arrival.getName_de(), bacino.getTable_prefix());
 		if (list == null){
 			createErrorDialog();
 			return;
@@ -222,10 +221,10 @@ public class WayFragment extends Fragment {
 	 * @param c is the cursor to the list_view
 	 * @return the index of the next departure time
 	 */
-	private int getNextTimePosition(Vector<Passaggio> list) {
+	private int getNextTimePosition(ArrayList<Itinerary> list2) {
 		int count = 0;
-		if (list != null) {
-			count = list.size();
+		if (list2 != null) {
+			count = list2.size();
 		}
 		if (count == 0) {
 			return -1;
@@ -239,8 +238,8 @@ public class WayFragment extends Fragment {
 				Time sasaTime = new Time();
 				Time sasaTimeNext = new Time();
 				currentTime.setToNow();
-				sasaTime = list.get(i).getOrario();
-				sasaTimeNext = list.get(i + 1).getOrario();
+				sasaTime = list2.get(i).getTime();
+				sasaTimeNext = list2.get(i + 1).getTime();
 
 				if (sasaTime.after(currentTime)
 						|| sasaTime.equals(currentTime)

@@ -532,7 +532,7 @@ public class OnlineSearchFragment extends SherlockFragment {
         
         if(MySQLiteDBAdapter.exists(this.getActivity()))
         {
-	        updatecheck = new CheckUpdate(this);
+	        updatecheck = new CheckUpdate(this.getActivity());
 	        updatecheck.execute();
 	        
         }

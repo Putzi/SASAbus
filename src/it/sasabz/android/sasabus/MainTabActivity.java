@@ -143,12 +143,11 @@ public class MainTabActivity extends SherlockFragmentActivity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId())
-		{
-		case R.id.menu_about:
+		switch (item.getItemId()) {
+		case R.id.menu_settings:
 			new About(this).show();
 			return true;
-		case R.id.menu_credits:
+		case R.id.menu_map:
 			new Credits(this).show();
 			return true;
 		}

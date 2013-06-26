@@ -218,38 +218,4 @@ public class MapViewActivity extends MapActivity {
 
 	}
 
-	/**
-	 * Called when the activity is about to start interacting with the user.
-	 */
-	@Override
-	protected void onResume() {
-		super.onResume();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.optionmenu, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId())
-		{
-		case R.id.menu_about:
-		{
-			new About(this).show();
-			return true;
-		}
-		case R.id.menu_credits:
-		{
-			new Credits(this).show();
-			return true;
-		}
-		}
-		return false;
-	}
-
 }

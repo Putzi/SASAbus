@@ -7,39 +7,43 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-
 import it.sasabz.android.sasabus.DownloadDatabaseActivity;
+import it.sasabz.android.sasabus.MainTabActivity;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.android.sasabus.SASAbus;
 import it.sasabz.android.sasabus.classes.Config;
 import it.sasabz.android.sasabus.classes.MD5Utils;
 import it.sasabz.android.sasabus.classes.network.SasabusFTP;
 import it.sasabz.android.sasabus.fragments.OnlineSearchFragment;
-import android.content.Context;
+import it.sasabz.android.sasabus.utility.Utility;
+import android.app.Activity;
 import android.content.res.Resources;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Environment;
 import android.util.Log;
+
 /**
  *Checks if updates of maps or bus schedules are available.
- *Gets launched on startup by TabActivity
+ *Gets launched on startup by {@link MainTabActivity}
  */
 public class CheckUpdate extends AsyncTask<Void, String, Long> {
 
-	private final OnlineSearchFragment activity;
+	private final Activity activity;
 	
 	private final String TAG = "CheckUpdate";
 
-	public CheckUpdate(OnlineSearchFragment activity) {
+	public CheckUpdate(Activity activity) {
 		super();
 		this.activity = activity;
 	}
 
+	
+	/**
+	 * 
+	 */
 	@Override
 	protected Long doInBackground(Void... params) {
-		SASAbus config = (SASAbus) activity.getActivity().getApplicationContext();
+		SASAbus config = (SASAbus) activity.getApplicationContext();
 		Resources res = activity.getResources();
 		String dbDirName = res.getString(R.string.db_dir);
 		String dbFileName = res.getString(R.string.app_name_db) + ".db";
@@ -172,8 +176,7 @@ public class CheckUpdate extends AsyncTask<Void, String, Long> {
 	@Override
 	protected void onPostExecute(Long result) {
 		super.onPostExecute(result);
-		activity.showDialog(result.intValue(), OnlineSearchFragment.DB_UP);
-
+//		activity.showDialog(result.intValue(), OnlineSearchFragment.DB_UP);
 	}
 
 	/**
@@ -199,7 +202,7 @@ public class CheckUpdate extends AsyncTask<Void, String, Long> {
 		// verify we have a network connection, otherwise act as no update is
 		// available
 		// and update remains false
-		if (haveNetworkConnection()) {
+		if (Utility.hasNetworkConnection(activity)) {
 			try {
 				/*
 				 * istanziate an object of the SasabusFTP, which provides the
@@ -239,28 +242,4 @@ public class CheckUpdate extends AsyncTask<Void, String, Long> {
 		return update;
 	}
 
-	/**
-	 * this method checks if a networkconnection is active or not
-	 * 
-	 * @return boolean if the network is reachable or not
-	 */
-	private boolean haveNetworkConnection() {
-		boolean haveConnectedWifi = false;
-		boolean haveConnectedMobile = false;
-
-		ConnectivityManager cm = (ConnectivityManager) (activity
-				.getActivity().getSystemService(Context.CONNECTIVITY_SERVICE));
-		NetworkInfo[] netInfo = cm.getAllNetworkInfo();
-		for (NetworkInfo ni : netInfo) {
-			// testing WIFI connection
-			if (ni.getTypeName().equalsIgnoreCase("WIFI"))
-				if (ni.isConnected())
-					haveConnectedWifi = true;
-			// testing GPRS/EDGE/UMTS/HDSPA/HUSPA/LTE connection
-			if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
-				if (ni.isConnected())
-					haveConnectedMobile = true;
-		}
-		return haveConnectedWifi || haveConnectedMobile;
-	}
 }

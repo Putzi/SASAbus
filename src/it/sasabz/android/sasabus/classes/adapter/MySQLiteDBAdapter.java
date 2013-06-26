@@ -27,7 +27,7 @@
 package it.sasabz.android.sasabus.classes.adapter;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.android.sasabus.classes.DBFileManager;
+import it.sasabz.android.sasabus.classes.DatabaseFileManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -164,7 +164,7 @@ public class MySQLiteDBAdapter {
 	 * @author Markus Windegger (markus@mowiso.com)
 	 *
 	 */
-	private static class DatabaseHelper extends DBFileManager {
+	private static class DatabaseHelper extends DatabaseFileManager {
 
         DatabaseHelper(String dbFileName, SQLiteDatabase.CursorFactory factory) {
             super(dbFileName, factory);

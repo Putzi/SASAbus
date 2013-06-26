@@ -66,7 +66,9 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="show_way">Show Route:</string>
 <string name="weiter">Go!</string>
 <string name="menu_settings">Settings</string>
+<string name="menu_map">Map</string>
 <string name="menu_test">this is a test</string>
+<string name="menu_more">More</string>
 <string name="menu_infos">News</string>
 <string name="menu_old_mode">Offline</string>
 

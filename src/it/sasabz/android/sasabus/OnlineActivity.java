@@ -120,17 +120,17 @@ public class OnlineActivity extends FragmentActivity{
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) 
-		{
-			case R.id.menu_about: {
-				new About(this).show();
-				return true;
-			}
-			case R.id.menu_credits: {
-				new Credits(this).show();
-				return true;
-			}
-		}
+//		switch (item.getItemId()) 
+//		{
+//			case R.id.menu_about: {
+//				new About(this).show();
+//				return true;
+//			}
+//			case R.id.menu_credits: {
+//				new Credits(this).show();
+//				return true;
+//			}
+//		}
 		return false;
 	}
 	

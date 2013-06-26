@@ -16,20 +16,18 @@
 
         <Button
             android:id="@+id/buttonBusStopsNearby"
-            style="@style/next_bus_button_theme"
             android:layout_width="@dimen/next_bus_button_lenght"
             android:layout_height="@dimen/next_bus_button_lenght"
             android:layout_margin="@dimen/next_bus_button_margin"
-            android:drawableTop="@drawable/perm_group_location"
+            android:drawableTop="@drawable/ic_action_nearby"
             android:text="@string/bus_stops_nearby" />
 
         <Button
             android:id="@+id/buttonSelectBusStopFromMap"
-            style="@style/next_bus_button_theme"
             android:layout_width="@dimen/next_bus_button_lenght"
             android:layout_height="@dimen/next_bus_button_lenght"
             android:layout_margin="@dimen/next_bus_button_margin"
-            android:drawableTop="@android:drawable/ic_menu_mapmode"
+            android:drawableTop="@drawable/ic_action_map"
             android:text="@string/bus_stop_from_map" />
     </LinearLayout>
     

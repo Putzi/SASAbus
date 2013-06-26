@@ -17,7 +17,7 @@
             android:layout_height="100dp"
             android:scaleType="centerInside"
             android:contentDescription="@string/map"
-            android:src="@drawable/map" />
+            android:src="@drawable/ic_action_map" />
         
         <Spinner
             android:id="@+id/spinner_area"

@@ -175,4 +175,8 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="date_pattern">gg/mm/aaaa</string>
 <string name="time_pattern">oo/mm</string>
 
+<string name="preferences">Impostazioni</string>
+<string name="preference_notifications_title">Notifiche</string>
+<string name="preference_notifications_summary">Ricevere notifiche se avvengono modifiche alle tue linie preferite a breve termine.</string>
+
 </resources>

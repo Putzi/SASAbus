@@ -15,4 +15,23 @@
         <item>Linie 5	Bahnhof - Mozartstraße</item>
         <item>Linie 6	Perathonerstr. - Braillestr.</item>
     </string-array>
+    
+    <string-array name="busstops_departure">
+        <item>Bozen - Universitätsplatz</item>
+        <item>Bozen - Bahnhof 2</item>
+        <item>Bozen - Bahnhof 3</item>
+        <item>Bozen - Brennerstraße</item>
+        <item>Bozen - Cadorna Straße 1</item>
+        <item>Bozen - Cadorna Straße 2</item>
+    </string-array>
+    
+    <string-array name="busstops_arrival">
+        <item>Bozen - Rittner Seilbahn</item>
+        <item>Bozen - Rosmini Straße</item>
+        <item>Bozen - Sarntaler Straße 1</item>
+        <item>Bozen - Sarntaler Straße 2</item>
+        <item>Bozen - Seilbahn Jenesien</item>
+        <item>Bozen - Sparkassen Straße</item>
+    </string-array>
+    
 </resources>

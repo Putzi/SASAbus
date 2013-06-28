@@ -12,23 +12,21 @@
         android:id="@+id/select_bus_stop_button_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" >
+        android:orientation="vertical" >
 
         <Button
             android:id="@+id/buttonBusStopsNearby"
-            android:layout_width="@dimen/next_bus_button_lenght"
-            android:layout_height="@dimen/next_bus_button_lenght"
-            android:layout_margin="@dimen/next_bus_button_margin"
-            android:drawableTop="@drawable/ic_action_nearby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_action_nearby"
             android:text="@string/bus_stops_nearby" />
 
         <Button
             android:id="@+id/buttonSelectBusStopFromMap"
-            android:layout_width="@dimen/next_bus_button_lenght"
-            android:layout_height="@dimen/next_bus_button_lenght"
-            android:layout_margin="@dimen/next_bus_button_margin"
-            android:drawableTop="@drawable/ic_action_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_action_map"
             android:text="@string/bus_stop_from_map" />
     </LinearLayout>
-    
+
 </RelativeLayout>

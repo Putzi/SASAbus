@@ -185,5 +185,9 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="date_pattern">dd/mm/yyyy</string>
 <string name="time_pattern">hh/mm</string>
 
+<string name="preferences">Preferences</string>
+<string name="preference_notifications_title">Notifications</string>
+<string name="preference_notifications_summary">Receive notifications if short-term changes occur to your favored bus lines.</string>
+
 </resources>
 

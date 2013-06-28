@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/activity_padding" >
+    
 
     <!-- <LinearLayout -->
     <!-- android:layout_width="match_parent" -->
@@ -38,21 +39,21 @@
         
         <!-- container of buttons and input field for departure-->
         <RelativeLayout
-            android:id="@+id/linearlayout_search_departure"
+            android:id="@+id/relativelayout_search_departure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/search_input_fields_margin"
             android:layout_marginBottom="@dimen/search_input_fields_margin">
 
 	        <LinearLayout
-	            android:id="@+id/linearlayout_search_buttons_departure"
+	            android:id="@+id/linearlayout_search_departure_buttons"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal"
 	            android:layout_alignParentRight="true">
 
 				<ImageButton
-				    android:id="@+id/imagebutton_bus_stops_nearby_departure"
+				    android:id="@+id/imagebutton_departure_bus_stops_nearby"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    style="@style/bus_stop_select_buttons"
@@ -60,7 +61,7 @@
 				    android:contentDescription="@string/nearby_button" />
 				
 				<ImageButton
-				    android:id="@+id/imagebutton_map_departure"
+				    android:id="@+id/imagebutton_departure_map"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    style="@style/bus_stop_select_buttons"
@@ -68,7 +69,7 @@
 				    android:contentDescription="@string/map_button" />
 				
 				<ImageButton
-				    android:id="@+id/imagebutton_favorites_departure"
+				    android:id="@+id/imagebutton_departure_favorites"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    style="@style/bus_stop_select_buttons"
@@ -81,35 +82,35 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_toLeftOf="@id/linearlayout_search_buttons_departure">
+                android:layout_toLeftOf="@id/linearlayout_search_departure_buttons">
 
 		        <AutoCompleteTextView
-		            android:id="@+id/autocompletetextview_Departure"
+		            android:id="@+id/autocompletetextview_search_departure"
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
 		            android:hint="@string/departure_bus_stop" />
 		        
-</LinearLayout>
+			</LinearLayout>
 			
         </RelativeLayout>
         
         <!-- container of buttons and input field for arrival-->
         <RelativeLayout
-            android:id="@+id/linearlayout_search_arrival"
+            android:id="@+id/relativelayout_search_arrival"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/search_input_fields_margin"
             android:layout_marginBottom="@dimen/search_input_fields_margin">
 
 	        <LinearLayout
-	            android:id="@+id/linearlayout_search_buttons_arrival"
+	            android:id="@+id/linearlayout_search_arrival_buttons"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal"
 	            android:layout_alignParentRight="true">
 
 				<ImageButton
-				    android:id="@+id/imagebutton_bus_stops_nearby_arrival"
+				    android:id="@+id/imagebutton_arrival_bus_stops_nearby"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    style="@style/bus_stop_select_buttons"
@@ -117,7 +118,7 @@
 				    android:contentDescription="@string/nearby_button" />
 				
 				<ImageButton
-				    android:id="@+id/imagebutton_map_arrival"
+				    android:id="@+id/imagebutton_arrival_map"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    style="@style/bus_stop_select_buttons"
@@ -125,7 +126,7 @@
 				    android:contentDescription="@string/map_button" />
 				
 				<ImageButton
-				    android:id="@+id/imagebutton_favorites_arrival"
+				    android:id="@+id/imagebutton_arrival_favorites"
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    style="@style/bus_stop_select_buttons"
@@ -138,10 +139,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_toLeftOf="@id/linearlayout_search_buttons_arrival">
+                android:layout_toLeftOf="@id/linearlayout_search_arrival_buttons">
 
 		        <AutoCompleteTextView
-		            android:id="@+id/autocompletetextview_Arrival"
+		            android:id="@+id/autocompletetextview_search_arrival"
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
 		            android:hint="@string/arrival_bus_stop" />
@@ -171,13 +172,12 @@
             android:text="@string/time_pattern" />
 
     </LinearLayout> <!-- Date and time buttons -->
-
-    <Button
+	
+	<Button
         android:id="@+id/button_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@android:drawable/ic_menu_search"
         android:layout_marginTop="20dp"
         android:text="@string/search_connection" />
-
 </LinearLayout>

@@ -7,6 +7,4 @@
     
     <dimen name="search_input_fields_margin">10dp</dimen>
     
-    <dimen name="next_bus_button_lenght">150dp</dimen>
-    <dimen name="next_bus_button_margin">5dp</dimen>
 </resources>

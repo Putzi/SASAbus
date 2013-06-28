@@ -1,14 +1,18 @@
 package it.sasabz.sasabus.ui.routing;
 
+import it.sasabz.sasabus.ui.routing.SearchFragment.DateHasBeenSetListener;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.Context;
 import android.graphics.YuvImage;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,15 +23,18 @@ import com.actionbarsherlock.app.SherlockDialogFragment;
 
 public class DatePicker extends SherlockDialogFragment implements OnDateSetListener{
 
-	/**
-	 * Button that opens the DatePicker and
-	 * which Text is to set with the date
-	 */
-	public Button buttonDate;
+	public static String dateFormat = "dd.MM.yyyy";
 	
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	private String dateAlreadySetString;
+	private DateHasBeenSetListener callback;
+	
+
+	public void setDateAlreadySetString(String dateAlreadySetString) {
+		this.dateAlreadySetString = dateAlreadySetString;
+	}
+
+	public void setCallback(DateHasBeenSetListener callback) {
+		this.callback = callback;
 	}
 	
 	/**
@@ -36,9 +43,12 @@ public class DatePicker extends SherlockDialogFragment implements OnDateSetListe
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-		//Get the date from the Button and set it to the picker
-		String dateAlreadySetString = buttonDate.getText().toString();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.ITALY);
+		//Convert the date in String format to Date format and set it to the new picker
+
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DatePicker.dateFormat, Locale.ITALY);
+		if (dateAlreadySetString == null) {
+			dateAlreadySetString = simpleDateFormat.format(new Date());
+		}
 		Date dateAlreadySet = null;
 		try
 		{
@@ -82,7 +92,11 @@ public class DatePicker extends SherlockDialogFragment implements OnDateSetListe
 			actualDayOfMonth = "0" + actualDayOfMonth;
 		}
 		
-		buttonDate.setText(actualDayOfMonth+"."+actualMonth+"."+year);
-	}
+		String dateText = actualDayOfMonth+"."+actualMonth+"."+year;
+
+		if (callback != null) {
+			callback.dateHasBeenSet(dateText);
+		}
+	} 
 	
 }

@@ -1,5 +1,8 @@
 package it.sasabz.sasabus.ui.routing;
 
+import it.sasabz.sasabus.ui.routing.SearchFragment.DateHasBeenSetListener;
+import it.sasabz.sasabus.ui.routing.SearchFragment.TimeHasBeenSetListener;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,11 +24,19 @@ import com.actionbarsherlock.app.SherlockDialogFragment;
 
 public class TimePicker extends SherlockDialogFragment implements OnTimeSetListener{
 
-	/**
-	 * Button that opens the TimePicker and
-	 * which Text is to set with the time
-	 */
-	public Button buttonTime;
+public static String timeFormat = "HH:mm";
+	
+	private String timeAlreadySetString;
+	private TimeHasBeenSetListener callback;
+	
+
+	public void setTimeAlreadySetString(String timeAlreadySetString) {
+		this.timeAlreadySetString = timeAlreadySetString;
+	}
+
+	public void setCallback(TimeHasBeenSetListener callback) {
+		this.callback = callback;
+	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,9 +49,12 @@ public class TimePicker extends SherlockDialogFragment implements OnTimeSetListe
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-		//Get the time from the Button and set it to the picker
-		String timeAlreadySetString = buttonTime.getText().toString();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm", Locale.ITALY);
+		//Convert the time in String format to Date format and set it to the new picker
+
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(TimePicker.timeFormat, Locale.ITALY);
+		if (timeAlreadySetString == null) {
+			timeAlreadySetString = simpleDateFormat.format(new Date());
+		}
 		Date timeAlreadySet = null;
 		try
 		{
@@ -79,8 +93,12 @@ public class TimePicker extends SherlockDialogFragment implements OnTimeSetListe
 			actualMinuteString = "0"+actualMinuteString;
 		}
 		
-		buttonTime.setText(actualHourOfDayString+":"+actualMinuteString);
-	}
+		
+		String timeText = actualHourOfDayString+":"+actualMinuteString;
 
+		if (callback != null) {
+			callback.timeHasBeenSet(timeText);
+		}
+	}
 	
 }

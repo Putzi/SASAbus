@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.SimpleTimeZone;
 
 import it.sasabz.android.sasabus.R;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -18,17 +19,26 @@ import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
-public class SearchFragment extends SherlockFragment{
+public class SearchFragment extends SherlockFragment implements OnDateSetListener{
 
+	private AutoCompleteTextView autoCompleteTextViewDeparture;
+	private AutoCompleteTextView autoCompleteTextViewArrival;
+	private Button buttonDate;
+	private Button buttonTime;
+	private Button buttonSearch;
+	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
 		View view = inflater.inflate(R.layout.fragment_search, container, false);
+		
+		initializeViews(view);
 		
 		insertCurrentDateIntoButton(view);
 		addOnclickListenerForDate(view);
@@ -42,47 +52,66 @@ public class SearchFragment extends SherlockFragment{
 	}
 	
 	
+	/**
+	 * Initialize all the views present in the search fragment
+	 * @param view the fragment which gets inflated
+	 */
+	private void initializeViews(View view) {
+		buttonDate = (Button) view.findViewById(R.id.button_date);
+		buttonTime = (Button) view.findViewById(R.id.button_time);
+	}
+
+
+
 	//Date
 	/**
-	 * get the date-button from the view and insert the current date
+	 * Insert the current date into the date-button
 	 * @param view
 	 * 			is the total view of the fragment
 	 */
 	private void insertCurrentDateIntoButton(View view){
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.ITALIAN);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DatePicker.dateFormat, Locale.ITALY);
         String currentDate = simpleDateFormat.format(new Date());
         
-        Button buttonDate = (Button) view.findViewById(R.id.button_date);
         buttonDate.setText(currentDate);
 	}
 	
 	/**
-	 * adds an OnClickListener to the date-button with the date,
+	 * Add an OnClickListener to the date-button with the date,
 	 * so that it can open up a DatePicker when the user clicks
 	 * @param view
 	 * 			is the total view of the fragment
 	 */
 	private void addOnclickListenerForDate(View view){
-		Button buttonDate = (Button) view.findViewById(R.id.button_date);
 		buttonDate.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				openDatePickerDialog(v);
+				Button b = (Button) v;
+				openDatePickerDialog(b);
 			}
 		});
 	}
 	
 	/**
-	 * actually opens the DatePicker
-	 * @param view
-	 * 			is the total view of the fragment
+	 * Actually open the DatePicker
 	 */
-	public void openDatePickerDialog(View view){
-		DatePicker datePicker = new DatePicker();
+	public void openDatePickerDialog(Button button){
+		String dateButtonText = button.getText().toString();
 		
-		datePicker.buttonDate = (Button) view;
+		DatePicker datePicker = new DatePicker();
+		datePicker.setDateAlreadySetString(dateButtonText);
+		datePicker.setCallback(new DateHasBeenSetListener() {
+			@Override
+			public void dateHasBeenSet(String date) {
+				buttonDate.setText(date);
+			}
+		});
 		datePicker.show(getSherlockActivity().getSupportFragmentManager(), "Date Picker");
+	}
+	
+	public interface DateHasBeenSetListener {
+		void dateHasBeenSet(String date);
 	}
 	
 	
@@ -94,10 +123,9 @@ public class SearchFragment extends SherlockFragment{
 	 */
 	private void insertCurrentTimeIntoButton(View view){
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm", Locale.ITALIAN);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(TimePicker.timeFormat, Locale.ITALY);
         String currentTime = simpleDateFormat.format(new Date());
         
-        Button buttonTime = (Button) view.findViewById(R.id.button_time);
         buttonTime.setText(currentTime);
 	}
 	
@@ -108,11 +136,11 @@ public class SearchFragment extends SherlockFragment{
 	 * 			is the total view of the fragment
 	 */
 	private void addOnclickListenerForTime(View view){
-		Button buttonTime = (Button) view.findViewById(R.id.button_time);
 		buttonTime.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				openTimePickerDialog(v);
+				Button b = (Button) v;
+				openTimePickerDialog(b);
 			}
 		});
 	}
@@ -122,11 +150,24 @@ public class SearchFragment extends SherlockFragment{
 	 * @param view
 	 * 			is the total view of the fragment
 	 */
-	public void openTimePickerDialog(View view){
-		TimePicker timePicker = new TimePicker();
+	public void openTimePickerDialog(Button button){
+		String timeButtonText = button.getText().toString();
 		
-		timePicker.buttonTime = (Button) view;
+		TimePicker timePicker = new TimePicker();
+		timePicker.setTimeAlreadySetString(timeButtonText);
+		timePicker.setCallback(new TimeHasBeenSetListener() {
+			@Override
+			public void timeHasBeenSet(String time) {
+				buttonTime.setText(time);
+				Log.i("testtime",time);
+			}
+		});
 		timePicker.show(getSherlockActivity().getSupportFragmentManager(), "Time Picker");
+		
+	}
+	
+	public interface TimeHasBeenSetListener {
+		void timeHasBeenSet(String time);
 	}
 	
 	
@@ -168,6 +209,14 @@ public class SearchFragment extends SherlockFragment{
 				
 			}
 		});
+		
+	}
+
+
+	@Override
+	public void onDateSet(android.widget.DatePicker view, int year,
+			int monthOfYear, int dayOfMonth) {
+		// TODO Auto-generated method stub
 		
 	}
 	

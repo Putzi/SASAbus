@@ -66,17 +66,19 @@ import com.actionbarsherlock.view.MenuInflater;
  */
 public class MainTabActivity extends SherlockFragmentActivity {
 
+	private ActionBar actionBar;
 	private TabsAdapter mTabsAdapter;
 	private ViewPager mViewPager;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Resources resources = getResources();
+		
+		actionBar = getSupportActionBar();
 
 		addTabs(savedInstanceState);
 
-		setInitialTab();
+//		setInitialTab();
 	}
 
 	/**
@@ -86,7 +88,6 @@ public class MainTabActivity extends SherlockFragmentActivity {
 	 *            is the Bundle where the current tab may be saved
 	 */
 	private void addTabs(Bundle savedInstanceState) {
-		ActionBar actionBar = getSupportActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		// ViewPager
@@ -98,40 +99,32 @@ public class MainTabActivity extends SherlockFragmentActivity {
 
 		// addTabs
 		// Tab Search
-		String textTabSearch = getResources().getString(
-				R.string.search_connection);
-		mTabsAdapter.addTab(actionBar.newTab().setText(textTabSearch),
-				SearchFragment.class, null);
-
+		addSingleTab(R.string.search_connection, SearchFragment.class, null);
 		// Tab Bus Schedules
-		String textTabSchedules = getResources().getString(R.string.offline);
-		mTabsAdapter.addTab(actionBar.newTab().setText(textTabSchedules),
-				BusSchedulesFragment.class, null);
-
+		addSingleTab(R.string.offline, BusSchedulesFragment.class, null);
 		// Tab Next Bus
-		String textTabNextBus = getResources().getString(R.string.next_bus);
-		mTabsAdapter.addTab(actionBar.newTab().setText(textTabNextBus),
-				NextBusFragment.class, null);
-
+		addSingleTab(R.string.next_bus, NextBusFragment.class, null);
 		// Tab Infos
-		String textTabInfos = getResources().getString(R.string.info);
-		mTabsAdapter.addTab(actionBar.newTab().setText(textTabInfos),
-				InfoFragment.class, null);
+		addSingleTab(R.string.info, InfoFragment.class, null);
 
-		if (savedInstanceState != null)
-		{
+		if (savedInstanceState != null) {
 			actionBar.setSelectedNavigationItem(savedInstanceState.getInt(
 					"activeTab", 0));
 		}
 	}
 	
-	private void setInitialTab() {
-		if (Utility.hasNetworkConnection(this)) {
-			getSupportActionBar().setSelectedNavigationItem(0);
-		} else {
-			getSupportActionBar().setSelectedNavigationItem(1);
-		}
+	private void addSingleTab(int stringResourceId, Class<?> clss, Bundle arguments) {
+		String textTab = getResources().getString(stringResourceId);
+		mTabsAdapter.addTab(actionBar.newTab().setText(textTab), clss, arguments);
 	}
+	
+//	private void setInitialTab() {
+//		if (Utility.hasNetworkConnection(this)) {
+//			getSupportActionBar().setSelectedNavigationItem(0);
+//		} else {
+//			getSupportActionBar().setSelectedNavigationItem(1);
+//		}
+//	}
 	
 	/**
 	 * Add the menu
@@ -192,12 +185,6 @@ public class MainTabActivity extends SherlockFragmentActivity {
 			mViewPager.setOnPageChangeListener(this);
 		}
 
-		/**
-		 * Adds a new Tab to the ActionBar
-		 * @param tab
-		 * @param clss
-		 * @param args
-		 */
 		public void addTab(ActionBar.Tab tab, Class<?> clss, Bundle args) {
 			TabInfo info = new TabInfo(clss, args);
 			tab.setTag(info);

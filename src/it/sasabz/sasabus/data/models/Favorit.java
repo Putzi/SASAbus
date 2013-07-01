@@ -21,11 +21,10 @@
  * along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package it.sasabz.sasabus.data;
+package it.sasabz.sasabus.data.models;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.sasabus.data.models.BusStop;
-import it.sasabz.sasabus.data.models.BusStopList;
+import it.sasabz.sasabus.data.FavoritenDB;
 import it.sasabz.sasabus.ui.SASAbus;
 import android.content.res.Resources;
 import android.database.Cursor;

@@ -10,9 +10,9 @@ import java.util.TimeZone;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.network.SasabusFTP;
 import it.sasabz.sasabus.logic.Config;
+import it.sasabz.sasabus.logic.DownloadDatabase;
 import it.sasabz.sasabus.logic.MD5Utils;
 import it.sasabz.sasabus.logic.Utility;
-import it.sasabz.sasabus.ui.DownloadDatabaseActivity;
 import it.sasabz.sasabus.ui.MainTabActivity;
 import it.sasabz.sasabus.ui.SASAbus;
 import it.sasabz.sasabus.ui.routing.OnlineSearchFragment;
@@ -117,7 +117,7 @@ public class CheckUpdate extends AsyncTask<Void, String, Long> {
 		// Check if the sd-card is mounted
 		if (!Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
-			return Long.valueOf(DownloadDatabaseActivity.NO_SD_CARD);
+			return Long.valueOf(DownloadDatabase.NO_SD_CARD);
 		}
 
 		// creates all files (zip, md5 and db)

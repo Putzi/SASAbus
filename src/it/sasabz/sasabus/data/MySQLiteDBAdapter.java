@@ -27,7 +27,6 @@
 package it.sasabz.sasabus.data;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.sasabus.logic.DatabaseFileManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;

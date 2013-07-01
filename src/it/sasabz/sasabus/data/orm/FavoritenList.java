@@ -21,10 +21,10 @@
  * along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package it.sasabz.sasabus.logic;
+package it.sasabz.sasabus.data.orm;
 
-import it.sasabz.sasabus.data.Favorit;
 import it.sasabz.sasabus.data.FavoritenDB;
+import it.sasabz.sasabus.data.models.Favorit;
 import it.sasabz.sasabus.ui.SASAbus;
 
 import java.util.Vector;

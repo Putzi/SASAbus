@@ -33,10 +33,10 @@ import it.sasabz.android.sasabus.R.string;
 import it.sasabz.sasabus.data.hafas.XMLConnection;
 import it.sasabz.sasabus.data.hafas.XMLJourney;
 import it.sasabz.sasabus.data.models.BusStop;
-import it.sasabz.sasabus.ui.MapSelectActivity;
 import it.sasabz.sasabus.ui.adapter.MyXMLConnectionAdapter;
 import it.sasabz.sasabus.ui.fragments.OrarioFragment;
 import it.sasabz.sasabus.ui.fragments.WayFragment;
+import it.sasabz.sasabus.ui.map.MapSelectActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

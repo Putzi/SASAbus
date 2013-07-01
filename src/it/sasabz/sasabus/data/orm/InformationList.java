@@ -21,12 +21,12 @@
  * along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package it.sasabz.sasabus.logic.services;
+package it.sasabz.sasabus.data.orm;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.DBObject;
+import it.sasabz.sasabus.data.models.Information;
 import it.sasabz.sasabus.data.network.SasabusHTTP;
-import it.sasabz.sasabus.logic.Information;
 import it.sasabz.sasabus.ui.SASAbus;
 
 import java.io.IOException;

@@ -28,24 +28,35 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name="it.sasabz.sasabus.ui.MapViewActivity" android:label="@string/map">
+		
+		<activity android:name="it.sasabz.sasabus.ui.routing.SearchResultsActivity"
+		    android:label="@string/activity_label_results" android:screenOrientation="portrait">
+		    <intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+		<activity android:name="it.sasabz.sasabus.ui.map.MapViewActivity" android:label="@string/map">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
-		<activity android:name="it.sasabz.sasabus.ui.MapSelectActivity" android:label="@string/map">
+		
+		<activity android:name="it.sasabz.sasabus.ui.map.MapSelectActivity" android:label="@string/map">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
+		
 		<activity android:name="it.sasabz.sasabus.ui.preferences.PreferencesActivity" android:label="@string/preferences">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
+		
 		<service android:enabled="true" android:name="it.sasabz.android.sasabus.UpdateService" />
 	</application>
 </manifest>

@@ -21,7 +21,8 @@
  * along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package it.sasabz.sasabus.logic;
+package it.sasabz.sasabus.ui.map;
+
 
 import java.util.Iterator;
 import java.util.Vector;

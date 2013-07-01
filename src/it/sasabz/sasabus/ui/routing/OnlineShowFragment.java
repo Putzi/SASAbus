@@ -29,7 +29,6 @@ import java.util.Date;
 import java.util.Vector;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.sasabus.data.Favorit;
 import it.sasabz.sasabus.data.FavoritenDB;
 import it.sasabz.sasabus.data.hafas.XMLConnectionRequest;
 import it.sasabz.sasabus.data.hafas.XMLRequest;
@@ -37,6 +36,7 @@ import it.sasabz.sasabus.data.hafas.XMLStation;
 import it.sasabz.sasabus.data.hafas.services.XMLBackwardScroll;
 import it.sasabz.sasabus.data.hafas.services.XMLConnectionRequestList;
 import it.sasabz.sasabus.data.hafas.services.XMLForwardScroll;
+import it.sasabz.sasabus.data.models.Favorit;
 import it.sasabz.sasabus.ui.adapter.MyXMLConnectionRequestAdapter;
 import it.sasabz.sasabus.ui.dialogs.ConnectionDialog;
 

@@ -21,7 +21,11 @@
  * along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package it.sasabz.sasabus.logic;
+package it.sasabz.sasabus.ui.map;
+
+import it.sasabz.android.sasabus.R;
+import it.sasabz.sasabus.data.models.BusStop;
+import it.sasabz.sasabus.ui.dialogs.SelectDialog;
 
 import org.mapsforge.android.maps.overlay.OverlayItem;
 import org.mapsforge.core.GeoPoint;
@@ -30,16 +34,22 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
-public class MyOverlayItem extends OverlayItem{
+public class MyOverlaySelectItem extends OverlayItem{
 	
-	public MyOverlayItem(GeoPoint point, String titel, String message,
-			Drawable bus) {
-		super(point, titel, message, bus);
+	private MapSelectActivity activity = null;
+	
+	private BusStop palina = null;
+	
+	public MyOverlaySelectItem(GeoPoint point, Drawable bus, MapSelectActivity activity, BusStop palina) {
+		super(point, "", palina.toString(), bus);
+		this.activity = activity;
+		this.palina = palina;
 	}
 
 	public void onTap(Context context)
 	{
-		new AlertDialog.Builder(context).setTitle(this.getTitle()).setMessage(this.getSnippet()).setNeutralButton(android.R.string.ok, null).create().show();
+		SelectDialog dialog = new SelectDialog(activity, palina);
+		dialog.show();
 	}
 	
 }

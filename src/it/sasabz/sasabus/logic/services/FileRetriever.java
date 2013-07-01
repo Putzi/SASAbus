@@ -29,11 +29,11 @@ package it.sasabz.sasabus.logic.services;
 
 
 import it.sasabz.android.sasabus.R;
+import it.sasabz.sasabus.data.Decompress;
 import it.sasabz.sasabus.data.network.SasabusFTP;
 import it.sasabz.sasabus.logic.Config;
-import it.sasabz.sasabus.logic.Decompress;
+import it.sasabz.sasabus.logic.DownloadDatabase;
 import it.sasabz.sasabus.logic.MD5Utils;
-import it.sasabz.sasabus.ui.DownloadDatabaseActivity;
 import it.sasabz.sasabus.ui.SASAbus;
 
 import java.io.File;
@@ -82,7 +82,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 	private Resources res;
 
 	private String filename;
-	private DownloadDatabaseActivity activity;
+	private DownloadDatabase activity;
 	
 	private String download = null;
 	private String unzipping = null;
@@ -98,7 +98,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 	 * @param dbFile is the file to save the unzipped db file
 	 * @param md5File is the file to save the downloaded md5 file
 	 */
-	public FileRetriever(DownloadDatabaseActivity activity, String filename) {
+	public FileRetriever(DownloadDatabase activity, String filename) {
 		super();
 		this.filename = filename;
 		this.activity = activity;
@@ -106,7 +106,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 
 	}
 	
-	public FileRetriever(DownloadDatabaseActivity activity, String filename, String download, String unzipping) {
+	public FileRetriever(DownloadDatabase activity, String filename, String download, String unzipping) {
 		super();
 		this.activity = activity;
 		this.res = activity.getResources();
@@ -154,7 +154,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 		//Check if the sd-card is mounted
 		if (!Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
-			return Long.valueOf(DownloadDatabaseActivity.NO_SD_CARD);
+			return Long.valueOf(DownloadDatabase.NO_SD_CARD);
 		}
 		File dbDir = new File(Environment.getExternalStorageDirectory(),
 				dbDirName);
@@ -241,13 +241,13 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 				else 
 				{
 					//if no db-update is available will be shown a message
-					return Long.valueOf(DownloadDatabaseActivity.NO_DB_UPDATE_AVAILABLE);
+					return Long.valueOf(DownloadDatabase.NO_DB_UPDATE_AVAILABLE);
 				}
 			} 
 			else 
 			{
 				//shows dialog for no network connection
-				return Long.valueOf(DownloadDatabaseActivity.NO_NETWORK_CONNECTION);
+				return Long.valueOf(DownloadDatabase.NO_NETWORK_CONNECTION);
 			}
 		}
 		else 
@@ -256,12 +256,12 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			if (!MD5Utils.checksumOK(dbFile, md5File)) 
 			{
 				//shows dialog that occours a md5-error
-				return Long.valueOf(DownloadDatabaseActivity.MD5_ERROR_DIALOG);
+				return Long.valueOf(DownloadDatabase.MD5_ERROR_DIALOG);
 			}
 			else 
 			{
 				//shows dialog that download success
-				return Long.valueOf(DownloadDatabaseActivity.DOWNLOAD_SUCCESS_DIALOG);
+				return Long.valueOf(DownloadDatabase.DOWNLOAD_SUCCESS_DIALOG);
 			}
 		}
 	}
@@ -389,7 +389,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 				ex.printStackTrace();
 			}
 			
-			return DownloadDatabaseActivity.DOWNLOAD_RETRY;
+			return DownloadDatabase.DOWNLOAD_RETRY;
 		}
 		try
 		{
@@ -401,7 +401,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			e.printStackTrace();
 		}
 		progressDialog.dismiss();
-		return DownloadDatabaseActivity.DB_OK;
+		return DownloadDatabase.DB_OK;
 	}
 		
 	
@@ -432,7 +432,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			{
 				ex.printStackTrace();
 			}
-			return DownloadDatabaseActivity.DOWNLOAD_RETRY;
+			return DownloadDatabase.DOWNLOAD_RETRY;
 		}
 		try
 		{
@@ -445,7 +445,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 		}
 
 		progressDialog.dismiss();
-		return DownloadDatabaseActivity.DB_OK;
+		return DownloadDatabase.DB_OK;
 	}
 	
 	private int unzip()
@@ -467,11 +467,11 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 		if(!MD5Utils.checksumOK(dbFile, md5File))
 		{
 			progressDialog.dismiss();
-			return DownloadDatabaseActivity.MD5_ERROR_DIALOG;
+			return DownloadDatabase.MD5_ERROR_DIALOG;
 		}
 		
 		progressDialog.dismiss();
-		return DownloadDatabaseActivity.DB_OK;
+		return DownloadDatabase.DB_OK;
 	}
 	
 	private int download(String dbZIPFileName, String md5FileName)
@@ -491,11 +491,11 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			catch (Exception e)
 			{
 				e.printStackTrace();
-				return DownloadDatabaseActivity.DOWNLOAD_RETRY;
+				return DownloadDatabase.DOWNLOAD_RETRY;
 			}
 			
 			// download dbZIPFile
-			while(downloadFile(ftp, dbZIPFileName, md5FileName) != DownloadDatabaseActivity.DB_OK 
+			while(downloadFile(ftp, dbZIPFileName, md5FileName) != DownloadDatabase.DB_OK 
 					&& downloadcounter < MAX_DOWNLOAD)
 			{
 				++downloadcounter;
@@ -504,7 +504,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			
 	
 			// download md5sum
-			while(downloadMD5File(ftp, dbZIPFileName, md5FileName) != DownloadDatabaseActivity.DB_OK 
+			while(downloadMD5File(ftp, dbZIPFileName, md5FileName) != DownloadDatabase.DB_OK 
 					&& downloadcounter < MAX_DOWNLOAD)
 			{
 				++downloadcounter;
@@ -519,7 +519,7 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 			}
 			if(downloadcounter >= MAX_DOWNLOAD)
 			{
-				return DownloadDatabaseActivity.DOWNLOAD_RETRY;
+				return DownloadDatabase.DOWNLOAD_RETRY;
 			}
 			
 			// unzip dbZIPFile
@@ -532,9 +532,9 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 				++downloadcounter;
 				return download(dbZIPFileName, md5FileName);
 			}
-			return DownloadDatabaseActivity.DOWNLOAD_ERROR_DIALOG;
+			return DownloadDatabase.DOWNLOAD_ERROR_DIALOG;
 		}
-		return DownloadDatabaseActivity.DB_OK;
+		return DownloadDatabase.DB_OK;
 	}
 
 	/**
@@ -559,11 +559,11 @@ public class FileRetriever  extends AsyncTask<Void, String, Long>{
 		
 		if(this.filename.equals(activity.getResources().getString(R.string.app_name_db) + ".db"))
 		{
-			activity.showDialog(result.intValue(), DownloadDatabaseActivity.FR_DB);
+			activity.showDialog(result.intValue(), DownloadDatabase.FR_DB);
 		}
 		else
 		{
-			activity.showDialog(result.intValue(), DownloadDatabaseActivity.FR_OSM);
+			activity.showDialog(result.intValue(), DownloadDatabase.FR_OSM);
 		}
 		
 		

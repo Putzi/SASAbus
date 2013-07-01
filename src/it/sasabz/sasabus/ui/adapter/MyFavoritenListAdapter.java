@@ -24,7 +24,7 @@
 package it.sasabz.sasabus.ui.adapter;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.sasabus.data.Favorit;
+import it.sasabz.sasabus.data.models.Favorit;
 
 import java.util.Vector;
 

@@ -31,7 +31,7 @@ import it.sasabz.sasabus.data.models.Area;
 import it.sasabz.sasabus.data.models.BusLine;
 import it.sasabz.sasabus.data.models.BusStop;
 import it.sasabz.sasabus.data.models.Itinerary;
-import it.sasabz.sasabus.data.models.ItineraryList;
+import it.sasabz.sasabus.data.orm.ItineraryList;
 import it.sasabz.sasabus.ui.SASAbus;
 import it.sasabz.sasabus.ui.adapter.MyPassaggioListAdapter;
 import android.annotation.SuppressLint;

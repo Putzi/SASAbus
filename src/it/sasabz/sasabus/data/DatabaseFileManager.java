@@ -22,7 +22,7 @@
  * along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package it.sasabz.sasabus.logic;
+package it.sasabz.sasabus.data;
 
 import java.io.File;
 
@@ -30,6 +30,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 import android.util.AndroidRuntimeException;
 
+/**
+ * File manager for the database
+ */
 public abstract class DatabaseFileManager {
 	
 	//providing name, file and sqlite databases
@@ -38,12 +41,11 @@ public abstract class DatabaseFileManager {
 	private SQLiteDatabase.CursorFactory factory;
 
 	/**
-	 * this constructor creates an object with the dbFileName and the actual factory
-	 * @param dbFileName is the name of the db file
-	 * @param factory is the actual factory of the activity
+	 * Create a new {@link DatabaseFileManager}
+	 * @param dbFileName the name of the database file
+	 * @param factory the actual factory of the activity
 	 */
-	public DatabaseFileManager(String dbFileName,
-			SQLiteDatabase.CursorFactory factory) {
+	public DatabaseFileManager(String dbFileName, SQLiteDatabase.CursorFactory factory) {
 		this.factory = factory;
 
 		if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
@@ -51,7 +53,7 @@ public abstract class DatabaseFileManager {
 					"External storage (SD-Card) not mounted");
 		}
 		File appDbDir = new File(Environment.getExternalStorageDirectory(),
-				"Android/data/it.sasabz.android.sasabus/db");
+				"Android/data/it.sasabz.sasabus/db");
 		if (!appDbDir.exists()) {
 			appDbDir.mkdirs();
 		}
@@ -59,15 +61,15 @@ public abstract class DatabaseFileManager {
 	}
 
 	/**
-	 * This method controls if the db-file exists
-	 * @return true if the file exists, false otherwise
+	 * Control if the database-file exists
+	 * @return true if the file exists, false if not
 	 */
 	public boolean databaseFileExists() {
 		return dbFile.exists();
 	}
 
 	/**
-	 * this method opens the db-file read_only
+	 * Open the database-file in read-only-mode
 	 */
 	private void open() {
 		if (dbFile.exists()) {
@@ -77,7 +79,7 @@ public abstract class DatabaseFileManager {
 	}
 
 	/**
-	 * this closes the database
+	 * Close the database
 	 */
 	public void close() {
 		if (database != null) {
@@ -87,17 +89,16 @@ public abstract class DatabaseFileManager {
 	}
 
 	/**
-	 * this synchronized method returns a read_only database
-	 * @return this database
+	 * Get the read-only database
+	 * @return the database database
 	 */
 	public synchronized SQLiteDatabase getReadableDatabase() {
 		return getDatabase();
 	}
 
 	/**
-	 * this method controls if the databases is already opened, otherwise
-	 * the database getting opened and then returned
-	 * @return the open, readonly database
+	 * Get a read-only database (gets opened if not already open)
+	 * @return the open read-only database
 	 */
 	private SQLiteDatabase getDatabase() {
 		if (database == null) {

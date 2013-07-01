@@ -24,9 +24,11 @@
  * 
  */
 
-package it.sasabz.sasabus.data.models;
+package it.sasabz.sasabus.data.orm;
 
 import it.sasabz.sasabus.data.MySQLiteDBAdapter;
+import it.sasabz.sasabus.data.models.Area;
+import it.sasabz.sasabus.data.models.DBObject;
 import it.sasabz.sasabus.ui.SASAbus;
 
 import java.util.ArrayList;

@@ -28,11 +28,11 @@ import java.util.Locale;
 import java.util.Vector;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.sasabus.data.Favorit;
 import it.sasabz.sasabus.data.FavoritenDB;
 import it.sasabz.sasabus.data.models.BusStop;
 import it.sasabz.sasabus.data.models.BusStopList;
-import it.sasabz.sasabus.logic.FavoritenList;
+import it.sasabz.sasabus.data.models.Favorit;
+import it.sasabz.sasabus.data.orm.FavoritenList;
 import it.sasabz.sasabus.ui.SASAbus;
 import it.sasabz.sasabus.ui.adapter.MyFavoritenListAdapter;
 import android.app.Dialog;

@@ -23,7 +23,7 @@
  * 
  */
 
-package it.sasabz.sasabus.ui.busline;
+package it.sasabz.sasabus.ui.busschedules;
 
 import java.util.ArrayList;
 

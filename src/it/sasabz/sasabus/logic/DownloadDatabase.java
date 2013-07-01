@@ -26,10 +26,7 @@
  * a background service is loaded and the files were retrieved.
  */
 
-package it.sasabz.sasabus.ui;
-
-
-
+package it.sasabz.sasabus.logic;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.logic.services.FileRetriever;
@@ -48,7 +45,7 @@ import android.util.Log;
  * <li>shows splashscreen while downloading</li>
  * <li>shows dialogs with download results</li>
  */
-public class DownloadDatabaseActivity extends Activity {
+public class DownloadDatabase extends Activity {
 
 	
 	/*
@@ -199,7 +196,7 @@ public class DownloadDatabaseActivity extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int id) {
 				finish();
-				Intent intent = new Intent(getContext(), DownloadDatabaseActivity.class);
+				Intent intent = new Intent(getContext(), DownloadDatabase.class);
 				startActivity(intent);
 			}
 		});

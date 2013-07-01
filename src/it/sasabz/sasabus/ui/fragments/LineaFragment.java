@@ -30,13 +30,13 @@ import java.util.Vector;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.Area;
-import it.sasabz.sasabus.data.models.AreaList;
 import it.sasabz.sasabus.data.models.BusLine;
-import it.sasabz.sasabus.data.models.BusLineList;
 import it.sasabz.sasabus.data.models.DBObject;
+import it.sasabz.sasabus.data.orm.AreaList;
+import it.sasabz.sasabus.data.orm.BusLineList;
 import it.sasabz.sasabus.ui.SASAbus;
 import it.sasabz.sasabus.ui.adapter.MyListAdapter;
-import it.sasabz.sasabus.ui.busline.DepartureFragment;
+import it.sasabz.sasabus.ui.busschedules.DepartureFragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

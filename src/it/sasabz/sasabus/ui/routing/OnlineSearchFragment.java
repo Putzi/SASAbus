@@ -38,12 +38,12 @@ import it.sasabz.sasabus.data.MySQLiteDBAdapter;
 import it.sasabz.sasabus.data.models.BusStop;
 import it.sasabz.sasabus.data.models.BusStopList;
 import it.sasabz.sasabus.data.models.DBObject;
+import it.sasabz.sasabus.logic.DownloadDatabase;
 import it.sasabz.sasabus.logic.Utility;
 import it.sasabz.sasabus.logic.services.CheckUpdate;
-import it.sasabz.sasabus.ui.DownloadDatabaseActivity;
-import it.sasabz.sasabus.ui.MapSelectActivity;
 import it.sasabz.sasabus.ui.adapter.MyAutocompleteAdapter;
-import it.sasabz.sasabus.ui.busline.BacinoFragment;
+import it.sasabz.sasabus.ui.busschedules.BacinoFragment;
+import it.sasabz.sasabus.ui.map.MapSelectActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -537,7 +537,7 @@ public class OnlineSearchFragment extends SherlockFragment {
         }
         else if (Utility.hasNetworkConnection(getSherlockActivity()))
         {
-        	Intent download = new Intent(this.getActivity(), DownloadDatabaseActivity.class);
+        	Intent download = new Intent(this.getActivity(), DownloadDatabase.class);
 			startActivity(download);
         }
         else
@@ -560,7 +560,7 @@ public class OnlineSearchFragment extends SherlockFragment {
 		case NO_SD_CARD:
 			return createErrorDialog(R.string.sd_card_not_mounted);
 		case DOWNLOAD_FILES:
-			Intent down = new Intent(this.getActivity(), DownloadDatabaseActivity.class);
+			Intent down = new Intent(this.getActivity(), DownloadDatabase.class);
 			myStartActivity(down);
 			return null;
 		default:
@@ -642,7 +642,7 @@ public class OnlineSearchFragment extends SherlockFragment {
 			@Override
 			public void onClick(DialogInterface dialog, int id) {
 				dialog.dismiss();
-				Intent download = new Intent(getThis().getActivity(), DownloadDatabaseActivity.class);
+				Intent download = new Intent(getThis().getActivity(), DownloadDatabase.class);
 				myStartActivity(download);
 			}
 		});

@@ -25,7 +25,7 @@
  *
  */
 
-package it.sasabz.sasabus.ui;
+package it.sasabz.sasabus.ui.map;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -41,8 +41,6 @@ import it.sasabz.sasabus.data.MySQLiteDBAdapter;
 import it.sasabz.sasabus.data.models.BusStop;
 import it.sasabz.sasabus.data.models.BusStopList;
 import it.sasabz.sasabus.data.models.DBObject;
-import it.sasabz.sasabus.logic.MyArrayItemizedSelectOverlay;
-import it.sasabz.sasabus.logic.MyOverlaySelectItem;
 import it.sasabz.sasabus.ui.dialogs.About;
 import it.sasabz.sasabus.ui.dialogs.Credits;
 

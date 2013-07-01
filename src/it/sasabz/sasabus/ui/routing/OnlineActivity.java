@@ -1,6 +1,6 @@
 /**
  *
- * OfflineActivity.java
+ * OnlineActivity.java
  *
  * Created: Mar 15, 2012 22:40:06 PM
  *
@@ -24,16 +24,18 @@
  * This activity provides a map an the possibility to show a list of
  * bus stops which were contained in a "journey" (from - to)
  *
- * This activity is responsable for all the operations allowed during offline-mode.
+ * This activity is responsable for all the operations allowed during online-mode.
  * It's the space for all fragments related to it.
  *
  */
-package it.sasabz.sasabus.ui;
+package it.sasabz.sasabus.ui.routing;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.sasabus.ui.busline.BacinoFragment;
 import it.sasabz.sasabus.ui.dialogs.About;
 import it.sasabz.sasabus.ui.dialogs.Credits;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -44,8 +46,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class OfflineActivity extends FragmentActivity{
-
+public class OnlineActivity extends FragmentActivity{
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstaceState)
@@ -57,17 +59,22 @@ public class OfflineActivity extends FragmentActivity{
 		
 		ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 		
-		
 		Fragment fragment;
 		fragment = fragmentManager.findFragmentById(R.id.onlinefragment);
 		if(fragment != null)
 		{
 			ft.remove(fragment);
 		}
-		fragment = new BacinoFragment();
+		fragment = new OnlineSearchFragment();
 		ft.add(R.id.onlinefragment, fragment);
 		ft.commit();
 		fragmentManager.executePendingTransactions();
+	}
+	
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
 	}
 	
 	@Override
@@ -78,10 +85,6 @@ public class OfflineActivity extends FragmentActivity{
    	 	return true;
 	}
 
-	/**
-	 * This method adds some functionalities to some keys, for example the back key,
-	 * which is not catched by the fragment manager and only by activity.
-	 */
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
@@ -102,10 +105,7 @@ public class OfflineActivity extends FragmentActivity{
 	    return super.onKeyDown(keyCode, event);
 	}
 
-	
-	/**
-	 * removes the current fragment and shows the previous fragment
-	 */
+
 	public void removeCurrentFragment()
 	{
 	    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -133,5 +133,6 @@ public class OfflineActivity extends FragmentActivity{
 //		}
 		return false;
 	}
+	
 	
 }

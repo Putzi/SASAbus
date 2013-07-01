@@ -22,7 +22,7 @@
  * along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
  * 
  */
-package it.sasabz.sasabus.logic;
+package it.sasabz.sasabus.data;
 
 import android.util.Log;
 import java.io.File;

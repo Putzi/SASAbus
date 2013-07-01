@@ -182,5 +182,6 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="preference_notifications_title">Benachrichtigungen</string>
 <string name="preference_notifications_summary">Benachrichtiungen erhalten, falls kurzfristige Änderungen bei deinen favorisierten Buslinien eintreten.</string>
 
-</resources>
+<string name="activity_label_results">Gefundene Verbindungen</string>
 
+</resources>

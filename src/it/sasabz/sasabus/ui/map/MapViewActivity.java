@@ -29,7 +29,7 @@
 >>>>>>> 9953b151ccb50fe6b852c8ea73cf2811caaf01a1
  */
 
-package it.sasabz.sasabus.ui;
+package it.sasabz.sasabus.ui.map;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -42,15 +42,13 @@ import org.mapsforge.core.GeoPoint;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.Area;
-import it.sasabz.sasabus.data.models.AreaList;
 import it.sasabz.sasabus.data.models.BusLine;
-import it.sasabz.sasabus.data.models.BusLineList;
 import it.sasabz.sasabus.data.models.BusStop;
 import it.sasabz.sasabus.data.models.BusStopList;
 import it.sasabz.sasabus.data.models.Itinerary;
-import it.sasabz.sasabus.data.models.ItineraryList;
-import it.sasabz.sasabus.logic.MyArrayItemizedOverlay;
-import it.sasabz.sasabus.logic.MyOverlayItem;
+import it.sasabz.sasabus.data.orm.AreaList;
+import it.sasabz.sasabus.data.orm.BusLineList;
+import it.sasabz.sasabus.data.orm.ItineraryList;
 import it.sasabz.sasabus.ui.dialogs.About;
 import it.sasabz.sasabus.ui.dialogs.Credits;
 

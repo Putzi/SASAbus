@@ -21,10 +21,16 @@ import android.widget.Button;
 
 import com.actionbarsherlock.app.SherlockDialogFragment;
 
+/**
+ * Picker for the date
+ */
 public class DatePicker extends SherlockDialogFragment implements OnDateSetListener{
 
+	/** The format that the date has */
 	public static String dateFormat = "dd.MM.yyyy";
 	
+	/** The date that has already been set before
+	 * and gets used for the initial date */
 	private String dateAlreadySetString;
 	private DateHasBeenSetListener callback;
 	
@@ -37,9 +43,7 @@ public class DatePicker extends SherlockDialogFragment implements OnDateSetListe
 		this.callback = callback;
 	}
 	
-	/**
-	 * gets called when the dialog is being created
-	 */
+
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -69,9 +73,7 @@ public class DatePicker extends SherlockDialogFragment implements OnDateSetListe
 		return new DatePickerDialog(getSherlockActivity(), this, year, monthOfYear, dayOfMonth);
 	}
 
-	/**
-	 * gets called when the user has set a date and clicked on finish
-	 */
+
 	@Override
 	public void onDateSet(android.widget.DatePicker view, int year,
 			int monthOfYear, int dayOfMonth) {

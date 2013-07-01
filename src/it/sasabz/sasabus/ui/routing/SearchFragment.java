@@ -9,6 +9,7 @@ import java.util.SimpleTimeZone;
 import it.sasabz.android.sasabus.R;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +24,7 @@ import android.widget.EditText;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
-public class SearchFragment extends SherlockFragment implements OnDateSetListener{
+public class SearchFragment extends SherlockFragment {
 
 	private AutoCompleteTextView autoCompleteTextViewDeparture;
 	private AutoCompleteTextView autoCompleteTextViewArrival;
@@ -57,8 +58,13 @@ public class SearchFragment extends SherlockFragment implements OnDateSetListene
 	 * @param view the fragment which gets inflated
 	 */
 	private void initializeViews(View view) {
+		autoCompleteTextViewDeparture = (AutoCompleteTextView) view.findViewById(R.id.autocompletetextview_search_departure);
+		autoCompleteTextViewArrival = (AutoCompleteTextView) view.findViewById(R.id.autocompletetextview_search_arrival);
+		
 		buttonDate = (Button) view.findViewById(R.id.button_date);
 		buttonTime = (Button) view.findViewById(R.id.button_time);
+		
+		buttonSearch = (Button) view.findViewById(R.id.button_search);
 	}
 
 
@@ -173,17 +179,9 @@ public class SearchFragment extends SherlockFragment implements OnDateSetListene
 	
 	//Search Button
 	private void addOnclickListenerForSearchButton(View view) {
-		Button buttonSearch = (Button) view.findViewById(R.id.button_search);
 		buttonSearch.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//Get the views for departure stop, arrival stop, date and time
-				AutoCompleteTextView autoCompleteTextViewDeparture = 
-						(AutoCompleteTextView) v.findViewById(R.id.autocompletetextview_search_departure);
-				AutoCompleteTextView autoCompleteTextViewArrival = 
-						(AutoCompleteTextView) v.findViewById(R.id.autocompletetextview_search_arrival);
-				Button buttonDate = (Button) v.findViewById(R.id.button_date);
-				Button buttonTime = (Button) v.findViewById(R.id.button_time);
 				
 				//Get the contents of the views
 				String departurePredefined = autoCompleteTextViewDeparture.getHint().toString();
@@ -195,8 +193,8 @@ public class SearchFragment extends SherlockFragment implements OnDateSetListene
 				//Check if the input fields are not empty
 				if (!departure.trim().equals("") || !departurePredefined.trim().equals("") && arrival.trim().equals("")){
 					
-					//check wheter the user has inserted a departure bus stop,
-					//or wheter we should use the predefined one, which is 
+					//check whether the user has inserted a departure bus stop,
+					//or whether we should use the predefined one, which is 
 					//the closest bus stop to the last known location
 					if(!departurePredefined.trim().equals("")){
 						departure = departurePredefined;
@@ -207,16 +205,10 @@ public class SearchFragment extends SherlockFragment implements OnDateSetListene
 					
 				}
 				
+				Intent intentSearchResults = new Intent(getSherlockActivity(), SearchResultsActivity.class);
+				startActivity(intentSearchResults);
 			}
 		});
-		
-	}
-
-
-	@Override
-	public void onDateSet(android.widget.DatePicker view, int year,
-			int monthOfYear, int dayOfMonth) {
-		// TODO Auto-generated method stub
 		
 	}
 	

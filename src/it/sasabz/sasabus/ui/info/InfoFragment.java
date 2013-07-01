@@ -2,9 +2,9 @@ package it.sasabz.sasabus.ui.info;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.DBObject;
-import it.sasabz.sasabus.logic.Information;
+import it.sasabz.sasabus.data.models.Information;
+import it.sasabz.sasabus.data.orm.InformationList;
 import it.sasabz.sasabus.logic.Utility;
-import it.sasabz.sasabus.logic.services.InformationList;
 import it.sasabz.sasabus.ui.MainTabActivity;
 import it.sasabz.sasabus.ui.SASAbus;
 import it.sasabz.sasabus.ui.adapter.MyListAdapter;

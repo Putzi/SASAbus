@@ -45,11 +45,12 @@ import android.support.v4.view.ViewPager;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.logic.Utility;
-import it.sasabz.sasabus.ui.busline.BusSchedulesFragment;
+import it.sasabz.sasabus.ui.busschedules.BusSchedulesFragment;
 import it.sasabz.sasabus.ui.busstop.NextBusFragment;
 import it.sasabz.sasabus.ui.dialogs.About;
 import it.sasabz.sasabus.ui.dialogs.Credits;
 import it.sasabz.sasabus.ui.info.InfoFragment;
+import it.sasabz.sasabus.ui.map.MapViewActivity;
 import it.sasabz.sasabus.ui.preferences.PreferencesActivity;
 import it.sasabz.sasabus.ui.routing.SearchFragment;
 
@@ -126,9 +127,6 @@ public class MainTabActivity extends SherlockFragmentActivity {
 //		}
 //	}
 	
-	/**
-	 * Add the menu
-	 */
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -51,7 +51,7 @@
 			    android:id="@+id/imagebutton_departure_map"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    style="@style/bus_stop_select_buttons"
+			    style="@style/button_with_icon"
 			    android:src="@drawable/ic_action_map"
 			    android:contentDescription="@string/map_button" />
     	</LinearLayout>
@@ -81,7 +81,7 @@
 			    android:id="@+id/imagebutton_arrival_map"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    style="@style/bus_stop_select_buttons"
+			    style="@style/button_with_icon"
 			    android:src="@drawable/ic_action_map"
 			    android:contentDescription="@string/map_button" />
     	</LinearLayout>
@@ -96,12 +96,6 @@
 	    
 	</RelativeLayout>
     
-    <Button
-        android:id="@+id/button_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_menu_search"
-        android:layout_marginTop="20dp"
-        android:text="@string/search_connection" />
+    <include layout="@layout/button_search" />
 
 </LinearLayout> 

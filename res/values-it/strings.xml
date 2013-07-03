@@ -168,6 +168,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="departure_bus_stop">Fermata di partenza</string>
 <string name="arrival_bus_stop">Fermata d\'arrivo</string>
 
+<string name="more">Più</string>
 <string name="nearby_button">Fermate vicine</string>
 <string name="map_button">Selezionare fermata dalla mappa</string>
 <string name="favorites_button">Fermate preferiti</string>

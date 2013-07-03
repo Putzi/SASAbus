@@ -27,13 +27,14 @@
  * in the application like the validationcheck etc...
  * 
  */
-package it.sasabz.sasabus.logic;
+package it.sasabz.sasabus.data;
 
-import it.sasabz.sasabus.data.MySQLiteDBAdapter;
 import it.sasabz.sasabus.ui.SASAbus;
 import android.database.Cursor;
 
-
+/**
+ * Configuration Class
+ */
 public class Config {
 	
 	

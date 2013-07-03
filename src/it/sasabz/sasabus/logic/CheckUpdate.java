@@ -1,4 +1,4 @@
-package it.sasabz.sasabus.logic.services;
+package it.sasabz.sasabus.logic;
 
 import java.io.File;
 import java.text.ParseException;
@@ -8,11 +8,9 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import it.sasabz.android.sasabus.R;
+import it.sasabz.sasabus.data.Config;
+import it.sasabz.sasabus.data.MD5Utils;
 import it.sasabz.sasabus.data.network.SasabusFTP;
-import it.sasabz.sasabus.logic.Config;
-import it.sasabz.sasabus.logic.DownloadDatabase;
-import it.sasabz.sasabus.logic.MD5Utils;
-import it.sasabz.sasabus.logic.Utility;
 import it.sasabz.sasabus.ui.MainTabActivity;
 import it.sasabz.sasabus.ui.SASAbus;
 import it.sasabz.sasabus.ui.routing.OnlineSearchFragment;

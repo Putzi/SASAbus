@@ -39,8 +39,8 @@ import org.mapsforge.core.GeoPoint;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.MySQLiteDBAdapter;
 import it.sasabz.sasabus.data.models.BusStop;
-import it.sasabz.sasabus.data.models.BusStopList;
 import it.sasabz.sasabus.data.models.DBObject;
+import it.sasabz.sasabus.data.orm.BusStopList;
 import it.sasabz.sasabus.ui.dialogs.About;
 import it.sasabz.sasabus.ui.dialogs.Credits;
 

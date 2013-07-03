@@ -26,7 +26,7 @@
 
 package it.sasabz.sasabus.data.network;
 
-import it.sasabz.sasabus.logic.services.FileRetriever;
+import it.sasabz.sasabus.data.FileRetriever;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

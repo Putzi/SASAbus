@@ -34,7 +34,7 @@ import it.sasabz.sasabus.data.hafas.XMLRequest;
 import it.sasabz.sasabus.data.hafas.XMLStation;
 import it.sasabz.sasabus.data.hafas.services.XMLStationList;
 import it.sasabz.sasabus.data.models.BusStop;
-import it.sasabz.sasabus.data.models.BusStopList;
+import it.sasabz.sasabus.data.orm.BusStopList;
 import it.sasabz.sasabus.ui.adapter.MyXMLStationListAdapter;
 
 import android.app.AlertDialog;

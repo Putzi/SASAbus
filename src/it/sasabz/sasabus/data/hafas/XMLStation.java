@@ -24,8 +24,8 @@
 package it.sasabz.sasabus.data.hafas;
 
 import it.sasabz.sasabus.data.models.BusStop;
-import it.sasabz.sasabus.data.models.BusStopList;
 import it.sasabz.sasabus.data.network.SASAbusXML;
+import it.sasabz.sasabus.data.orm.BusStopList;
 
 import java.util.Locale;
 import org.w3c.dom.Document;

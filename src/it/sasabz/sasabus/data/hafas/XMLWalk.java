@@ -23,6 +23,6 @@
  */
 package it.sasabz.sasabus.data.hafas;
 
-public class XMLWalk extends XMLConnection{
+public class XMLWalk extends XMLConnection {
 
 }

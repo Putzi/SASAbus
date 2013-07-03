@@ -28,13 +28,13 @@ package it.sasabz.sasabus.data.orm;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.sasabz.sasabus.data.Config;
 import it.sasabz.sasabus.data.MySQLiteDBAdapter;
 import it.sasabz.sasabus.data.models.Area;
 import it.sasabz.sasabus.data.models.BusLine;
 import it.sasabz.sasabus.data.models.BusStop;
 import it.sasabz.sasabus.data.models.DBObject;
 import it.sasabz.sasabus.data.models.Itinerary;
-import it.sasabz.sasabus.logic.Config;
 import it.sasabz.sasabus.ui.SASAbus;
 
 import android.database.Cursor;

@@ -29,8 +29,8 @@ import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.Area;
 import it.sasabz.sasabus.data.models.BusLine;
 import it.sasabz.sasabus.data.models.BusStop;
-import it.sasabz.sasabus.data.models.BusStopList;
 import it.sasabz.sasabus.data.models.DBObject;
+import it.sasabz.sasabus.data.orm.BusStopList;
 import it.sasabz.sasabus.ui.SASAbus;
 import it.sasabz.sasabus.ui.adapter.MyListAdapter;
 

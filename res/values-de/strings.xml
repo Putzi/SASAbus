@@ -171,6 +171,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="departure_bus_stop">Start-Haltestelle</string>
 <string name="arrival_bus_stop">End-Haltestelle</string>
 
+<string name="more">Mehr</string>
 <string name="nearby_button">Bushaltestellen in der Nähe</string>
 <string name="map_button">Bushaltestelle aus Karte auswählen</string>
 <string name="favorites_button">Favorisierte Bushaltestellen</string>

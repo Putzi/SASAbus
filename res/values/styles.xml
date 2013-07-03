@@ -20,14 +20,20 @@
     </style>
     
     
-    <style name="bus_stop_select_buttons">
-        <item name="android:background">@drawable/selector_orange</item>
+    <style name="button_with_icon">
+        <item name="android:background">@color/transparent</item>
         <item name="android:padding">5dp</item>
     </style>
     
-     <style name="search_button">
+     <style name="button_with_text">
         <item name="android:background">@drawable/selector_orange</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:padding">5dp</item>
+    </style>
+    
+    <style name="search_button">
+        <item name="android:textSize">22sp</item>
+        <item name="android:maxHeight">20dp</item>
     </style>
 
 </resources>

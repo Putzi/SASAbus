@@ -28,32 +28,33 @@ import it.sasabz.sasabus.data.MySQLiteDBAdapter;
 import android.app.Application;
 import android.content.Context;
 
+
+/**
+ * Object for the Application
+ */
 public class SASAbus extends Application {
+	
     private int dbDownloadAttempts;
     
     private static Context context = null;
  
     @Override
-    public void onCreate() 
-    {
-        // Init values which could be loaded from files stored in res/raw
-        setDbDownloadAttempts(0);
-        super.onCreate();
+    public void onCreate() {
+        // Initiate values which could be loaded from files stored in res/raw
+    	super.onCreate();
+    	setDbDownloadAttempts(0);
         context = this.getApplicationContext();
     }
 
     @Override
-    public void onTerminate()
-    {
-    	//do nothing
+    public void onTerminate() {
     	MySQLiteDBAdapter.closeAll();
     }
     
     /**
      * @return the Strings and Variables stored in the Context;
      */
-    public static Context getContext()
-    {
+    public static Context getContext() {
     	return context;
     }
     
@@ -71,5 +72,4 @@ public class SASAbus extends Application {
 		return dbDownloadAttempts;
 	}
  
-
 }

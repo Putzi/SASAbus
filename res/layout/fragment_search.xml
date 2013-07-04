@@ -52,7 +52,7 @@
                 android:orientation="vertical"
                 android:layout_alignParentRight="true">
                 
-            	<include layout="@layout/imagebutton_more" />
+           	<include layout="@layout/imagebutton_more" />
 
            </LinearLayout>
             
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_toLeftOf="@id/linearlayout_departure_more">
-
+                
 		        <AutoCompleteTextView
 		            android:id="@+id/autocompletetextview_departure"
 		            android:layout_width="match_parent"
@@ -126,6 +126,9 @@
 		            android:hint="@string/arrival_bus_stop"
 		            android:singleLine="true"
 		            android:imeOptions="actionDone" />
+		        
+		        <include layout="@layout/imagebutton_delete" />
+		        
 	       	</LinearLayout>
 	       	
 	        <LinearLayout

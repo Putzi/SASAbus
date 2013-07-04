@@ -36,6 +36,7 @@
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
+		
 		<activity android:name="it.sasabz.sasabus.ui.map.MapViewActivity" android:label="@string/map">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
@@ -43,7 +44,21 @@
 			</intent-filter>
 		</activity>
 		
+		<activity android:name="it.sasabz.sasabus.ui.info.InfoActivity" android:label="@string/info">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+		
 		<activity android:name="it.sasabz.sasabus.ui.map.MapSelectActivity" android:label="@string/map">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+		
+		<activity android:name="it.sasabz.sasabus.ui.about.AboutActivity" android:label="@string/info">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
@@ -58,5 +73,6 @@
 		</activity>
 		
 		<service android:enabled="true" android:name="it.sasabz.android.sasabus.UpdateService" />
+		
 	</application>
 </manifest>

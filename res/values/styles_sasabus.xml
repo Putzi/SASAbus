@@ -17,7 +17,7 @@
      limitations under the License.
 -->
 
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="Theme.Sasabus" parent="@style/Theme.Sherlock.Light.DarkActionBar">
         <item name="actionBarItemBackground">@drawable/selectable_background_sasabus</item>
@@ -34,7 +34,6 @@
         <item name="actionBarWidgetTheme">@style/Theme.Sasabus.Widget</item>
         
         		<!-- Generated with http://android-holo-colors.com -->
-        
         <item name="android:editTextStyle">@style/EditTextTheme.Sasabus</item>
 
 	    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewTheme.Sasabus</item>

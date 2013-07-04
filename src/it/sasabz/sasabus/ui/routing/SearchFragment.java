@@ -1,8 +1,13 @@
 package it.sasabz.sasabus.ui.routing;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import it.sasabz.android.sasabus.R;
 import android.content.Intent;
@@ -26,17 +31,21 @@ import com.actionbarsherlock.app.SherlockFragment;
 
 public class SearchFragment extends SherlockFragment {
 
+	
+	private ViewGroup viewgroupDepartureInputfield;
 	private AutoCompleteTextView autoCompleteTextViewDeparture;
+	
+	private ViewGroup viewgroupArrivalInputField;
 	private AutoCompleteTextView autoCompleteTextViewArrival;
 	
-	private LinearLayout linearLayoutDepartureMore;
+	private ViewGroup viewgroupDepartureMore;
 	private ImageButton imageButtonDepartureMore;
 	
-	private LinearLayout linearLayoutArrivalMore;
+	private ViewGroup viewgroupArrivalMore;
 	private ImageButton imageButtonArrivalMore;
 	
-	private LinearLayout linearLayoutSearchButtonsDeparture;
-	private LinearLayout linearLayoutSearchButtonsArrival;
+	private ViewGroup viewgroupDepartureSearchButtons;
+	private ViewGroup viewgroupArrivalSearchButtons;
 	
 	private Button buttonDate;
 	private Button buttonTime;
@@ -70,17 +79,20 @@ public class SearchFragment extends SherlockFragment {
 	 * @param view the fragment which gets inflated
 	 */
 	private void initializeViews(View view) {
+		viewgroupDepartureInputfield = (ViewGroup) view.findViewById(R.id.linearlayout_departure_inputfield);
 		autoCompleteTextViewDeparture = (AutoCompleteTextView) view.findViewById(R.id.autocompletetextview_departure);
+		
+		viewgroupArrivalInputField = (ViewGroup) view.findViewById(R.id.linearlayout_arrival_inputfield);
 		autoCompleteTextViewArrival = (AutoCompleteTextView) view.findViewById(R.id.autocompletetextview_arrival);
 		
-		linearLayoutDepartureMore = (LinearLayout) view.findViewById(R.id.linearlayout_departure_more);
-		imageButtonDepartureMore = (ImageButton) linearLayoutDepartureMore.findViewById(R.id.imagebutton_more);
+		viewgroupDepartureMore = (ViewGroup) view.findViewById(R.id.linearlayout_departure_more);
+		imageButtonDepartureMore = (ImageButton) viewgroupDepartureMore.findViewById(R.id.imagebutton_more);
 		
-		linearLayoutArrivalMore = (LinearLayout) view.findViewById(R.id.linearlayout_arrival_more);
-		imageButtonArrivalMore = (ImageButton) linearLayoutArrivalMore.findViewById(R.id.imagebutton_more);
+		viewgroupArrivalMore = (ViewGroup) view.findViewById(R.id.linearlayout_arrival_more);
+		imageButtonArrivalMore = (ImageButton) viewgroupArrivalMore.findViewById(R.id.imagebutton_more);
 		
-		linearLayoutSearchButtonsDeparture = (LinearLayout) view.findViewById(R.id.linearlayout_departure_buttons);
-		linearLayoutSearchButtonsArrival = (LinearLayout) view.findViewById(R.id.linearlayout_arrival_buttons);
+		viewgroupDepartureSearchButtons = (ViewGroup) view.findViewById(R.id.linearlayout_departure_buttons);
+		viewgroupArrivalSearchButtons = (ViewGroup) view.findViewById(R.id.linearlayout_arrival_buttons);
 		
 		buttonDate = (Button) view.findViewById(R.id.button_date);
 		buttonTime = (Button) view.findViewById(R.id.button_time);
@@ -99,37 +111,46 @@ public class SearchFragment extends SherlockFragment {
 			}
 		};
 		imageButtonDepartureMore.setOnClickListener(onClickListenerForMoreButtons);
-			imageButtonDepartureMore.setTag(linearLayoutSearchButtonsDeparture);
+			List<ViewGroup> b1 = new ArrayList<ViewGroup>();
+				b1.add(viewgroupDepartureSearchButtons);
+				b1.add(viewgroupDepartureInputfield);
+			imageButtonDepartureMore.setTag(b1);
+			
 		imageButtonArrivalMore.setOnClickListener(onClickListenerForMoreButtons);
-			imageButtonArrivalMore.setTag(linearLayoutSearchButtonsArrival);
+			List<ViewGroup> b2 = new ArrayList<ViewGroup>();
+				b2.add(viewgroupArrivalSearchButtons);
+				b2.add(viewgroupArrivalInputField);
+			imageButtonArrivalMore.setTag(b2);
 	}
 	
-	private LinearLayout container;
-	private LayoutParams paramsContainer;
-	private LinearLayout button;
-	private LayoutParams paramsButton;
+	private ViewGroup containerButtons;
+	private LayoutParams paramsButtons;
+	private ViewGroup containerInputfield;
+	private LayoutParams paramsInputfield;
 	
 	private void openCloseSearchButtons(View v) {
-		container = (LinearLayout) v.getTag();
-		button = (LinearLayout) v.getParent();
+		List<?> b = (List<?>) v.getTag();
+		containerButtons = (ViewGroup) b.get(0);
+		containerInputfield = (ViewGroup) b.get(1);
+		LinearLayout button = (LinearLayout) v.getParent();
 		
-		paramsContainer = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		paramsButton = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-	
+		paramsButtons = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		paramsInputfield = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+		
 		if (!button.isSelected()) {
-			paramsContainer.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-			paramsButton.addRule(RelativeLayout.LEFT_OF, container.getId());
+			paramsButtons.addRule(RelativeLayout.LEFT_OF, button.getId());
+			containerButtons.setLayoutParams(paramsButtons);
 			
-			container.setLayoutParams(paramsContainer);
-			button.setLayoutParams(paramsButton);
+			paramsInputfield.addRule(RelativeLayout.LEFT_OF, containerButtons.getId());
+			containerInputfield.setLayoutParams(paramsInputfield);
 			
 			button.setSelected(true);
 		} else {
-			paramsButton.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-			paramsContainer.addRule(RelativeLayout.RIGHT_OF, button.getId());
+			paramsButtons.addRule(RelativeLayout.RIGHT_OF, button.getId());
+			containerButtons.setLayoutParams(paramsButtons);
 			
-			button.setLayoutParams(paramsButton);
-			container.setLayoutParams(paramsContainer);
+			paramsInputfield.addRule(RelativeLayout.LEFT_OF, button.getId());
+			containerInputfield.setLayoutParams(paramsInputfield);
 			
 			button.setSelected(false);
 		}

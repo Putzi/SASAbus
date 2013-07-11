@@ -1,101 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearlayout_fragment_bus_schedules"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollview_busschedules"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_padding" >
+    android:fillViewport="true">
 
     <LinearLayout
-        android:id="@+id/linearlayout_area"
+        android:id="@+id/linearlayout_fragment_bus_schedules"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_padding" >
 
-        <ImageButton
-            android:id="@+id/imagebutton_area_map"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="centerInside"
-            android:contentDescription="@string/map"
-            android:src="@drawable/ic_action_map" />
-        
-        <Spinner
-            android:id="@+id/spinner_area"
+        <LinearLayout
+            android:id="@+id/linearlayout_area"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:spinnerMode="dropdown"
-            android:entries="@array/areas" />
+            android:orientation="horizontal" >
 
+            <ImageButton
+                android:id="@+id/imagebutton_area_map"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/map"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_action_map" />
+
+            <Spinner
+                android:id="@+id/spinner_area"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_busline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <Spinner
+                android:id="@+id/spinner_busline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:spinnerMode="dropdown" />
+
+            <Spinner
+                android:id="@+id/spinner_busline_direction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listview_busline_departures"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_light1">
+        </ListView>
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinner_buslines"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:spinnerMode="dropdown"
-        android:entries="@array/buslines" />
-    
-    <RelativeLayout
-        android:id="@+id/relativelayout_departure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-	    
-    	<LinearLayout
-    	    android:id="@+id/linearlayout_departure_button"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_alignParentRight="true">
-    	    <ImageButton
-			    android:id="@+id/imagebutton_departure_map"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    style="@style/button_with_icon"
-			    android:src="@drawable/ic_action_map"
-			    android:contentDescription="@string/map_button" />
-    	</LinearLayout>
-			
-	    <Spinner
-	        android:id="@+id/spinner_bus_stop_departure"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_toLeftOf="@id/linearlayout_departure_button"
-	        android:spinnerMode="dropdown"
-	        android:entries="@array/busstops_departure" />
-	    
-	</RelativeLayout>
-	
-    <RelativeLayout
-        android:id="@+id/relativelayout_arrival"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" >
-	    
-    	<LinearLayout
-    	    android:id="@+id/linearlayout_arrival_button"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_alignParentRight="true">
-    	    <ImageButton
-			    android:id="@+id/imagebutton_arrival_map"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    style="@style/button_with_icon"
-			    android:src="@drawable/ic_action_map"
-			    android:contentDescription="@string/map_button" />
-    	</LinearLayout>
-			
-	    <Spinner
-	        android:id="@+id/spinner_bus_stop_arrival"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_toLeftOf="@id/linearlayout_arrival_button"
-	        android:spinnerMode="dropdown"
-	        android:entries="@array/busstops_arrival" />
-	    
-	</RelativeLayout>
-    
-    <include layout="@layout/button_search" />
-
-</LinearLayout> 
+</ScrollView>

@@ -29,7 +29,8 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
     <color name="divider_background">#666666</color>
     <color name="info_background">#333333</color>
     
-    <color name="grey_light">#CCCCCC</color>
+    <color name="grey_light1">#E6E6E6</color>
+    <color name="grey_light2">#CCCCCC</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="orange_focused">#80FFBB33</color>
     <color name="orange_pressed">#99FF8800</color>

@@ -63,6 +63,14 @@ public class BusLine extends DBObject {
 		}
 	}
 	
+	public BusLine(String buslineNumber, String description_it, String description_de, String abbreviation, int difference) {
+		setBuslineNumber(buslineNumber);
+		setDescription_it(description_it);
+		setDescription_de(description_de);
+		setAbbreviation(abbreviation);
+		setDifferenza(difference);
+	}
+	
 	/**
 	 * 
 	 * @return the bus line description in Italian

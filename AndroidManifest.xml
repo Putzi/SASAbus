@@ -22,7 +22,7 @@
 		android:theme="@style/Theme.Sasabus">
 
 		<activity android:name="it.sasabz.sasabus.ui.MainTabActivity" android:label="@string/app_name"
-			android:screenOrientation="portrait">
+			android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
@@ -30,6 +30,14 @@
 		</activity>
 		
 		<activity android:name="it.sasabz.sasabus.ui.routing.SearchResultsActivity"
+		    android:label="@string/activity_label_results" android:screenOrientation="portrait">
+		    <intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</activity>
+		
+		<activity android:name="it.sasabz.sasabus.ui.busschedules.BusSchedulesDetailsActivity"
 		    android:label="@string/activity_label_results" android:screenOrientation="portrait">
 		    <intent-filter>
 				<action android:name="android.intent.action.VIEW" />

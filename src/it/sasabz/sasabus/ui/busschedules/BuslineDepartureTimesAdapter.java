@@ -19,9 +19,9 @@ import android.widget.BaseAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-public class BuslineDepartureAdapter extends ArrayAdapter<Itinerary> {
+public class BuslineDepartureTimesAdapter extends ArrayAdapter<Itinerary> {
 
-	public BuslineDepartureAdapter(Context context, int resource,
+	public BuslineDepartureTimesAdapter(Context context, int resource,
 			int textViewResourceId, List<Itinerary> objects) {
 		super(context, resource, textViewResourceId, objects);
 	}
@@ -31,17 +31,14 @@ public class BuslineDepartureAdapter extends ArrayAdapter<Itinerary> {
 		
 		View view = super.getView(position, convertView, parent);
 
-		TextView textviewBusstop = (TextView) view.findViewById(R.id.textview_busstop);
 		TextView textviewTime = (TextView) view.findViewById(R.id.textview_time);
-		
-		String busstop = "" + super.getItem(position).getBusStopId();
 		
 		Time timeTime = super.getItem(position).getTime();
 		String hour = Utility.getTimeWithZero(timeTime.hour);
 		String minute = Utility.getTimeWithZero(timeTime.minute);
+		
 		String time = hour+":"+minute;
 		
-		textviewBusstop.setText("Meran - Seilb. Meran 2000 test test");
 		textviewTime.setText(time);
 		
 		return view;

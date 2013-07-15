@@ -9,23 +9,29 @@ import it.sasabz.sasabus.data.models.BusStop;
 import it.sasabz.sasabus.data.models.Itinerary;
 import it.sasabz.sasabus.logic.BusSchedulesDatabase;
 import it.sasabz.sasabus.ui.Utility;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
 public class BusSchedulesFragment extends SherlockFragment{
 
+	private ScrollView scrollViewBusSchedules;
 	private Spinner spinnerArea;
 	private Spinner spinnerBusLine;
 	private Spinner spinnerBuslineDirection;
@@ -52,11 +58,13 @@ public class BusSchedulesFragment extends SherlockFragment{
 		
 		//ListView
 		addAdapterToListView();
+		addOnItemSelectedListenerToListView();
 		
 		return view;
 	}
 	
 	private void initializeViews(View view) {
+		scrollViewBusSchedules = (ScrollView) view.findViewById(R.id.scrollview_busschedules);
 		spinnerArea = (Spinner) view.findViewById(R.id.spinner_area);
 		spinnerBusLine = (Spinner) view.findViewById(R.id.spinner_busline);
 		spinnerBuslineDirection = (Spinner) view.findViewById(R.id.spinner_busline_direction);
@@ -137,13 +145,27 @@ public class BusSchedulesFragment extends SherlockFragment{
 		});
 	}
 	
+	
 	private void addAdapterToListView() {
 		ListAdapter adapter = new BuslineDepartureAdapter(getSherlockActivity(),
-				R.layout.listview_item_busline_departure, R.id.textviewBusstop, 
-				BusSchedulesDatabase.getItinerary(null, null, null));
+				R.layout.listview_item_busline_departure, R.id.textview_busstop, 
+				BusSchedulesDatabase.getItineraryForLine(null, null, null));
 		listviewBuslineDepartures.setAdapter(adapter);
 		Utility.getListViewSize(listviewBuslineDepartures);
-		
+	}
+	
+	private void addOnItemSelectedListenerToListView() {
+		listviewBuslineDepartures.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Intent intentBusSchedulesDetails = new Intent(getSherlockActivity(),
+						BusSchedulesDetailsActivity.class);
+//				intentBusSchedulesDetails.putExtra("view", view.getTag());
+				startActivity(intentBusSchedulesDetails);
+				
+			}
+		});
 	}
 	
 }

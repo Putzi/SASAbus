@@ -182,4 +182,6 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 
 <string name="activity_label_results">Collegamenti trovati</string>
 
+<string name="departures">Partenze</string>
+
 </resources>

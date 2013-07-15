@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_padding"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_busline"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:orientation="horizontal" >
+    
+	    <TextView
+	        android:id="@+id/textview_busline"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentBottom="true"
+	        android:layout_marginRight="5dp"
+	        android:text="Line"
+	        android:textSize="15sp" />
+	
+	    <TextView
+	        android:id="@+id/textview_busline_number"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@id/textview_busline"
+	        android:layout_toRightOf="@id/textview_busline"
+	        android:text="1"
+	        android:textSize="23sp"
+	        android:textStyle="bold" />
+	    
+    </RelativeLayout>
+    
+    <TextView
+       android:id="@+id/textview_busstop_name"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="Meran - Seilb. Meran 2000"
+       android:textSize="22sp"
+       android:maxLines="2" />
+    
+    <LinearLayout
+        android:id="@+id/linearlayout_busline_times_course"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/listview_departure_times"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:choiceMode="singleChoice"
+            android:background="@color/grey2"
+            android:cacheColorHint="@android:color/transparent"
+            android:layout_marginBottom="5dp">
+        </ListView>
+
+        <ListView
+            android:id="@+id/listview_course"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:background="@color/grey2"
+            android:cacheColorHint="@android:color/transparent">
+        </ListView>
+        
+    </LinearLayout>
+    
+</LinearLayout>

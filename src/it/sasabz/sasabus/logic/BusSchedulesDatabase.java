@@ -89,19 +89,82 @@ public class BusSchedulesDatabase {
 		return fakeList;
 	}
 	
-	public static List<Itinerary> getItinerary(Area area, BusLine busLine, String direction) {
+	public static List<Itinerary> getItineraryForLine(Area area, BusLine busLine, String direction) {
 		
+		//TODO fetch data from database
 		
 		List<Itinerary> fakeList = new ArrayList<Itinerary>();
-			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:10"));
-			fakeList.add(new Itinerary(0, 1234, 0, 0, "09:20"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:00"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:01"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:02"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:03"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:04"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:05"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:06"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:07"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:08"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:09"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "08:30"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "08:31"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "08:32"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "08:33"));
+				
+		return fakeList;
+	}
+	
+	
+	public static List<Itinerary> getDepartureTimesForSingleBusstop(Area area, BusLine busline, BusStop busstop) {
+		
+		//TODO fetch data from database
+		
+		List<Itinerary> fakeList = new ArrayList<Itinerary>();
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "08:00"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "08:30"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "09:00"));
 			fakeList.add(new Itinerary(0, 1234, 0, 0, "09:30"));
-			fakeList.add(new Itinerary(0, 1234, 0, 0, "09:40"));
-			fakeList.add(new Itinerary(0, 1234, 0, 0, "09:50"));
 			fakeList.add(new Itinerary(0, 1234, 0, 0, "10:00"));
-			fakeList.add(new Itinerary(0, 1234, 0, 0, "10:10"));
-			fakeList.add(new Itinerary(0, 1234, 0, 0, "10:20"));
 			fakeList.add(new Itinerary(0, 1234, 0, 0, "10:30"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "11:00"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "11:30"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "12:00"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "12:30"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "13:00"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "13:30"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "14:00"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "14:30"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "15:00"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "15:30"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "16:00"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "16:30"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "17:00"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "17:30"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "18:00"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "18:30"));
+			fakeList.add(new Itinerary(0, 1234, 0, 0, "19:00"));
+			
+		return fakeList;
+		
+	}
+	
+	public static List<Itinerary> getItineraryForCourse(Area area, BusLine busLine, Itinerary itineraryStart) {
+		
+		//TODO fetch data from database
+		
+		List<Itinerary> fakeList = new ArrayList<Itinerary>();
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:00"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:01"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:02"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:03"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:04"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:05"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:06"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:07"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:08"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:09"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:10"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:11"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:12"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:13"));
 				
 		return fakeList;
 	}

@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ScrollView;
 
 public class Utility {
 
@@ -29,4 +30,12 @@ public class Utility {
         Log.i("height of listItem:", String.valueOf(totalHeight));
     }
 	
+	
+	public static String getTimeWithZero(int timeNumber) {
+		String time = ""+timeNumber;
+		if (timeNumber < 10){
+			time = "0"+timeNumber;
+		}
+		return time;
+	}
 }

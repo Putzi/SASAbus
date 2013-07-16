@@ -3,7 +3,8 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_padding">
+    android:padding="@dimen/activity_padding"
+    android:background="@drawable/background_gradient">
 
     <LinearLayout
         android:id="@+id/select_bus_stop_button_container"

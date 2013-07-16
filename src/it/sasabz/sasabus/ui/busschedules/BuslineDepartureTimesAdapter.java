@@ -5,33 +5,68 @@ import it.sasabz.sasabus.data.models.DBObject;
 import it.sasabz.sasabus.data.models.Itinerary;
 import it.sasabz.sasabus.ui.Utility;
 
+import java.lang.annotation.Inherited;
 import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
 import android.text.format.Time;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class BuslineDepartureTimesAdapter extends ArrayAdapter<Itinerary> {
 
+	private Context context;
+	private int selectedIndex;
+	private int normalColor;
+	private int selectedColor;
+	
 	public BuslineDepartureTimesAdapter(Context context, int resource,
 			int textViewResourceId, List<Itinerary> objects) {
 		super(context, resource, textViewResourceId, objects);
+		this.context = context;
+		normalColor = context.getResources().getColor(R.color.transparent);
+		selectedColor = context.getResources().getColor(R.color.orange_pressed);
 	}
+	
+	
+	private class ViewHolder {
+        RelativeLayout llItem;
+    }
 	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
-		View view = super.getView(position, convertView, parent);
+		View vi = convertView;
+        ViewHolder holder;
+        if(convertView == null) {
+            vi = LayoutInflater.from(context).inflate(R.layout.listview_item_busline_departure_time, null);
+            holder = new ViewHolder();
 
-		TextView textviewTime = (TextView) view.findViewById(R.id.textview_time);
+            holder.llItem = (RelativeLayout) vi;
+
+            vi.setTag(holder);
+        } else {
+            holder = (ViewHolder) vi.getTag();
+        }
+
+        if(selectedIndex!= -1 && position == selectedIndex) {
+            holder.llItem.setBackgroundColor(selectedColor);
+        } else {
+            holder.llItem.setBackgroundColor(normalColor);
+        }
+        
+        TextView textviewTime = (TextView) holder.llItem.findViewById(R.id.textview_time);
 		
 		Time timeTime = super.getItem(position).getTime();
 		String hour = Utility.getTimeWithZero(timeTime.hour);
@@ -40,8 +75,14 @@ public class BuslineDepartureTimesAdapter extends ArrayAdapter<Itinerary> {
 		String time = hour+":"+minute;
 		
 		textviewTime.setText(time);
-		
-		return view;
+
+        return vi;
+
+	}
+	
+	public void setSelectedIntex(int selectedIntex) {
+		this.selectedIndex = selectedIntex;
+		notifyDataSetChanged();
 	}
 
 }

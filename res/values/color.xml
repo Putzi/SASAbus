@@ -35,7 +35,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
     <color name="grey3">#CCCCCC</color>
     <color name="grey4">#898989</color>
     <color name="transparent">#00FFFFFF</color>
-    <color name="orange_focused">#FFBB33</color>
-    <color name="orange_pressed">#FF8800</color>
+    <color name="orange_focused">#80FF8800</color>
+    <color name="orange_pressed">#B3FF8800</color>
    
 </resources>

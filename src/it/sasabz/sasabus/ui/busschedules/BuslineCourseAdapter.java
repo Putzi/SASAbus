@@ -4,7 +4,6 @@ import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.Itinerary;
 import it.sasabz.sasabus.ui.Utility;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import android.content.Context;
@@ -20,7 +19,6 @@ public class BuslineCourseAdapter extends ArrayAdapter<Itinerary> {
 
 	private Context context;
 	private Time timeNow;
-	private SimpleDateFormat simpleDateFormat;
 	
 	public BuslineCourseAdapter(Context context, int resource,
 			int textViewResourceId, List<Itinerary> objects) {
@@ -28,9 +26,6 @@ public class BuslineCourseAdapter extends ArrayAdapter<Itinerary> {
 		this.context = context;
 		timeNow = new Time();
 		timeNow.setToNow();
-		//test
-		timeNow.hour = 9;
-		timeNow.minute = 4;
 	}
 	
 	@Override
@@ -43,6 +38,7 @@ public class BuslineCourseAdapter extends ArrayAdapter<Itinerary> {
 		TextView textviewBusstop = (TextView) view.findViewById(R.id.textview_busstop);
 		
 		String busstop = "" + super.getItem(position).getBusStopId();
+		textviewBusstop.setText("Meran - Seilb. Meran 2000 test test");
 		
 		Time timeTime = super.getItem(position).getTime();
 		String hour = Utility.getTimeWithZero(timeTime.hour);
@@ -61,7 +57,6 @@ public class BuslineCourseAdapter extends ArrayAdapter<Itinerary> {
 		
 		Log.i("comparison", timeNow + " " + timeTime);
 		
-		textviewBusstop.setText("Meran - Seilb. Meran 2000 test test");
 		textviewTime.setText(time);
 		
 		

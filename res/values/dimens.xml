@@ -5,6 +5,7 @@
     
     <dimen name="search_input_fields_margin">10dp</dimen>
     
-    <dimen name="list_padding">7dp</dimen>
+    <dimen name="container_padding">10dp</dimen>
     
+    <dimen name="listitem_height">33dp</dimen>
 </resources>

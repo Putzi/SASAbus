@@ -3,9 +3,8 @@
     android:id="@+id/scrollview_busschedules"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_background"
-    android:cacheColorHint="@android:color/transparent"
-    android:fillViewport="true" >
+    android:fillViewport="true"
+    android:background="@drawable/background_gradient">
 
     <LinearLayout
         android:id="@+id/linearlayout_fragment_bus_schedules"
@@ -67,18 +66,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp"
+            android:padding="@dimen/container_padding"
             android:background="@drawable/now_layout">
 
             <TextView
                 android:id="@+id/textview_departures_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/underline_stroke"
-                android:paddingTop="7dp"
-                android:paddingBottom="7dp"
                 android:text="@string/departures"
-                android:textSize="18sp" />
+                style="@style/title_with_underline" />
 
             <ListView
                 android:id="@+id/listview_busline_departures"

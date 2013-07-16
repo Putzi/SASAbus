@@ -186,5 +186,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="activity_label_results">Gefundene Verbindungen</string>
 
 <string name="departures">Abfahrten</string>
+<string name="departure_times">Abfahrtszeiten</string>
+<string name="course">Streckenverlauf</string>
 
 </resources>

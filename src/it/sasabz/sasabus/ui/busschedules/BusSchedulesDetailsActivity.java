@@ -9,8 +9,11 @@ import com.actionbarsherlock.view.MenuItem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -53,7 +56,7 @@ public class BusSchedulesDetailsActivity extends SherlockActivity {
 		textviewLinenumber = (TextView) findViewById(R.id.textview_busline_number);
 		textviewBusstop = (TextView) findViewById(R.id.textview_busstop);
 		listviewDepartureTimes = (ListView) findViewById(R.id.listview_departure_times);
-		listviewCourse = (ListView) findViewById(R.id.listview_course);
+		listviewCourse = (ListView) findViewById(R.id.listview_line_course);
 	}
 	
 	
@@ -69,9 +72,12 @@ public class BusSchedulesDetailsActivity extends SherlockActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				view.setSelected(true);
-				//TODO refresh the course
+				BuslineDepartureTimesAdapter adapter = (BuslineDepartureTimesAdapter) 
+						parent.getAdapter();
+				adapter.setSelectedIntex(position);
 				
+				
+				//TODO refresh the course
 			}
 		});
 	}
@@ -82,7 +88,6 @@ public class BusSchedulesDetailsActivity extends SherlockActivity {
 				R.layout.listview_item_busline_course, R.id.textview_time, 
 				BusSchedulesDatabase.getItineraryForCourse(null, null, null));
 				listviewCourse.setAdapter(adapter);
-		listviewCourse.setSelector(android.R.color.transparent);
 	}
 	
 }

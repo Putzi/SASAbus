@@ -69,12 +69,20 @@
             android:padding="@dimen/container_padding"
             android:background="@drawable/now_layout">
 
-            <TextView
-                android:id="@+id/textview_departures_title"
+            
+            <RelativeLayout 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/departures"
-                style="@style/title_with_underline" />
+                style="@style/title_with_underline">
+                
+	            <TextView
+	                android:id="@+id/textview_departures_title"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="@string/departures"
+	                style="@style/title" />
+	            
+            </RelativeLayout>
 
             <ListView
                 android:id="@+id/listview_busline_departures"

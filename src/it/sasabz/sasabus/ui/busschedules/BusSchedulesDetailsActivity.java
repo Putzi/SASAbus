@@ -63,7 +63,7 @@ public class BusSchedulesDetailsActivity extends SherlockActivity {
 	private void addAdapterToListViewDepartureTimes() {
 		ListAdapter adapter = new BuslineDepartureTimesAdapter(this,
 				R.layout.listview_item_busline_departure_time, R.id.textview_time, 
-				BusSchedulesDatabase.getDepartureTimesForSingleBusstop(null, null, null));
+				BusSchedulesDatabase.getDepartureTimesForBusstop(null, null, null));
 		listviewDepartureTimes.setAdapter(adapter);
 	}
 	

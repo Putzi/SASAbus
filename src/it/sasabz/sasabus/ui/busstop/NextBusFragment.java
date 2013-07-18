@@ -25,10 +25,15 @@
 package it.sasabz.sasabus.ui.busstop;
 
 import it.sasabz.android.sasabus.R;
+import it.sasabz.sasabus.logic.BusSchedulesDatabase;
+import it.sasabz.sasabus.ui.Utility;
+import it.sasabz.sasabus.ui.busschedules.BuslineDepartureAdapter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
@@ -37,12 +42,30 @@ import com.actionbarsherlock.app.SherlockFragment;
  */
 public class NextBusFragment extends SherlockFragment{
 
+	private ListView listviewNextBuses;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_next_bus, container, false);
 		
+		initializeViews(view);
+		
+		addAdapterToListView();
+		
 		return view;
+	}
+	
+	private void initializeViews(View view) {
+		listviewNextBuses = (ListView) view.findViewById(R.id.listview_next_buses);
+	}
+	
+	private void addAdapterToListView() {
+		ListAdapter adapter = new NextBusAdapter(getSherlockActivity(),
+				R.layout.listview_item_next_bus, R.id.textview_busline, 
+				BusSchedulesDatabase.getNextBusesItineraryForBusstop(null));
+		listviewNextBuses.setAdapter(adapter);
+//		Utility.getListViewSize(listviewBuslineDepartures);
 	}
 	
 }

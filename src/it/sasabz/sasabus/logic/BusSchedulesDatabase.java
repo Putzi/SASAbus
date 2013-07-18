@@ -46,30 +46,15 @@ public class BusSchedulesDatabase {
 			fakeList.add(new BusLine("Linie 3", null, null, null, 0));
 			fakeList.add(new BusLine("Linie 4", null, null, null, 0));
 			fakeList.add(new BusLine("Linie 5", null, null, null, 0));
+			fakeList.add(new BusLine("Linie 6", null, null, null, 0));
+			fakeList.add(new BusLine("Linie 7", null, null, null, 0));
+			fakeList.add(new BusLine("Linie 7A", null, null, null, 0));
+			fakeList.add(new BusLine("Linie 7B", null, null, null, 0));
+			fakeList.add(new BusLine("Linie 8", null, null, null, 0));
 			
 		return fakeList;
 	}
 	
-
-	/**
-	 * Fetch all bus stops available in the database for a specific busline
-	 * @param busline is the line of the bus
-	 * @return {@link List} of the busstops
-	 */
-	public static List<BusStop> getAllBusStopsForBusLine(BusLine busline) {
-		
-		//TODO fetch data from local database about all bus stops available
-		//for spinner 
-		
-		List<BusStop> fakeList = new ArrayList<BusStop>();
-			fakeList.add(new BusStop(0, "Bolzano - Via Merano", "Bozen - Meranerstr."));
-			fakeList.add(new BusStop(0, "Bolzano - Via Druso 11", "Bozen - Drusus Str. 11"));
-			fakeList.add(new BusStop(0, "Bolzano - Via G. di Vittorio Str.", "Bozen - G. di Vittorio Str."));
-			fakeList.add(new BusStop(0, "Bolzano - Via Braille", "Bozen - Braille Str./Bz S"));
-			fakeList.add(new BusStop(0, "Bolzano - Via Lancia 2", "Bozen - Lanciastr. 2"));
-			
-		return fakeList;
-	}
 	
 	/**
 	 * Fetch the starting and the ending bus stop of a specific busline
@@ -113,7 +98,7 @@ public class BusSchedulesDatabase {
 	}
 	
 	
-	public static List<Itinerary> getDepartureTimesForSingleBusstop(Area area, BusLine busline, BusStop busstop) {
+	public static List<Itinerary> getDepartureTimesForBusstop(Area area, BusLine busline, BusStop busstop) {
 		
 		//TODO fetch data from database
 		
@@ -167,6 +152,22 @@ public class BusSchedulesDatabase {
 			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "09:13"));
 				
 		return fakeList;
+	}
+	
+	
+	public static List<Itinerary> getNextBusesItineraryForBusstop(BusStop busstop) {
+		
+		//TODO fetch data from database
+		
+		List<Itinerary> fakeList = new ArrayList<Itinerary>();
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "00:03"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "00:04"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "00:06"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "00:08"));
+			fakeList.add(new Itinerary(0, 1234567891, 0, 0, "00:11"));
+				
+		return fakeList;
+		
 	}
 	
 }

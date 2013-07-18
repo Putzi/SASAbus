@@ -3,34 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/listitem_height">
     
-    <ImageView
-        android:id="@+id/imageview_busstop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="-8dp"
-        android:layout_centerVertical="true"
-        android:src="@drawable/btn_radio_off_holo_light" />
-    
     <TextView
-	    android:id="@+id/textview_time"
+	    android:id="@+id/textview_minutes"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_toRightOf="@id/imageview_busstop"
 	    android:layout_centerVertical="true"
+	    android:layout_alignParentRight="true"
 	    android:layout_marginRight="5dp"
-	    android:text="00:00"
+	    android:text="03:30"
 	    android:textSize="@dimen/textsize_standard"
 	    android:textStyle="bold" />
     
 	<TextView
-	    android:id="@+id/textview_busstop"
+	    android:id="@+id/textview_busline"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_toRightOf="@id/textview_time"
 	    android:layout_centerVertical="true"
 	    android:ellipsize="marquee"
 	    android:singleLine="true"
-	    android:text="Meran - Seilb. Meran 2000 test test"
+	    android:text="Line 1 - Via Fago"
 	    android:textSize="@dimen/textsize_standard" />
     
 </RelativeLayout>

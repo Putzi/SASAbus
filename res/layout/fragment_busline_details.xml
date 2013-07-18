@@ -60,12 +60,17 @@
             android:padding="@dimen/container_padding"
             android:background="@drawable/now_layout">
 
-            <TextView
-                android:id="@+id/textview_departure_times_title"
-                style="@style/title_with_underline"
+            <RelativeLayout 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/departure_times" />
+                style="@style/title_with_underline">
+	            <TextView
+	                android:id="@+id/textview_departure_times_title"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:text="@string/departure_times"
+	                style="@style/title" />
+            </RelativeLayout>
 
             <ListView
                 android:id="@+id/listview_departure_times"
@@ -87,12 +92,17 @@
             android:padding="@dimen/container_padding"
             android:background="@drawable/now_layout">
 
-            <TextView
-                android:id="@+id/textview_line_course_title"
-                style="@style/title_with_underline"
+            <RelativeLayout 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/course" />
+                style="@style/title_with_underline">
+	            <TextView
+	                android:id="@+id/textview_line_course_title"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:text="@string/course"
+	                style="@style/title" />
+	        </RelativeLayout>
             
             <ListView
                 android:id="@+id/listview_line_course"

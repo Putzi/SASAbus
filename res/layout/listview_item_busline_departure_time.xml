@@ -11,7 +11,7 @@
 	    android:ellipsize="marquee"
 	    android:singleLine="true"
 	    android:text="00:00"
-	    android:textSize="18sp"
+	    android:textSize="@dimen/textsize_standard"
 	    android:gravity="center_horizontal" />
     
 </RelativeLayout>

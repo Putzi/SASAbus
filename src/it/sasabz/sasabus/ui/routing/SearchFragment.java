@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import it.sasabz.android.sasabus.R;
+import it.sasabz.sasabus.ui.SearchInputField;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,22 +32,8 @@ import com.actionbarsherlock.app.SherlockFragment;
 
 public class SearchFragment extends SherlockFragment {
 
-	
-	private ViewGroup viewgroupDepartureInputfield;
-	private AutoCompleteTextView autoCompleteTextViewDeparture;
-	
-	private ViewGroup viewgroupArrivalInputField;
-	private AutoCompleteTextView autoCompleteTextViewArrival;
-	
-	private ViewGroup viewgroupDepartureMore;
-	private ImageButton imageButtonDepartureMore;
-	
-	private ViewGroup viewgroupArrivalMore;
-	private ImageButton imageButtonArrivalMore;
-	
-	private ViewGroup viewgroupDepartureSearchButtons;
-	private ViewGroup viewgroupArrivalSearchButtons;
-	
+	private SearchInputField searchinputfieldDeparture;
+	private SearchInputField searchinputfieldArrival;
 	private Button buttonDate;
 	private Button buttonTime;
 	private Button buttonSearch;
@@ -59,8 +46,6 @@ public class SearchFragment extends SherlockFragment {
 		View view = inflater.inflate(R.layout.fragment_search, container, false);
 		
 		initializeViews(view);
-		
-		addOnClickListenerForMoreButtons(view);
 		
 		insertCurrentDateIntoButton(view);
 		addOnclickListenerForDate(view);
@@ -79,20 +64,11 @@ public class SearchFragment extends SherlockFragment {
 	 * @param view the fragment which gets inflated
 	 */
 	private void initializeViews(View view) {
-		viewgroupDepartureInputfield = (ViewGroup) view.findViewById(R.id.linearlayout_departure_inputfield);
-		autoCompleteTextViewDeparture = (AutoCompleteTextView) view.findViewById(R.id.autocompletetextview_departure);
 		
-		viewgroupArrivalInputField = (ViewGroup) view.findViewById(R.id.linearlayout_arrival_inputfield);
-		autoCompleteTextViewArrival = (AutoCompleteTextView) view.findViewById(R.id.autocompletetextview_arrival);
-		
-		viewgroupDepartureMore = (ViewGroup) view.findViewById(R.id.linearlayout_departure_more);
-		imageButtonDepartureMore = (ImageButton) viewgroupDepartureMore.findViewById(R.id.imagebutton_more);
-		
-		viewgroupArrivalMore = (ViewGroup) view.findViewById(R.id.linearlayout_arrival_more);
-		imageButtonArrivalMore = (ImageButton) viewgroupArrivalMore.findViewById(R.id.imagebutton_more);
-		
-		viewgroupDepartureSearchButtons = (ViewGroup) view.findViewById(R.id.linearlayout_departure_buttons);
-		viewgroupArrivalSearchButtons = (ViewGroup) view.findViewById(R.id.linearlayout_arrival_buttons);
+		searchinputfieldDeparture = (SearchInputField) view.findViewById
+				(R.id.searchinputfieldDeparture);
+		searchinputfieldArrival = (SearchInputField) view.findViewById
+				(R.id.searchinputfieldArrival);
 		
 		buttonDate = (Button) view.findViewById(R.id.button_date);
 		buttonTime = (Button) view.findViewById(R.id.button_time);
@@ -101,62 +77,6 @@ public class SearchFragment extends SherlockFragment {
 		buttonSearch = (Button) bs.findViewById(R.id.button_search);
 	}
 
-
-	//More buttons
-	private void addOnClickListenerForMoreButtons(View view) {
-		OnClickListener onClickListenerForMoreButtons = new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				openCloseSearchButtons(v);
-			}
-		};
-		imageButtonDepartureMore.setOnClickListener(onClickListenerForMoreButtons);
-			List<ViewGroup> b1 = new ArrayList<ViewGroup>();
-				b1.add(viewgroupDepartureSearchButtons);
-				b1.add(viewgroupDepartureInputfield);
-			imageButtonDepartureMore.setTag(b1);
-			
-		imageButtonArrivalMore.setOnClickListener(onClickListenerForMoreButtons);
-			List<ViewGroup> b2 = new ArrayList<ViewGroup>();
-				b2.add(viewgroupArrivalSearchButtons);
-				b2.add(viewgroupArrivalInputField);
-			imageButtonArrivalMore.setTag(b2);
-	}
-	
-	private ViewGroup containerButtons;
-	private LayoutParams paramsButtons;
-	private ViewGroup containerInputfield;
-	private LayoutParams paramsInputfield;
-	
-	private void openCloseSearchButtons(View v) {
-		List<?> b = (List<?>) v.getTag();
-		containerButtons = (ViewGroup) b.get(0);
-		containerInputfield = (ViewGroup) b.get(1);
-		LinearLayout button = (LinearLayout) v.getParent();
-		
-		paramsButtons = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		paramsInputfield = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
-		
-		if (!button.isSelected()) {
-			paramsButtons.addRule(RelativeLayout.LEFT_OF, button.getId());
-			containerButtons.setLayoutParams(paramsButtons);
-			
-			paramsInputfield.addRule(RelativeLayout.LEFT_OF, containerButtons.getId());
-			containerInputfield.setLayoutParams(paramsInputfield);
-			
-			button.setSelected(true);
-		} else {
-			paramsButtons.addRule(RelativeLayout.RIGHT_OF, button.getId());
-			containerButtons.setLayoutParams(paramsButtons);
-			
-			paramsInputfield.addRule(RelativeLayout.LEFT_OF, button.getId());
-			containerInputfield.setLayoutParams(paramsInputfield);
-			
-			button.setSelected(false);
-		}
-		
-	}
-	
 
 	//Date
 	/**
@@ -273,9 +193,9 @@ public class SearchFragment extends SherlockFragment {
 			public void onClick(View v) {
 				
 				//Get the contents of the views
-				String departurePredefined = autoCompleteTextViewDeparture.getHint().toString();
-				String departure = autoCompleteTextViewDeparture.getText().toString();
-				String arrival = autoCompleteTextViewArrival.getText().toString();
+				String departurePredefined = searchinputfieldDeparture.getHint();
+				String departure = searchinputfieldDeparture.getText();;
+				String arrival = searchinputfieldArrival.getText();
 				String date = buttonDate.getText().toString();
 				String time = buttonTime.getText().toString();
 				

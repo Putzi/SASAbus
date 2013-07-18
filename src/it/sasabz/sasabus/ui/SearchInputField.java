@@ -24,8 +24,6 @@ public class SearchInputField extends RelativeLayout {
 	private ImageButton imagebuttonFavorites;
 	
 	
-	private String hint;
-	
 	public SearchInputField(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		inflate(context, R.layout.search_inputfield, this);
@@ -40,12 +38,11 @@ public class SearchInputField extends RelativeLayout {
 		TypedArray array = context.getTheme().obtainStyledAttributes
 				(attrs, R.styleable.SearchInputField, 0, 0);
 		try {
-			hint = array.getString(R.styleable.SearchInputField_android_hint);
+			autocompletetextviewInputfield.setHint
+				(array.getString(R.styleable.SearchInputField_android_hint));
 		} finally {
 			array.recycle();
 		}
-		autocompletetextviewInputfield.setHint(hint);
-				
 	}
 	
 	private void initializeViews() {
@@ -102,12 +99,17 @@ public class SearchInputField extends RelativeLayout {
 			
 		}
 		
-		public String getHint () {
-			return hint;
+		
+		public String getHint() {
+			return autocompletetextviewInputfield.getHint().toString();
 		}
 		
 		public void setHint(String hint) {
-			this.hint = hint; 
+			autocompletetextviewInputfield.setHint(hint); 
+		}
+		
+		public String getText() {
+			return autocompletetextviewInputfield.getText().toString();
 		}
 	
 }

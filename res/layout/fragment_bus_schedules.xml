@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/map"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_action_map" />
+                android:src="@drawable/mapview" />
 
             <Spinner
                 android:id="@+id/spinner_area"

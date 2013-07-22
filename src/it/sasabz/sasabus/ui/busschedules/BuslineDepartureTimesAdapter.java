@@ -1,27 +1,18 @@
 package it.sasabz.sasabus.ui.busschedules;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.sasabus.data.models.DBObject;
 import it.sasabz.sasabus.data.models.Itinerary;
 import it.sasabz.sasabus.ui.Utility;
 
-import java.lang.annotation.Inherited;
 import java.util.List;
-import java.util.Map;
 
 import android.content.Context;
 import android.text.format.Time;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 public class BuslineDepartureTimesAdapter extends ArrayAdapter<Itinerary> {

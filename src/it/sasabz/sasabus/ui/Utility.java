@@ -1,5 +1,6 @@
 package it.sasabz.sasabus.ui;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,4 +39,11 @@ public class Utility {
 		}
 		return time;
 	}
+	
+	public static int getDipsFromPixel(Context context, float pixels) {
+        // Get the screen's density scale
+        final float scale = context.getResources().getDisplayMetrics().density;
+        // Convert the dps to pixels, based on density scale
+        return (int) (pixels * scale + 0.5f);
+    }
 }

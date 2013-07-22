@@ -26,13 +26,13 @@
     </style>
     
      <style name="button_with_text">
-        <item name="android:background">@drawable/selector_orange</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:background">@drawable/list_selector_holo_light</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:padding">5dp</item>
     </style>
     
     <style name="search_button">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:maxHeight">20dp</item>
     </style>
     

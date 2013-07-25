@@ -165,6 +165,9 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="bus_stops_nearby">Fermate nei dintorni</string>
 <string name="bus_stop_from_map">Fermata dalla mappa</string>
 
+<string name="departure">Partenza:</string>
+<string name="arrival">Arrivo:</string>
+
 <string name="departure_bus_stop">Fermata di partenza</string>
 <string name="arrival_bus_stop">Fermata d\'arrivo</string>
 
@@ -173,6 +176,8 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="map_button">Selezionare fermata dalla mappa</string>
 <string name="favorites_button">Fermate preferiti</string>
 
+<string name="date">Data:</string>
+<string name="time">Ora:</string>
 <string name="date_pattern">gg/mm/aaaa</string>
 <string name="time_pattern">oo/mm</string>
 

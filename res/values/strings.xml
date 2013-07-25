@@ -175,6 +175,9 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="bus_stops_nearby">Bus stops nearby</string>
 <string name="bus_stop_from_map">Bus stop from map</string>
 
+<string name="departure">Departure:</string>
+<string name="arrival">Arrival:</string>
+
 <string name="departure_bus_stop">Departure bus stop</string>
 <string name="arrival_bus_stop">Arrival bus stop</string>
 
@@ -183,6 +186,8 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="map_button">Select bus stop from map</string>
 <string name="favorites_button">Favorite bus stops</string>
 
+<string name="date">Date:</string>
+<string name="time">Time:</string>
 <string name="date_pattern">dd/mm/yyyy</string>
 <string name="time_pattern">hh/mm</string>
 

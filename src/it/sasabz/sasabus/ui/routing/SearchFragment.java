@@ -31,7 +31,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.actionbarsherlock.app.SherlockFragment;
 
 public class SearchFragment extends SherlockFragment {
-
+	
 	private SearchInputField searchinputfieldDeparture;
 	private SearchInputField searchinputfieldArrival;
 	private Button buttonDate;
@@ -200,21 +200,25 @@ public class SearchFragment extends SherlockFragment {
 				String time = buttonTime.getText().toString();
 				
 				//Check if the input fields are not empty
-				if (!departure.trim().equals("") || !departurePredefined.trim().equals("") && arrival.trim().equals("")){
+				if (!departure.trim().equals("") || !departurePredefined.trim().equals("") && !arrival.trim().equals("")){
 					
 					//check whether the user has inserted a departure bus stop,
 					//or whether we should use the predefined one, which is 
 					//the closest bus stop to the last known location
-					if(!departurePredefined.trim().equals("")){
-						departure = departurePredefined;
-					}
+//					if(!departurePredefined.trim().equals("")){
+//						departure = departurePredefined;
+//					}
 					
-					departure = "(" + departure.replace(" -", ")");
-					arrival = "(" + arrival.replace(" -", ")");
+//					departure = "(" + departure.replace(" -", ")");
+//					arrival = "(" + arrival.replace(" -", ")");
 					
 				}
 				
 				Intent intentSearchResults = new Intent(getSherlockActivity(), SearchResultsActivity.class);
+				intentSearchResults.putExtra("departure", departure);
+				intentSearchResults.putExtra("arrival", arrival);
+				intentSearchResults.putExtra("date", date);
+				intentSearchResults.putExtra("time", time);
 				startActivity(intentSearchResults);
 			}
 		});

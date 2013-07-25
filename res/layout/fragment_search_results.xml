@@ -14,12 +14,104 @@
         android:padding="@dimen/container_padding"
         android:background="@drawable/now_layout">
         
+        <RelativeLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        style="@style/title_with_underline">
+                
+	            <LinearLayout
+	                android:id="@+id/linearlayout_titles"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical">
+		            <TextView
+		                android:id="@+id/textview_departure_title"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="@string/departure"
+		                android:textSize="15sp"
+		                android:textColor="@color/grey4" />
+		            
+		           	<TextView
+		                android:id="@+id/textview_arrival_title"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="@string/arrival"
+		                android:textSize="15sp"
+		                android:textColor="@color/grey4" />
+	           	</LinearLayout>
+	           	
+	            <LinearLayout
+	                android:id="@+id/linearlayout_busstops"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical"
+	                android:layout_toRightOf="@id/linearlayout_titles"
+	                android:layout_marginLeft="5dp">
+		            <TextView
+		                android:id="@+id/textview_departure"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="Vadena - Birti"
+		                android:textSize="15sp" />
+		            
+		           	<TextView
+		                android:id="@+id/textview_arrival"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="Gargazzone - Municipio"
+		                android:textSize="15sp" />
+	           	</LinearLayout>
+	           	
+	            <LinearLayout
+	                android:id="@+id/linearlayout_date_and_time"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:orientation="horizontal"
+	                android:layout_below="@id/linearlayout_titles">
+	                <TextView
+		                android:id="@+id/textview_date_title"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="@string/date"
+		                android:textSize="15sp"
+		                android:textColor="@color/grey4" />
+		            <TextView
+		                android:id="@+id/textview_date"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="2dp"
+		                android:text="25.07.2013"
+		                android:textSize="15sp" />
+		            
+		            <TextView
+		                android:id="@+id/textview_time_title"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="5dp"
+		                android:text="@string/time"
+		                android:textSize="15sp"
+		                android:textColor="@color/grey4" />
+		           	<TextView
+		                android:id="@+id/textview_time"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="2dp"
+		                android:text="12:05"
+		                android:textSize="15sp" />
+	           	</LinearLayout>
+	            
+	            
+            </RelativeLayout>
+        
 	    <ExpandableListView
 	        android:id="@+id/expandablelistview_results"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:groupIndicator="@drawable/selector_groupindicator"
-	        android:listSelector="@drawable/list_selector_holo_light">
+	        android:listSelector="@drawable/list_selector_holo_light"
+	        android:visibility="invisible" >
+
 	    </ExpandableListView>
     
     </LinearLayout>

@@ -128,7 +128,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="search_connection">Suche Verbindung</string>
 <string name="select_stop">Bitte Haltestelle aussuchen</string>
 
-<string name="time">Datum und Uhrzeit:</string>
+<string name="date_and_time">Datum und Uhrzeit:</string>
 <string name="time_txt">dd.mm.yyyy</string>
 
 <string name="waiting">Bitte warten...</string>

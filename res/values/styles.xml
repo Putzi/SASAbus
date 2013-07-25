@@ -31,6 +31,11 @@
         <item name="android:padding">5dp</item>
     </style>
     
+     <style name="text_hint">
+         <item name="android:textSize">18sp</item>
+         <item name="android:textColor">@color/grey4</item>
+     </style>
+    
     <style name="search_button">
         <item name="android:textSize">18sp</item>
         <item name="android:maxHeight">20dp</item>

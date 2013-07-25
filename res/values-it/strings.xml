@@ -127,7 +127,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="mode_home">Home</string>
 <string name="select_stop">Scegliere la fermata</string>
 
-<string name="time">Data e ora:</string>
+<string name="date_and_time">Data e ora:</string>
 <string name="time_txt">gg/mm/yyyy</string>
 
 <string name="waiting">Attendere...</string>

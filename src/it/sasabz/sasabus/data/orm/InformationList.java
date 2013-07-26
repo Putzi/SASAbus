@@ -28,6 +28,7 @@ import it.sasabz.sasabus.data.models.DBObject;
 import it.sasabz.sasabus.data.models.Information;
 import it.sasabz.sasabus.data.network.SasabusHTTP;
 import it.sasabz.sasabus.ui.SASAbus;
+import it.sasabz.sasabus.ui.info.InfoActivity.InfosCallback;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,33 +43,32 @@ import android.util.Log;
 
 /** Downlaods latest Infos about service variations */
 public class InformationList extends
-		AsyncTask<Integer, Void, ArrayList<DBObject>> {
+		AsyncTask<Void, Void, ArrayList<DBObject>> {
 
 	private final Activity activity;
+	private final InfosCallback callback;
 
-	public InformationList(Activity activity) {
+	public InformationList(Activity activity, InfosCallback callback) {
 		super();
+		this.callback = callback;
 		this.activity = activity;
 	}
 
 	@Override
-	protected ArrayList<DBObject> doInBackground(Integer... params) {
+	protected ArrayList<DBObject> doInBackground(Void... params) {
 		ArrayList<DBObject> list = null;
 		try
 		{
 
 			String newsserver = SASAbus.getContext().getString(
-					R.string.newsserver);
+					R.string.newsserverjson);
 			SasabusHTTP http = new SasabusHTTP(newsserver);
 
-			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-			nameValuePairs.add(new BasicNameValuePair("city", Integer
-					.toString(params[0])));
-
-			String xml = http.postData(nameValuePairs);
+			String xml = http.postData();
+			
 			if (xml == null)
 			{
-				throw new IOException("XML request string is NULL");
+				throw new IOException("JSON request string is NULL");
 			}
 
 			String[] stringarray = xml.split("<meldung>");

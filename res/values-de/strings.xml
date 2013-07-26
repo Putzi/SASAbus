@@ -113,6 +113,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="scan_text_not_implemented">Dieses Feature ist in kürze Verfügbar!</string>
 
 <string name="delete">Löschen</string>
+<string name="refresh">Aktualisieren</string>
 
 <string name="map">Karte</string>
 <string name="map_pick">Aus Karte</string>

@@ -1,11 +1,16 @@
 package it.sasabz.sasabus.ui;
 
+import java.util.List;
+
 import it.sasabz.android.sasabus.R;
+import it.sasabz.sasabus.data.models.BusStop;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -30,7 +35,7 @@ public class SearchInputField extends RelativeLayout {
 		
 		initializeViews();
 		init(context, attrs);
-		addOnClickListenerForMoreButtons(this);
+		addOnClickListenerForMoreButton(this);
 		
 	}
 	
@@ -63,7 +68,7 @@ public class SearchInputField extends RelativeLayout {
 	
 	
 	//More buttons
-		private void addOnClickListenerForMoreButtons(View view) {
+		private void addOnClickListenerForMoreButton(View view) {
 			imageButtonMore.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
@@ -110,6 +115,12 @@ public class SearchInputField extends RelativeLayout {
 		
 		public String getText() {
 			return autocompletetextviewInputfield.getText().toString();
+		}
+		
+		public void addAdapterToAutocompletetextview(Context context, List<BusStop> list) {
+			ArrayAdapter<BusStop> adapter = new ArrayAdapter<BusStop>(context, 
+					android.R.layout.simple_dropdown_item_1line, list);
+			autocompletetextviewInputfield.setAdapter(adapter);
 		}
 	
 }

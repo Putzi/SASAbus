@@ -130,7 +130,7 @@ public class MainTabActivity extends SherlockFragmentActivity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.optionmenu, menu);
+		getSupportMenuInflater().inflate(R.menu.activity_main, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
 	

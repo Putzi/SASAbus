@@ -118,6 +118,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="scan">Scanning</string>
 
 <string name="delete">Delete</string>
+<string name="refresh">Refresh</string>
 
 <string name="map">Map</string>
 <string name="map_pick">From map</string>

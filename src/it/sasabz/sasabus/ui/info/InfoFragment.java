@@ -126,8 +126,6 @@ public class InfoFragment extends SherlockListFragment {
 //		progressDialog.setCancelable(false);
 //		progressDialog.show();
 
-		InformationList info = new InformationList(getSherlockActivity());
-		info.execute(Integer.valueOf(infocity));
 	}
 
 	/**

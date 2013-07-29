@@ -45,13 +45,11 @@ import android.util.Log;
 public class InformationList extends
 		AsyncTask<Void, Void, ArrayList<DBObject>> {
 
-	private final Activity activity;
 	private final InfosCallback callback;
 
-	public InformationList(Activity activity, InfosCallback callback) {
+	public InformationList(InfosCallback callback) {
 		super();
 		this.callback = callback;
-		this.activity = activity;
 	}
 
 	@Override
@@ -122,6 +120,7 @@ public class InformationList extends
 	protected void onPostExecute(ArrayList<DBObject> result) {
 		super.onPostExecute(result);
 		// activity.fillList(result);
+		callback.infosDownloaded(result);
 	}
 
 }

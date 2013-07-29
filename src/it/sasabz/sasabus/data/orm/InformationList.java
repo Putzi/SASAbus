@@ -43,7 +43,7 @@ import android.util.Log;
 
 /** Downlaods latest Infos about service variations */
 public class InformationList extends
-		AsyncTask<Void, Void, ArrayList<DBObject>> {
+		AsyncTask<Void, Void, ArrayList<Information>> {
 
 	private final InfosCallback callback;
 
@@ -53,8 +53,8 @@ public class InformationList extends
 	}
 
 	@Override
-	protected ArrayList<DBObject> doInBackground(Void... params) {
-		ArrayList<DBObject> list = null;
+	protected ArrayList<Information> doInBackground(Void... params) {
+		ArrayList<Information> list = null;
 		try
 		{
 
@@ -105,7 +105,7 @@ public class InformationList extends
 						Integer.parseInt(stadt));
 				if (list == null)
 				{
-					list = new ArrayList<DBObject>();
+					list = new ArrayList<Information>();
 				}
 				list.add(info);
 			}
@@ -117,7 +117,7 @@ public class InformationList extends
 	}
 
 	@Override
-	protected void onPostExecute(ArrayList<DBObject> result) {
+	protected void onPostExecute(ArrayList<Information> result) {
 		super.onPostExecute(result);
 		// activity.fillList(result);
 		callback.infosDownloaded(result);

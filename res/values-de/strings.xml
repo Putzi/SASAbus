@@ -195,4 +195,6 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="departure_times">Abfahrtszeiten</string>
 <string name="course">Streckenverlauf</string>
 
+<string name="lines">Linien:</string>
+
 </resources>

@@ -202,5 +202,6 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="departure_times">Departure times</string>
 <string name="course">Course</string>
 
+<string name="lines">Lines:</string>
 
 </resources>

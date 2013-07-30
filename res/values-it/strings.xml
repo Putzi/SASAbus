@@ -192,4 +192,6 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="departure_times">Orario di partenza</string>
 <string name="course">Percorso</string>
 
+<string name="lines">Linee:</string>
+
 </resources>

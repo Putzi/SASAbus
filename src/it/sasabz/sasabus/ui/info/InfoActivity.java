@@ -16,12 +16,19 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 
 import android.R.bool;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -113,6 +120,9 @@ public class InfoActivity extends SherlockActivity {
 			optionsMenuitemRefresh.setActionView(null);
 		}
 	}
+
+	private ListView listviewCurrentlyOpen;
+	private Button buttonCurrentlyOpen;
 	
 	private void addAdapterToListViews(List<Information> infos) {
 		linearlayoutInfos.removeAllViews();
@@ -121,19 +131,55 @@ public class InfoActivity extends SherlockActivity {
 		
 		for (String area : areas) {
 			View viewInfos = getLayoutInflater().inflate(R.layout.list_info, null);
+			
+			//Add area as title
 			TextView textviewArea = (TextView) viewInfos.findViewById(R.id.textview_area);
 			textviewArea.setText(area);
-			linearlayoutInfos.addView(viewInfos);
 			
+			//Add list of Infos for specific area
 			List<Information> filteredInfos = DownloadInfos.getInfosForArea(infos, area);
-			ListView list = (ListView) viewInfos.findViewById(R.id.listview_infos);
+			final ListView list = (ListView) viewInfos.findViewById(R.id.listview_infos);
 			ArrayAdapter<Information> listadapter = new InfosAdapter(this, 
 					R.layout.listview_item_info, R.id.textview_busline, 
 					filteredInfos);
 			list.setAdapter(listadapter);
-			Utility.getListViewSize(list);
+			
+			
+			
+			//Add button for expanding/collapsing infos for a specific area
+			final Button buttonExpandCollapse = (Button) viewInfos.findViewById(R.id.button_expand);
+			buttonExpandCollapse.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					if (list.getVisibility() == View.GONE) {
+						expand(buttonExpandCollapse, list);
+						
+						if (listviewCurrentlyOpen != null && listviewCurrentlyOpen != list) {
+							collapse(buttonCurrentlyOpen, listviewCurrentlyOpen);
+						}
+						listviewCurrentlyOpen = list;
+						buttonCurrentlyOpen = buttonExpandCollapse;
+					} else {
+						collapse(buttonExpandCollapse, list);
+					}
+				}
+			});
+			
+			linearlayoutInfos.addView(viewInfos);
 			
 		}
+	}
+	
+	private void expand(Button button, ListView list) {
+		button.setCompoundDrawablesWithIntrinsicBounds(
+				0, 0, R.drawable.ic_navigation_collapse, 0);
+		list.setVisibility(View.VISIBLE);
+	}
+	
+	private void collapse(Button button, ListView list) {
+		button.setCompoundDrawablesWithIntrinsicBounds(
+				0, 0, R.drawable.ic_navigation_expand, 0);
+		list.setVisibility(View.GONE);
 	}
 	
 }

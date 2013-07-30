@@ -38,7 +38,8 @@ public class InfosAdapter extends ArrayAdapter<Information>{
         }
         
         TextView textviewBusline = (TextView) view.findViewById(R.id.textview_busline);
-        String buslines = ""+getItem(position).getStadt();
+        String buslines = context.getResources().getString(R.string.lines)
+        		+"\n"+getItem(position).getStadt();
         textviewBusline.setText(buslines);
         
         TextView textviewInfoTitle = (TextView) view.findViewById(R.id.textview_info_title);

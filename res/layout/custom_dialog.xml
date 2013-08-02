@@ -39,23 +39,25 @@
         android:background="@color/grey3" />
     
     <LinearLayout
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="45dp"
         android:orientation="horizontal">
 	    <Button
 	        android:id="@+id/button_negative"
 	        android:layout_width="0dp"
-	        android:layout_height="wrap_content"
+	        android:layout_height="match_parent"
 	        android:layout_weight="5"
 	        style="@style/button_with_text"
-	        android:text="Positive" />
+	        android:text="Positive"
+	        android:textSize=" 15sp" />
 	    <Button
 	        android:id="@+id/button_positive"
 	        android:layout_width="0dp"
-	        android:layout_height="wrap_content"
+	        android:layout_height="match_parent"
 	        android:layout_weight="5"
 	        style="@style/button_with_text"
-	        android:text="Negative" />
+	        android:text="Negative"
+	        android:textSize=" 15sp" />
     </LinearLayout>
 
 </LinearLayout>

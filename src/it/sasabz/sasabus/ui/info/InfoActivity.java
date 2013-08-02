@@ -15,12 +15,16 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -117,8 +121,9 @@ public class InfoActivity extends SherlockFragmentActivity {
 		}
 	}
 
+	private View viewCurrentlyOpen;
 	private ListView listviewCurrentlyOpen;
-	private Button buttonCurrentlyOpen;
+	private ImageView imageviewCurrentlyOpen;
 	
 	private void addAdapterToListViews(List<Information> infos) {
 		linearlayoutInfos.removeAllViews();
@@ -126,7 +131,10 @@ public class InfoActivity extends SherlockFragmentActivity {
 		String[] areas = downloadInfos.getAreas(infos);
 		
 		for (String area : areas) {
-			View viewInfos = getLayoutInflater().inflate(R.layout.info_list, null);
+			final View viewInfos = getLayoutInflater().inflate(R.layout.info_list, null);
+//			LayoutParams params = new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,
+//					LayoutParams.WRAP_CONTENT, 1f);
+//			viewInfos.setLayoutParams(params);
 			
 			//Add area as title
 			TextView textviewArea = (TextView) viewInfos.findViewById(R.id.textview_area);
@@ -146,6 +154,7 @@ public class InfoActivity extends SherlockFragmentActivity {
 				public void onItemClick(AdapterView<?> parent, View view,
 						int position, long id) {
 					
+					//Open new Dialog for an Info
 					infoDialog = CustomDialog.newInstance(filteredInfos.get(position).getTitel(),
 							filteredInfos.get(position).getNachricht(), 
 							getResources().getString(android.R.string.ok), null);
@@ -167,20 +176,27 @@ public class InfoActivity extends SherlockFragmentActivity {
 			});
 			
 			//Add button for expanding/collapsing infos for a specific area
-			final Button buttonExpandCollapse = (Button) viewInfos.findViewById(R.id.button_expand);
-			buttonExpandCollapse.setOnClickListener(new OnClickListener() {
+			final ImageView imageviewExpandCollapse = (ImageView) viewInfos.findViewById(R.id.imageview_expand);
+			final RelativeLayout relativelayoutTitle = (RelativeLayout) viewInfos.findViewById(R.id.relativelayout_title);
+			relativelayoutTitle.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					if (list.getVisibility() == View.GONE) {
-						expand(buttonExpandCollapse, list);
 						
-						if (listviewCurrentlyOpen != null && listviewCurrentlyOpen != list) {
-							collapse(buttonCurrentlyOpen, listviewCurrentlyOpen);
+						if (listviewCurrentlyOpen != null) {
+							collapse(viewCurrentlyOpen, listviewCurrentlyOpen, imageviewCurrentlyOpen);
+							listviewCurrentlyOpen = null;
 						}
+						
+						expand(viewInfos, list, imageviewExpandCollapse);
+						
+						viewCurrentlyOpen = viewInfos;
 						listviewCurrentlyOpen = list;
-						buttonCurrentlyOpen = buttonExpandCollapse;
+						imageviewCurrentlyOpen = imageviewExpandCollapse;
+						
 					} else {
-						collapse(buttonExpandCollapse, list);
+						collapse(viewInfos, list, imageviewExpandCollapse);
+						listviewCurrentlyOpen = null;
 					}
 				}
 			});
@@ -190,16 +206,20 @@ public class InfoActivity extends SherlockFragmentActivity {
 		}
 	}
 	
-	private void expand(Button button, ListView list) {
-		button.setCompoundDrawablesWithIntrinsicBounds(
-				0, 0, R.drawable.ic_navigation_collapse, 0);
+	private void expand(View view, ListView list, ImageView imageview) {
+		LayoutParams params = new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.WRAP_CONTENT, 1f);
+		view.setLayoutParams(params);
 		list.setVisibility(View.VISIBLE);
+		imageview.setImageResource(R.drawable.ic_navigation_collapse);
 	}
 	
-	private void collapse(Button button, ListView list) {
-		button.setCompoundDrawablesWithIntrinsicBounds(
-				0, 0, R.drawable.ic_navigation_expand, 0);
+	private void collapse(View view, ListView list, ImageView imageview) {
+		LayoutParams params = new TableRow.LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.WRAP_CONTENT);
+		view.setLayoutParams(params);
 		list.setVisibility(View.GONE);
+		imageview.setImageResource(R.drawable.ic_navigation_expand);
 	}
 	
 }

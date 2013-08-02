@@ -34,17 +34,19 @@ public class DownloadInfos {
 				"LINEA INTERNA LAIVES"+
 				"DA STAZIONE: INVARIATO FINO IN VIA A. DIAZ POI VIA KENNEDY, VIA PIETRALBA, VIA DANTE ECC.;"+
 				"A RICHIESTA VERRANNO EFFETTUATE TUTTE LE FERMATE PRESENTI SUL PERCORSO.", 0));
-		infos.add(new Information(1, "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", null, null, 0));
-		infos.add(new Information(2, "Verlegung der Haltestelle \"St. Jakob Str. 4\"", "Verlegung der Haltestelle \"St. Jakob Str. 4\"", null, null, 0));
-		infos.add(new Information(3, "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", null, null, 0));
+		infos.add(new Information(1, "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", "Message...", "Message...", 0));
+		infos.add(new Information(2, "Verlegung der Haltestelle \"St. Jakob Str. 4\"", "Verlegung der Haltestelle \"St. Jakob Str. 4\"", "Message...", "Message...", 0));
+		infos.add(new Information(3, "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Message...", "Message...", 0));
+		infos.add(new Information(4, "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Message...", "Message...", 0));
 		
-		infos.add(new Information(0, "Streckenabänderung der Linien 3 und 6 – Änderung der Fahrtenfrequenz der Linie 4 an Sonn- und Feiertagen", "Streckenabänderung der Linien 3 und 6 – Änderung der Fahrtenfrequenz der Linie 4 an Sonn- und Feiertagen", null, null, 1));
-		infos.add(new Information(1, "Umleitung der Linien 3, 4, 6 und 146 ab 24.7.2013", "Umleitung der Linien 3, 4, 6 und 146 ab 24.7.2013", null, null, 1));
-		infos.add(new Information(3, "Umleitung der Stadtlinien anlässlich der Veranstaltungen \"Langer Dienstag\"", "Umleitung der Stadtlinien anlässlich der Veranstaltungen \"Langer Dienstag\"", null, null, 1));
-		infos.add(new Information(4, "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", null, null, 1));
-		infos.add(new Information(5, "Der Fahrkartenschalter in Meran zieht um", "Der Fahrkartenschalter in Meran zieht um", null, null, 1));
-		infos.add(new Information(6, "Umleitung der Linien 211, 212 und 213 ab 4.2.2013", "Umleitung der Linien 211, 212 und 213 ab 4.2.2013", null, null, 1));
-		infos.add(new Information(7, "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", null, null, 1));
+		
+		infos.add(new Information(0, "Streckenabänderung der Linien 3 und 6 – Änderung der Fahrtenfrequenz der Linie 4 an Sonn- und Feiertagen", "Streckenabänderung der Linien 3 und 6 – Änderung der Fahrtenfrequenz der Linie 4 an Sonn- und Feiertagen", "Message...", "Message...", 1));
+		infos.add(new Information(1, "Umleitung der Linien 3, 4, 6 und 146 ab 24.7.2013", "Umleitung der Linien 3, 4, 6 und 146 ab 24.7.2013", "Message...", "Message...", 1));
+		infos.add(new Information(3, "Umleitung der Stadtlinien anlässlich der Veranstaltungen \"Langer Dienstag\"", "Umleitung der Stadtlinien anlässlich der Veranstaltungen \"Langer Dienstag\"", "Message...", "Message...", 1));
+		infos.add(new Information(4, "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", "Message...", "Message...", 1));
+		infos.add(new Information(5, "Der Fahrkartenschalter in Meran zieht um", "Der Fahrkartenschalter in Meran zieht um", "Message...", "Message...", 1));
+		infos.add(new Information(6, "Umleitung der Linien 211, 212 und 213 ab 4.2.2013", "Umleitung der Linien 211, 212 und 213 ab 4.2.2013", "Message...", "Message...", 1));
+		infos.add(new Information(7, "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Message...", "Message...", 1));
 		
 		
 		return infos;

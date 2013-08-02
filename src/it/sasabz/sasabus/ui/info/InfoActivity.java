@@ -1,46 +1,42 @@
 package it.sasabz.sasabus.ui.info;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import it.sasabz.android.sasabus.R;
-import it.sasabz.sasabus.data.hafas.XMLConnection;
-import it.sasabz.sasabus.data.models.DBObject;
 import it.sasabz.sasabus.data.models.Information;
 import it.sasabz.sasabus.logic.DownloadInfos;
-import it.sasabz.sasabus.ui.Utility;
+import it.sasabz.sasabus.ui.CustomDialog;
 
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.Window;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.datatype.Duration;
 
-import android.R.bool;
 import android.app.AlertDialog;
-import android.app.Dialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 
 /**
  * Display general information about changes of routes ecc.
  */
-public class InfoActivity extends SherlockActivity {
+public class InfoActivity extends SherlockFragmentActivity {
 
 	private DownloadInfos downloadInfos;
 	private MenuItem optionsMenuitemRefresh;
 	private LinearLayout linearlayoutInfos;
+	private CustomDialog infoDialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -130,21 +126,45 @@ public class InfoActivity extends SherlockActivity {
 		String[] areas = downloadInfos.getAreas(infos);
 		
 		for (String area : areas) {
-			View viewInfos = getLayoutInflater().inflate(R.layout.list_info, null);
+			View viewInfos = getLayoutInflater().inflate(R.layout.info_list, null);
 			
 			//Add area as title
 			TextView textviewArea = (TextView) viewInfos.findViewById(R.id.textview_area);
 			textviewArea.setText(area);
 			
 			//Add list of Infos for specific area
-			List<Information> filteredInfos = DownloadInfos.getInfosForArea(infos, area);
+			final List<Information> filteredInfos = DownloadInfos.getInfosForArea(infos, area);
 			final ListView list = (ListView) viewInfos.findViewById(R.id.listview_infos);
 			ArrayAdapter<Information> listadapter = new InfosAdapter(this, 
 					R.layout.listview_item_info, R.id.textview_busline, 
 					filteredInfos);
 			list.setAdapter(listadapter);
 			
-			
+			//Add onClickListener for list
+			list.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id) {
+					
+					infoDialog = CustomDialog.newInstance(filteredInfos.get(position).getTitel(),
+							filteredInfos.get(position).getNachricht(), 
+							getResources().getString(android.R.string.ok), null);
+					infoDialog.setOnPositiveClickListener(new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							infoDialog.dismiss();
+						}
+					});
+					infoDialog.show(getSupportFragmentManager(), "info_dialog");
+					
+//					AlertDialog.Builder builder = new AlertDialog.Builder(InfoActivity.this);
+//					builder.setTitle("Title...");
+//					builder.setMessage("Message...");
+//					builder.setPositiveButton("OK", null);
+//					builder.show();
+					
+				}
+			});
 			
 			//Add button for expanding/collapsing infos for a specific area
 			final Button buttonExpandCollapse = (Button) viewInfos.findViewById(R.id.button_expand);

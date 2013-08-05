@@ -57,8 +57,8 @@ public class DownloadInfos {
 		
 		//TODO download the infos and generate necessary objects
 		
-//		InformationList info = new InformationList(callback);
-//		info.execute();
+		InformationList info = new InformationList(callback);
+		info.execute();
 		//↑ returns null!?
 		
 		
@@ -81,7 +81,7 @@ public class DownloadInfos {
 			}
 			
 		};
-		thread.start();
+//		thread.start();
 		
 		
 		//TODO save infos to cache, so that the next time a user

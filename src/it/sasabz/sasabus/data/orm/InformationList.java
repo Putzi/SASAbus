@@ -120,7 +120,9 @@ public class InformationList extends
 	protected void onPostExecute(ArrayList<Information> result) {
 		super.onPostExecute(result);
 		// activity.fillList(result);
-		callback.infosDownloaded(result);
+		if (result != null) {
+			callback.infosDownloaded(result);
+		}
 	}
 
 }

@@ -110,6 +110,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 
 <string name="delete">Rimuovi</string>
 <string name="refresh">Aggiorna</string>
+<string name="save">Salvare</string>
 
 <string name="error_scan_text">Errore durante la scansione del codice QR: codice non valido per SASAbus</string>
 <string name="scan_text_not_implemented">Questa opzione sarà disponibile a breve.</string>

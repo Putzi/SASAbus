@@ -114,6 +114,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 
 <string name="delete">Löschen</string>
 <string name="refresh">Aktualisieren</string>
+<string name="save">Speichern</string>
 
 <string name="map">Karte</string>
 <string name="map_pick">Aus Karte</string>

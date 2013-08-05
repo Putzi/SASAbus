@@ -15,10 +15,13 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 
 public class SearchResultsActivity extends SherlockActivity{
+	
+	private MenuItem optionsMenuitemSave;
 	
 	private TextView textviewDeparture;
 	private TextView textviewArrival;
@@ -35,8 +38,6 @@ public class SearchResultsActivity extends SherlockActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		addIndeterminateProgressBar();
-		
 		setContentView(R.layout.fragment_search_results);
 		
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -47,32 +48,44 @@ public class SearchResultsActivity extends SherlockActivity{
 		
 		getParametersForSearch(extras);
 		
-		
 		initializeViews();
 		
 		addBusstopsToTextview();
 		
-		searchForConnection(departure, arrival, date, time);
-		
 	}
 
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getSupportMenuInflater().inflate(R.menu.activity_search_results, menu);
+		optionsMenuitemSave = menu.findItem(R.id.menu_save);
+		
+		searchForConnection(departure, arrival, date, time);
+		
+		return super.onCreateOptionsMenu(menu);
+	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == android.R.id.home) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
 			finish();
+			break;
+		case R.id.menu_save:
+			saveResults();
+			break;
+		default:
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 	
-	
-	private void addIndeterminateProgressBar() {
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		getSherlock().setProgressBarIndeterminateVisibility(true);
-	}
-	
-	private void removeIndeterminateProgressBar() {
-		getSherlock().setProgressBarIndeterminateVisibility(false);
+	private void setSaveActionButtonState(boolean refreshing) {
+		if(refreshing) {
+			optionsMenuitemSave.setActionView(R.layout.actionbar_indeterminate_progress);
+		} else {
+			optionsMenuitemSave.setActionView(null);
+		}
 	}
 	
 	
@@ -102,12 +115,13 @@ public class SearchResultsActivity extends SherlockActivity{
 	
 	
 	private void searchForConnection(String departure, String arrival, String date, String time) {
+		setSaveActionButtonState(true);
 		connection.searchForConnection(departure, arrival, date, time, this, new SearchCallback() {
 			@Override
 			public void searchIsFinished(ArrayList<XMLConnection> connections) {
 				addAdapterToExpandableListView();
 				setGroupIndicatorToRight();
-				removeIndeterminateProgressBar();
+				setSaveActionButtonState(false);
 				expandablelistviewResults.setVisibility(View.VISIBLE);
 			}
 		});
@@ -133,5 +147,10 @@ public class SearchResultsActivity extends SherlockActivity{
                 - Utility.getDipsFromPixel(this, 10));
 	}
 	
+	
+	private void saveResults() {
+		// TODO Save Results so that they can be viewed offline
+		
+	}
 	
 }

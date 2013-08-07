@@ -176,7 +176,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="more">Più</string>
 <string name="nearby_button">Fermate vicine</string>
 <string name="map_button">Selezionare fermata dalla mappa</string>
-<string name="favorites_button">Fermate preferiti</string>
+<string name="favorites_button">Fermate preferite</string>
 
 <string name="date">Data:</string>
 <string name="time">Ora:</string>

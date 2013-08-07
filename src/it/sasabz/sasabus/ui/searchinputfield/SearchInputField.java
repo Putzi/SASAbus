@@ -163,7 +163,7 @@ public class SearchInputField extends RelativeLayout {
 			@Override
 			public void onClick(View v) {
 				List<String> favoriteBusstops = Arrays.asList("Favorite Busstop 1", "Favorite Busstop 2", "Favorite Busstop 3");
-				Adapter adapter = new BusStopsNearbyAdapter(context, 
+				Adapter adapter = new FavoriteBusStopsAdapter(context, 
 						R.layout.listview_item_favorite_busstops, 
 						R.id.textview_busstop, favoriteBusstops);
 				

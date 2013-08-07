@@ -7,10 +7,7 @@ import it.sasabz.sasabus.ui.CustomDialog;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.datatype.Duration;
 
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -19,14 +16,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
@@ -40,7 +35,6 @@ public class InfoActivity extends SherlockFragmentActivity {
 	private DownloadInfos downloadInfos;
 	private MenuItem optionsMenuitemRefresh;
 	private LinearLayout linearlayoutInfos;
-	private CustomDialog infoDialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -155,16 +149,16 @@ public class InfoActivity extends SherlockFragmentActivity {
 						int position, long id) {
 					
 					//Open new Dialog for an Info
-					infoDialog = CustomDialog.newInstance(filteredInfos.get(position).getTitel(),
-							filteredInfos.get(position).getNachricht(), 
-							getResources().getString(android.R.string.ok), null);
-					infoDialog.setOnPositiveClickListener(new DialogInterface.OnClickListener() {
+					CustomDialog.Builder infoDialogBuilder = new CustomDialog.Builder(InfoActivity.this);
+					infoDialogBuilder.setTitle(filteredInfos.get(position).getTitel());
+					infoDialogBuilder.setMessage(filteredInfos.get(position).getTitel());
+					infoDialogBuilder.setNegativeButton(getResources().getString(android.R.string.ok), new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							infoDialog.dismiss();
+							dialog.dismiss();
 						}
 					});
-					infoDialog.show(getSupportFragmentManager(), "info_dialog");
+					infoDialogBuilder.show();
 					
 //					AlertDialog.Builder builder = new AlertDialog.Builder(InfoActivity.this);
 //					builder.setTitle("Title...");

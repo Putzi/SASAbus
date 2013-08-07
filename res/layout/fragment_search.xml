@@ -38,7 +38,7 @@
 
         <!-- container of buttons and input field for departure -->
 
-        <it.sasabz.sasabus.ui.SearchInputField
+        <it.sasabz.sasabus.ui.searchinputfield.SearchInputField
             android:id="@+id/searchinputfieldDeparture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
 
         <!-- container of buttons and input field for arrival -->
 
-        <it.sasabz.sasabus.ui.SearchInputField
+        <it.sasabz.sasabus.ui.searchinputfield.SearchInputField
             android:id="@+id/searchinputfieldArrival"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

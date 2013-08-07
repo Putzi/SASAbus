@@ -10,7 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import it.sasabz.android.sasabus.R;
-import it.sasabz.sasabus.ui.SearchInputField;
+import it.sasabz.sasabus.ui.searchinputfield.SearchInputField;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +47,8 @@ public class SearchFragment extends SherlockFragment {
 		
 		initializeViews(view);
 		
+		addOnClickListenerForSearchButtons();
+		
 		insertCurrentDateIntoButton(view);
 		addOnclickListenerForDate(view);
 		
@@ -75,6 +77,11 @@ public class SearchFragment extends SherlockFragment {
 		
 		View bs = view.findViewById(R.id.button_search);
 		buttonSearch = (Button) bs.findViewById(R.id.button_search);
+	}
+	
+	private void addOnClickListenerForSearchButtons() {
+		searchinputfieldArrival.addOnClickListenerForSearchButtons(getSherlockActivity());
+		searchinputfieldDeparture.addOnClickListenerForSearchButtons(getSherlockActivity());
 	}
 
 

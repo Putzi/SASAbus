@@ -1,9 +1,13 @@
 package it.sasabz.sasabus.ui;
 
+import java.util.List;
+
 import it.sasabz.android.sasabus.R;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
@@ -14,45 +18,47 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockDialogFragment;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 public class CustomDialog extends SherlockDialogFragment {
+	
+	Dialog dialog;
 	
 	static String TITLE = "title";
 	static String MESSAGE = "message";
 	static String POSITIVE = "positive";
 	static String NEGATIVE = "negative";
 	
-	private TextView textviewTitle;
-	private TextView textViewMessage;
-	private Button buttonNegative;
-	private Button buttonPositive;
+	protected String title;
+	protected String message;
+	protected String positiveText;
+	protected String negativeText;
+	protected List<?> list;
 	
-	private DialogInterface.OnClickListener positiveListener;
-	private DialogInterface.OnClickListener negativeListener;
+	protected TextView textviewTitle;
+	protected ScrollView scrollviewMessage;
+	protected TextView textviewMessage;
+	protected ListView listviewList;
+	protected Button buttonNegative;
+	protected Button buttonPositive;
 	
-	public static CustomDialog newInstance(String title, String text,
-			String textPositiveButton, String textNegativeButton) {
-		CustomDialog infoDialog = new CustomDialog();
-		
-		Bundle args = new Bundle();
-			args.putString(TITLE, title);
-			args.putString(MESSAGE, text);
-			args.putString(POSITIVE, textPositiveButton);
-			args.putString(NEGATIVE, textNegativeButton);
-		infoDialog.setArguments(args);
-		
-		return infoDialog;
-	}
-	
+	protected Adapter adapter;
+	protected DialogInterface.OnClickListener positiveListener;
+	protected DialogInterface.OnClickListener negativeListener;
+
 	
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		
-		Dialog dialog = new Dialog(getSherlockActivity());
+		dialog = new Dialog(getSherlockActivity());
 		
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
@@ -61,62 +67,120 @@ public class CustomDialog extends SherlockDialogFragment {
 		WindowManager.LayoutParams wmlp = dialog.getWindow().getAttributes();
 		wmlp.width = WindowManager.LayoutParams.FILL_PARENT;
 		
-		initializeViews(dialog);
+		initializeViews();
 		
-		setText();
-		
+		addTextToViewsAndRemoveUnnecessary();
 		
 		return dialog;
 	}
 	
-	private void initializeViews(Dialog dialog){
+	private void initializeViews(){
 		textviewTitle = (TextView) dialog.findViewById(R.id.textview_title);
-		textViewMessage = (TextView) dialog.findViewById(R.id.textview_message);
+		scrollviewMessage = (ScrollView) dialog.findViewById(R.id.scrollview_message);
+		textviewMessage = (TextView) dialog.findViewById(R.id.textview_message);
+		listviewList = (ListView) dialog.findViewById(R.id.listview_list);
 		buttonNegative = (Button) dialog.findViewById(R.id.button_negative);
 		buttonPositive = (Button) dialog.findViewById(R.id.button_positive);
 	}
+
 	
-	private void setText() {
-		Bundle arguments = getArguments();
-		String title = arguments.getString(TITLE);
-		String message = arguments.getString(MESSAGE);
-		String negative = arguments.getString(NEGATIVE);
-		String positive = arguments.getString(POSITIVE);
+	private void addTextToViewsAndRemoveUnnecessary() {
 		
-		buttonNegative.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (negativeListener != null) {
+		if(title != null) {
+			textviewTitle.setText(title);
+		}
+		
+		
+		if (message != null) {
+			textviewMessage.setText(message);
+		} else {
+			scrollviewMessage.setVisibility(View.GONE);
+		}
+		
+		
+		if (list != null) {
+			listviewList.setAdapter((ListAdapter) adapter);
+		} else {
+			listviewList.setVisibility(View.GONE);
+		}
+		
+		if (list != null) {
+			
+		} else {
+			
+		}
+		
+		
+		if (negativeText != null) {
+			buttonNegative.setText(negativeText);
+			buttonNegative.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
 					negativeListener.onClick(getDialog(), 0);
 				}
-			}
-		});
-		
-		buttonPositive.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (positiveListener != null) {
-					positiveListener.onClick(getDialog(), 0);
-				}
-			}
-		});
-		
-		if (negative == null) {
+			});
+		} else {
 			buttonNegative.setVisibility(View.GONE);
 		}
 		
-		textviewTitle.setText(title);
-		textViewMessage.setText(message);
-		buttonNegative.setText(negative);
-		buttonPositive.setText(positive);
+		
+		if (positiveText != null) {
+			buttonPositive.setText(positiveText);
+			buttonPositive.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					positiveListener.onClick(getDialog(), 0);
+				}
+			});
+		} else {
+			buttonPositive.setVisibility(View.GONE);
+		}
+		
 	}
 	
-	public void setOnPositiveClickListener(DialogInterface.OnClickListener positiveListener) {
-		this.positiveListener = positiveListener;
-	}
 	
-	public void setOnNegativeClickListener(DialogInterface.OnClickListener negativeListener) {
-		this.negativeListener = negativeListener;
+	
+	
+	public static class Builder {
+		
+		CustomDialog customDialog;
+		SherlockFragmentActivity activity;
+		
+		
+		public Builder(SherlockFragmentActivity activity) {
+			customDialog = new CustomDialog();
+			this.activity = activity;
+		}
+		
+		
+		public void setTitle(String title) {
+			customDialog.title = title;
+		}
+		
+		public void setMessage(String message) {
+			customDialog.message = message;
+		}
+		
+		public void setList(List<?> list, Adapter adapter) {
+			customDialog.list = list;
+			customDialog.adapter = adapter;
+		}
+		
+		public void setPositiveButton(String text, DialogInterface.OnClickListener listener) {
+			customDialog.positiveText = text;
+			customDialog.positiveListener = listener;
+		}
+		
+		public void setNegativeButton(String text, DialogInterface.OnClickListener listener) {
+			customDialog.negativeText = text;
+			customDialog.negativeListener = listener;
+		}
+		
+		
+		public void show() {
+			customDialog.show(activity.getSupportFragmentManager(), "info_dialog");
+		}
+		
 	}
 	
 }

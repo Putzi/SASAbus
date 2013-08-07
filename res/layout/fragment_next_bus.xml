@@ -8,7 +8,7 @@
     android:padding="@dimen/activity_padding"
     tools:context="it.sasabz.sasabus.ui.busstop.NextBusFragment">
 
-    <it.sasabz.sasabus.ui.SearchInputField
+    <it.sasabz.sasabus.ui.searchinputfield.SearchInputField
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/departure_bus_stop" />

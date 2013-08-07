@@ -102,9 +102,9 @@ public class MainTabActivity extends SherlockFragmentActivity {
 
 		// addTabs
 		// Tab Search
-		addSingleTab(R.string.search_connection, SearchFragment.class, null);
+		addSingleTab(R.string.search_route, SearchFragment.class, null);
 		// Tab Bus Schedules
-		addSingleTab(R.string.offline, BusSchedulesFragment.class, null);
+		addSingleTab(R.string.bus_schedules, BusSchedulesFragment.class, null);
 		// Tab Next Bus
 		addSingleTab(R.string.next_bus, NextBusFragment.class, null);
 

@@ -102,6 +102,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		
 		addNavigationDrawer(savedInstanceState);
 		
+		showFragment(0);
 	}
 	
 
@@ -149,11 +150,12 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 	private int mPosition = 0;
 		
-	/** Swaps frgaments in the main content view */
+	/** Swaps fragments in the main content view */
 	private void selectItem(final int position) {
-		
+
 		mDrawerLayout.closeDrawer(mDrawerList);
-		
+
+	
 		if (position != mPosition) {
 			mDrawerLayout.setDrawerListener(new DrawerListener() {
 				@Override
@@ -165,27 +167,30 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 				@Override
 				public void onDrawerClosed(View arg0) {
-					
-					Log.i("test", "onDrawerClosed");
-					
-					//Show the actual fragment. Done only now to prevent stutter
-					SherlockFragment fragmentToShow;
-					fragmentToShow = (SherlockFragment) SherlockFragment.instantiate(MainActivity.this, mFragments[position]);
-					
-					FragmentManager fragmentManager = getSupportFragmentManager();
-					fragmentManager
-						.beginTransaction()
-						.replace(R.id.content_frame, fragmentToShow)
-						.commit();
-					
-					mDrawerList.setItemChecked(position, true);
-					setTitle(mNavigationTitles[position]);
-					mDrawerLayout.setDrawerListener(null);
+					//Show the actual fragment only now to prevent lag
+					showFragment(position);
 				}
 			});
 			mPosition = position;
 		}
 		
+	}
+	
+	private void showFragment(final int position) {
+		
+		SherlockFragment fragmentToShow = (SherlockFragment) SherlockFragment
+				.instantiate(MainActivity.this, mFragments[position]);
+		
+		FragmentManager fragmentManager = getSupportFragmentManager();
+		fragmentManager
+			.beginTransaction()
+			.replace(R.id.content_frame, fragmentToShow)
+			.commit();
+		
+		mDrawerList.setItemChecked(position, true);
+		setTitle(mNavigationTitles[position]);
+		
+		mDrawerLayout.setDrawerListener(null);
 	}
 		
 	

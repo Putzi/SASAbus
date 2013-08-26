@@ -5,7 +5,7 @@ import it.sasabz.sasabus.data.models.DBObject;
 import it.sasabz.sasabus.data.models.Information;
 import it.sasabz.sasabus.data.orm.InformationList;
 import it.sasabz.sasabus.logic.Utility;
-import it.sasabz.sasabus.ui.MainTabActivity;
+import it.sasabz.sasabus.ui.MainActivity;
 import it.sasabz.sasabus.ui.SASAbus;
 import it.sasabz.sasabus.ui.adapter.MyListAdapter;
 

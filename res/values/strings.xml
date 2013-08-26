@@ -145,10 +145,6 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="waiting">Please wait...</string>
 <string name="transfers">Trasferimenti</string>
 
-<string name="search_route">Search route (online)</string>
-<string name="bus_schedules">Bus schedules (offline)</string>
-<string name="next_bus">Next Bus</string>
-
 <string name="set_date">Date</string>
 <string name="set_time">Time</string>
 
@@ -206,5 +202,11 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="course">Course</string>
 
 <string name="lines">Lines:</string>
+
+<string name="bus_lines">Bus lines</string>
+<string name="bus_stops">Bus stops</string>
+<string name="search_route">Search route</string>
+<string name="parking_spots">Parking spots</string>
+<string name="news">News</string>
 
 </resources>

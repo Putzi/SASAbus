@@ -33,7 +33,7 @@
     
      <style name="text_hint">
          <item name="android:textSize">18sp</item>
-         <item name="android:textColor">@color/grey4</item>
+         <item name="android:textColor">@color/text_grey</item>
      </style>
     
     <style name="search_button">

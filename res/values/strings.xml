@@ -209,4 +209,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="parking_spots">Parking spots</string>
 <string name="news">News</string>
 
+<string name="drawer_open">Open navigation drawer</string>
+<string name="drawer_close">Close navigation drawer</string>
+
 </resources>

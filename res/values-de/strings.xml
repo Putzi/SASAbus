@@ -202,4 +202,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="parking_spots">Parkplätze</string>
 <string name="news">News</string>
 
+<string name="drawer_open">Öffne Navigations-Menü</string>
+<string name="drawer_close">Schließe Navigations-Menü</string>
+
 </resources>

@@ -30,16 +30,19 @@
  */
 package it.sasabz.sasabus.ui;
 
+import android.R.anim;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -85,6 +88,8 @@ import com.actionbarsherlock.view.MenuInflater;
 public class MainActivity extends SherlockFragmentActivity {
 
 	private ActionBar mActionBar;
+	private ActionBarDrawerToggle mDrawerToggle;
+	private CharSequence mTitle;
 	
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
@@ -113,19 +118,62 @@ public class MainActivity extends SherlockFragmentActivity {
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.naviagion_drawer);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		
+		// Get Resources for the list in the drawer
 		mNavigationTitles = getResources().getStringArray(R.array.navigation_drawer_entries);
 		mNavigationIcons = getResources().obtainTypedArray(R.array.navigation_drawer_icons);
 		mFragments = getResources().getStringArray(R.array.navigation_drawer_fragments);
 		
+		// Populate list items
 		List<DrawerItem> drawerItems = new ArrayList<MainActivity.DrawerItem>();
-		
 		for (int i = 0; i < mNavigationTitles.length; i++){
 			drawerItems.add(new DrawerItem(mNavigationTitles[i], mNavigationIcons.getDrawable(i), mFragments[i]));
 		}
+		mNavigationIcons.recycle();
 		
+		// Add adater to navigation drawer
 		Adapter drawerAdapter = (Adapter) new NavigationDrawerAdapter(this, R.layout.drawer_layout_item, drawerItems);
 		mDrawerList.setAdapter((ListAdapter) drawerAdapter);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+		
+		// Add toggle to actionbar
+		mDrawerToggle = new ActionBarDrawerToggle(
+				this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+			
+			@Override
+			public void onDrawerClosed(View drawerView) {
+				super.onDrawerClosed(drawerView);
+				getSupportActionBar().setTitle(mTitle);
+				supportInvalidateOptionsMenu();
+			}
+			
+			@Override
+			public void onDrawerOpened(View drawerView) {
+				super.onDrawerOpened(drawerView);
+				getSupportActionBar().setTitle(R.string.app_name);
+				supportInvalidateOptionsMenu();
+			}
+		};
+		// Set the drawer toggle as the DrawerListener
+		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		
+
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		getSupportActionBar().setHomeButtonEnabled(true);
+	
+	}
+	
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		//Sync the toggle state after onRestoreInstanceState has occurred
+		mDrawerToggle.syncState();
+	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 	
 	class DrawerItem {
@@ -140,7 +188,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		}
 	}
 	
-	private class DrawerItemClickListener implements OnItemClickListener{
+	private class DrawerItemClickListener implements OnItemClickListener {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
@@ -148,30 +196,28 @@ public class MainActivity extends SherlockFragmentActivity {
 		}
 	}
 	
+	
 	private int mPosition = 0;
 		
 	/** Swaps fragments in the main content view */
 	private void selectItem(final int position) {
 
 		mDrawerLayout.closeDrawer(mDrawerList);
-
 	
 		if (position != mPosition) {
 			mDrawerLayout.setDrawerListener(new DrawerListener() {
-				@Override
-				public void onDrawerStateChanged(int arg0) { }
-				@Override
-				public void onDrawerSlide(View arg0, float arg1) { }
-				@Override
-				public void onDrawerOpened(View arg0) { }
+				@Override public void onDrawerStateChanged(int arg0) { }
+				@Override public void onDrawerSlide(View arg0, float arg1) { }
+				@Override public void onDrawerOpened(View arg0) { }
 	
 				@Override
 				public void onDrawerClosed(View arg0) {
-					//Show the actual fragment only now to prevent lag
+					// Show the actual fragment only now to prevent lag
+					mPosition = position;
 					showFragment(position);
+					mDrawerLayout.setDrawerListener(mDrawerToggle);
 				}
 			});
-			mPosition = position;
 		}
 		
 	}
@@ -188,11 +234,22 @@ public class MainActivity extends SherlockFragmentActivity {
 			.commit();
 		
 		mDrawerList.setItemChecked(position, true);
-		setTitle(mNavigationTitles[position]);
+		mTitle = mNavigationTitles[position];
 		
-		mDrawerLayout.setDrawerListener(null);
+		Log.i("title", ""+mTitle);
+		getSupportActionBar().setTitle(mTitle);
+		supportInvalidateOptionsMenu();
 	}
 		
+	
+	/* Called whenever invalidateOptionsMenu is called */
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		// If the drawer is open, hide action items related to the content view
+		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+		
+		return super.onPrepareOptionsMenu(menu);
+	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -202,7 +259,19 @@ public class MainActivity extends SherlockFragmentActivity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+//		if (mDrawerToggle.onOptionsItemSelected((android.view.MenuItem) item)) {
+//			return true;
+//		}
+		//doesn't work
+		
 		switch (item.getItemId()) {
+		case android.R.id.home:
+			if (mDrawerLayout.isDrawerOpen(mDrawerList)) {
+				mDrawerLayout.closeDrawer(mDrawerList);
+			} else {
+				mDrawerLayout.openDrawer(mDrawerList);
+			}
+			return true;
 		case R.id.menu_infos:
 			Intent intentInfos = new Intent(this, InfoActivity.class);
 			startActivity(intentInfos);

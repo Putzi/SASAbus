@@ -227,6 +227,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		SherlockFragment fragmentToShow = (SherlockFragment) SherlockFragment
 				.instantiate(MainActivity.this, mFragments[position]);
 		
+		 
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager
 			.beginTransaction()
@@ -236,33 +237,25 @@ public class MainActivity extends SherlockFragmentActivity {
 		mDrawerList.setItemChecked(position, true);
 		mTitle = mNavigationTitles[position];
 		
-		Log.i("title", ""+mTitle);
 		getSupportActionBar().setTitle(mTitle);
-		supportInvalidateOptionsMenu();
 	}
 		
 	
 	/* Called whenever invalidateOptionsMenu is called */
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		// If the drawer is open, hide action items related to the content view
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-		
+		// If the drawer is open, hide action items related to the content view 
+		// and show only generic ones
+		if (isDrawerOpen()) {
+			menu.clear();
+			getSupportMenuInflater().inflate(R.menu.main, menu);
+		}
 		return super.onPrepareOptionsMenu(menu);
 	}
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.activity_main, menu);
-		return super.onCreateOptionsMenu(menu);
-	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-//		if (mDrawerToggle.onOptionsItemSelected((android.view.MenuItem) item)) {
-//			return true;
-//		}
-		//doesn't work
 		
 		switch (item.getItemId()) {
 		case android.R.id.home:
@@ -271,14 +264,6 @@ public class MainActivity extends SherlockFragmentActivity {
 			} else {
 				mDrawerLayout.openDrawer(mDrawerList);
 			}
-			return true;
-		case R.id.menu_infos:
-			Intent intentInfos = new Intent(this, InfoActivity.class);
-			startActivity(intentInfos);
-			return true;
-		case R.id.menu_map:
-			Intent intentMap = new Intent(this, MapViewActivity.class);
-			startActivity(intentMap);
 			return true;
 		case R.id.menu_settings:
 			Intent intentPreferences = new Intent(this, PreferencesActivity.class);
@@ -291,6 +276,10 @@ public class MainActivity extends SherlockFragmentActivity {
 		default:
 			return false;
 		}
+	}
+	
+	public boolean isDrawerOpen() {
+		return mDrawerLayout.isDrawerOpen(mDrawerList);
 	}
 	
 }

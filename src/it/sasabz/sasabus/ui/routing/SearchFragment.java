@@ -10,7 +10,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import it.sasabz.android.sasabus.R;
+import it.sasabz.sasabus.ui.MainActivity;
 import it.sasabz.sasabus.ui.searchinputfield.SearchInputField;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +31,8 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 
 public class SearchFragment extends SherlockFragment {
 	
@@ -56,6 +60,8 @@ public class SearchFragment extends SherlockFragment {
 		addOnclickListenerForTime(view);
 		
 		addOnclickListenerForSearchButton(view);
+		
+		setHasOptionsMenu(true);
 		
 		return view;
 	}
@@ -230,6 +236,18 @@ public class SearchFragment extends SherlockFragment {
 			}
 		});
 		
+	}
+	
+	@Override
+	public void onPrepareOptionsMenu(Menu menu) {
+		MainActivity parentActivity = (MainActivity) getSherlockActivity();
+		boolean drawerIsOpen = parentActivity.isDrawerOpen();
+		//If the drawer is closed, show the menu related to the content
+		if (!drawerIsOpen) {
+			menu.clear();
+			parentActivity.getSupportMenuInflater().inflate(R.menu.search_route_fragment, menu);
+		}
+		super.onPrepareOptionsMenu(menu);
 	}
 	
 }

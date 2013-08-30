@@ -58,7 +58,7 @@ public class InfoActivity extends SherlockFragmentActivity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.activity_info, menu);
+		getSupportMenuInflater().inflate(R.menu.info_fragment, menu);
 		optionsMenuitemRefresh = menu.findItem(R.id.menu_refresh);
 		
 		loadInfos();

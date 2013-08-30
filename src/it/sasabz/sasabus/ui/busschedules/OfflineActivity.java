@@ -73,7 +73,7 @@ public class OfflineActivity extends FragmentActivity{
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.activity_main, menu);
+		inflater.inflate(R.menu.search_route_fragment, menu);
    	 	return true;
 	}
 

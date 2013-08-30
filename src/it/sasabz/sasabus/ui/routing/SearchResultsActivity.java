@@ -57,7 +57,7 @@ public class SearchResultsActivity extends SherlockActivity{
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.activity_search_results, menu);
+		getSupportMenuInflater().inflate(R.menu.search_results_activity, menu);
 		optionsMenuitemSave = menu.findItem(R.id.menu_save);
 		
 		searchForConnection(departure, arrival, date, time);

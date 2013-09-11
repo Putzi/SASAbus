@@ -194,13 +194,13 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="departure_times">Abfahrtszeiten</string>
 <string name="course">Streckenverlauf</string>
 
-<string name="lines">Linien:</string>
+<string name="lines">Linien</string>
 
 <string name="bus_lines">Buslinien</string>
 <string name="bus_stops">Bushaltestellen</string>
 <string name="search_route">Routensuche</string>
 <string name="parking_spots">Parkplätze</string>
-<string name="news">News</string>
+<string name="news">Neuigkeiten</string>
 
 <string name="drawer_open">Öffne Navigations-Menü</string>
 <string name="drawer_close">Schließe Navigations-Menü</string>

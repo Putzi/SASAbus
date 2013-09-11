@@ -1,10 +1,10 @@
-package it.sasabz.sasabus.ui.info;
+package it.sasabz.sasabus.ui.news;
 
 import java.util.List;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.DBObject;
-import it.sasabz.sasabus.data.models.Information;
+import it.sasabz.sasabus.data.models.News;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,13 +13,13 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-public class InfosAdapter extends ArrayAdapter<Information>{
+public class NewsAdapter extends ArrayAdapter<News>{
 	
 	private Context context;
 	private int resource;
 	
-	public InfosAdapter(Context context, int resource, int textViewResourceId,
-			List<Information> objects) {
+	public NewsAdapter(Context context, int resource, int textViewResourceId,
+			List<News> objects) {
 		super(context, resource, textViewResourceId, objects);
 		this.context = context;
 		this.resource = resource;
@@ -38,12 +38,12 @@ public class InfosAdapter extends ArrayAdapter<Information>{
         }
         
         TextView textviewBusline = (TextView) view.findViewById(R.id.textview_busline);
-        String buslines = context.getResources().getString(R.string.lines)
-        		+"\n"+getItem(position).getStadt();
+        String buslines = context.getResources().getString(R.string.lines)+": "+
+        		getItem(position).getLinesAffectedAsString();
         textviewBusline.setText(buslines);
         
         TextView textviewInfoTitle = (TextView) view.findViewById(R.id.textview_title);
-        String infoTitle = getItem(position).getTitel();
+        String infoTitle = getItem(position).getTitle();
         textviewInfoTitle.setText(infoTitle);
         
 

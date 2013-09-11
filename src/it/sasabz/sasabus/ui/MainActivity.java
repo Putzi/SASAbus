@@ -66,9 +66,9 @@ import it.sasabz.sasabus.ui.busschedules.BusSchedulesFragment;
 import it.sasabz.sasabus.ui.busstop.NextBusFragment;
 import it.sasabz.sasabus.ui.dialogs.About;
 import it.sasabz.sasabus.ui.dialogs.Credits;
-import it.sasabz.sasabus.ui.info.InfoActivity;
-import it.sasabz.sasabus.ui.info.InfoFragment;
 import it.sasabz.sasabus.ui.map.MapViewActivity;
+import it.sasabz.sasabus.ui.news.NewsFragment;
+import it.sasabz.sasabus.ui.news.InfoFragment;
 import it.sasabz.sasabus.ui.preferences.PreferencesActivity;
 import it.sasabz.sasabus.ui.routing.SearchFragment;
 

@@ -8,11 +8,11 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.BusStop;
-import it.sasabz.sasabus.data.models.Information;
+import it.sasabz.sasabus.data.models.News;
 import it.sasabz.sasabus.ui.CustomDialog;
 import it.sasabz.sasabus.ui.CustomDialog.Builder;
-import it.sasabz.sasabus.ui.info.InfoActivity;
-import it.sasabz.sasabus.ui.info.InfosAdapter;
+import it.sasabz.sasabus.ui.news.NewsFragment;
+import it.sasabz.sasabus.ui.news.NewsAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.TypedArray;
@@ -144,16 +144,16 @@ public class SearchInputField extends RelativeLayout {
 						R.layout.listview_item_busstop_nearby, 
 						R.id.textview_busstop, busstopsNearby);
 				
-				CustomDialog.Builder busstopsNearbyDialogBuilder = new CustomDialog.Builder(activity);
-				busstopsNearbyDialogBuilder.setTitle(activity.getResources().getString(R.string.bus_stops_nearby));
-				busstopsNearbyDialogBuilder.setList(busstopsNearby, adapter);
-				busstopsNearbyDialogBuilder.setNegativeButton(getResources().getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				});
-				busstopsNearbyDialogBuilder.show();
+//				CustomDialog.Builder busstopsNearbyDialogBuilder = new CustomDialog.Builder(activity);
+//				busstopsNearbyDialogBuilder.setTitle(activity.getResources().getString(R.string.bus_stops_nearby));
+//				busstopsNearbyDialogBuilder.setList(busstopsNearby, adapter);
+//				busstopsNearbyDialogBuilder.setNegativeButton(getResources().getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
+//					@Override
+//					public void onClick(DialogInterface dialog, int which) {
+//						dialog.dismiss();
+//					}
+//				});
+//				busstopsNearbyDialogBuilder.show();
 			}
 		});
 	}
@@ -167,16 +167,16 @@ public class SearchInputField extends RelativeLayout {
 						R.layout.listview_item_favorite_busstops, 
 						R.id.textview_busstop, favoriteBusstops);
 				
-				CustomDialog.Builder favoriteBusstopsDialogBuilder = new CustomDialog.Builder(activity);
-				favoriteBusstopsDialogBuilder.setTitle(activity.getResources().getString(R.string.favorites_button));
-				favoriteBusstopsDialogBuilder.setList(favoriteBusstops, adapter);
-				favoriteBusstopsDialogBuilder.setNegativeButton(getResources().getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				});
-				favoriteBusstopsDialogBuilder.show();
+//				CustomDialog.Builder favoriteBusstopsDialogBuilder = new CustomDialog.Builder(activity);
+//				favoriteBusstopsDialogBuilder.setTitle(activity.getResources().getString(R.string.favorites_button));
+//				favoriteBusstopsDialogBuilder.setList(favoriteBusstops, adapter);
+//				favoriteBusstopsDialogBuilder.setNegativeButton(getResources().getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
+//					@Override
+//					public void onClick(DialogInterface dialog, int which) {
+//						dialog.dismiss();
+//					}
+//				});
+//				favoriteBusstopsDialogBuilder.show();
 			}
 		});
 	}

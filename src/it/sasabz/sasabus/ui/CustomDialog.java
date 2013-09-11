@@ -26,6 +26,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockDialogFragment;
+import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 public class CustomDialog extends SherlockDialogFragment {
@@ -144,12 +145,12 @@ public class CustomDialog extends SherlockDialogFragment {
 	public static class Builder {
 		
 		CustomDialog customDialog;
-		SherlockFragmentActivity activity;
+		SherlockFragment fragment;
 		
 		
-		public Builder(SherlockFragmentActivity activity) {
+		public Builder(SherlockFragment fragment) {
 			customDialog = new CustomDialog();
-			this.activity = activity;
+			this.fragment = fragment;
 		}
 		
 		
@@ -178,7 +179,7 @@ public class CustomDialog extends SherlockDialogFragment {
 		
 		
 		public void show() {
-			customDialog.show(activity.getSupportFragmentManager(), "info_dialog");
+			customDialog.show(fragment.getSherlockActivity().getSupportFragmentManager(), "info_dialog");
 		}
 		
 	}

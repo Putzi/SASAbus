@@ -52,7 +52,7 @@
 			</intent-filter>
 		</activity>
 		
-		<activity android:name="it.sasabz.sasabus.ui.info.InfoActivity" android:label="@string/info">
+		<activity android:name="it.sasabz.sasabus.ui.news.NewsFragment" android:label="@string/info">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />

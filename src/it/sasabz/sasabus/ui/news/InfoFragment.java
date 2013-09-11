@@ -1,9 +1,9 @@
-package it.sasabz.sasabus.ui.info;
+package it.sasabz.sasabus.ui.news;
 
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.DBObject;
-import it.sasabz.sasabus.data.models.Information;
-import it.sasabz.sasabus.data.orm.InformationList;
+import it.sasabz.sasabus.data.models.News;
+import it.sasabz.sasabus.data.orm.NewsList;
 import it.sasabz.sasabus.logic.Utility;
 import it.sasabz.sasabus.ui.MainActivity;
 import it.sasabz.sasabus.ui.SASAbus;
@@ -102,9 +102,9 @@ public class InfoFragment extends SherlockListFragment {
 						dialogInterface.dismiss();
 					}
 				});
-		Information information = (Information) list.get(position);
-		builder.setTitle(Html.fromHtml(information.getTitel()));
-		builder.setMessage(Html.fromHtml("<pre>" + information.getNachricht()
+		News information = (News) list.get(position);
+		builder.setTitle(Html.fromHtml(information.getTitle()));
+		builder.setMessage(Html.fromHtml("<pre>" + information.getMessage()
 				+ "</pre>"));
 		builder.create().show();
 	}

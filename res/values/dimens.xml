@@ -7,6 +7,8 @@
     
     <dimen name="listitem_height">33dp</dimen>
     
+    <dimen name="textsize_big">20sp</dimen>
+    
     <dimen name="textsize_standard">18sp</dimen>
     
     <dimen name="title_underline_height">2dp</dimen>

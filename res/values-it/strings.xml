@@ -147,7 +147,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="connection_details">Dettaglio connessione</string>
 
 <string name="information">Informazione</string>
-<string name="offline_info">Nessuna connessione a internet disponibile. Proseguire senza connessione?</string>
+<string name="offline_info">Non Sei connesso a internet. Prego attiva la connessione internet.</string>
 
 <string name="start">Partenza</string>
 <string name="zwischenstop">Fermata intermedia</string>

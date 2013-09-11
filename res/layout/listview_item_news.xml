@@ -11,15 +11,17 @@
         android:id="@+id/textview_busline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ellipsize="marquee"
+        android:layout_marginBottom="1dp"
         android:text="Linien: 1, 3"
-        android:textSize="@dimen/textsize_standard" />
+        android:textColor="@color/dark_text_grey"
+        android:textSize="@dimen/textsize_big" />
     
     <TextView
 	    android:id="@+id/textview_title"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:text="Umleitung am 17. und 24. Juni 2013"
-	    android:textSize="@dimen/textsize_standard" />
+	    android:textSize="@dimen/textsize_standard"
+	    android:textColor="@color/text_grey" />
     
 </LinearLayout>

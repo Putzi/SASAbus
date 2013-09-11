@@ -4,10 +4,12 @@ import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.News;
 import it.sasabz.sasabus.logic.DownloadNews;
 import it.sasabz.sasabus.ui.MainActivity;
+import it.sasabz.sasabus.ui.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.anim;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -74,7 +76,14 @@ public class NewsFragment extends SherlockFragment {
 		 // Bind the widget to the adapter
 		 PagerSlidingTabStrip tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
 		 tabs.setViewPager(mViewPager);
+		 
+		 //Set the color for the Tab strips
+		 tabs.setIndicatorColorResource(R.color.orange_pressed);
+		 tabs.setBackgroundResource(R.drawable.ab_solid_sasabus);
+		 tabs.setTextColorResource(android.R.color.white);
+		 tabs.setTabBackground(R.drawable.background_tab);
 	}
+	
 	
 	@Override
 	public void onPrepareOptionsMenu(Menu menu) {
@@ -133,7 +142,12 @@ public class NewsFragment extends SherlockFragment {
 			@Override
 			public void newsDownloaded(List<News> infos) {
 				setLoading(false);
-				addAdapterToListViews(infos);
+				if (infos != null) {
+					addAdapterToListViews(infos);
+				} else {
+					Utility.showNetworkErrorDialog(NewsFragment.this);
+				}
+				
 			}
 		});
 	}

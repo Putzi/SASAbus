@@ -149,7 +149,7 @@ along with SasaBus.  If not, see <http://www.gnu.org/licenses/>.
 <string name="connection_details">Verbindungsdetails</string>
 
 <string name="information">Information</string>
-<string name="offline_info">Sie haben keine Internetverbindung. Im Offlinemodus fortfahren?</string>
+<string name="offline_info">Sie haben keine Internetverbindung. Bitte schalten Sie Ihre Internetverbindung ein.</string>
 
 <string name="start">Start</string>
 <string name="zwischenstop">Zwischenstop</string>

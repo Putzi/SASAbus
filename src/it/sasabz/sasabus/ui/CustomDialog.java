@@ -10,6 +10,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -93,7 +94,7 @@ public class CustomDialog extends SherlockDialogFragment {
 		
 		
 		if (message != null) {
-			textviewMessage.setText(message);
+			textviewMessage.setText(Html.fromHtml(message));
 		} else {
 			scrollviewMessage.setVisibility(View.GONE);
 		}

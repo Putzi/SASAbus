@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -38,17 +39,23 @@ public class NewsAdapter extends ArrayAdapter<News>{
         }
         
         TextView textviewBusline = (TextView) view.findViewById(R.id.textview_busline);
-        String buslines = context.getResources().getString(R.string.lines)+": "+
-        		getItem(position).getLinesAffectedAsString();
+        
+        String buslines = "";
+        String linesAffected = getItem(position).getLinesAffectedAsString();
+        if (linesAffected != "") {
+        	buslines = context.getResources().getString(R.string.lines)+": "+ linesAffected;
+        } else {
+        	textviewBusline.setVisibility(View.GONE);
+        }
+        
         textviewBusline.setText(buslines);
         
-        TextView textviewInfoTitle = (TextView) view.findViewById(R.id.textview_title);
-        String infoTitle = getItem(position).getTitle();
-        textviewInfoTitle.setText(infoTitle);
+        TextView textviewNewsTitle = (TextView) view.findViewById(R.id.textview_title);
+        String newsTitle = getItem(position).getTitle();
+        textviewNewsTitle.setText(newsTitle);
         
 
-        return view;
-		
+        return view;		
 		
 	}
 }

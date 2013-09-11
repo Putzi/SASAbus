@@ -76,7 +76,7 @@ public class CityNewsFragment extends SherlockFragment {
 	
 	public void setListAdapter(List<News> infos, SherlockFragmentActivity activity) {
 		mListAdapter = new NewsAdapter (activity, 
-				R.layout.listview_item_info, R.id.textview_busline, infos);
+				R.layout.listview_item_news, R.id.textview_busline, infos);
 		mNews = infos;
 	}
 	
@@ -95,7 +95,7 @@ public class CityNewsFragment extends SherlockFragment {
 				//Open new Dialog for an Info
 				CustomDialog.Builder infoDialogBuilder = new CustomDialog.Builder(CityNewsFragment.this);
 				infoDialogBuilder.setTitle(mNews.get(position).getTitle());
-				infoDialogBuilder.setMessage(mNews.get(position).getTitle());
+				infoDialogBuilder.setMessage(mNews.get(position).getMessage());
 				infoDialogBuilder.setNegativeButton(getResources().getString(android.R.string.ok), new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {

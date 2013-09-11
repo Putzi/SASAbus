@@ -37,11 +37,11 @@ public class DownloadNews {
 				"DA VADENA: INVARIATO FINO IN VIA KENNEDY POI VIA PIETRALBA, VIA DANTE, ECC."+
 				"LINEA INTERNA LAIVES"+
 				"DA STAZIONE: INVARIATO FINO IN VIA A. DIAZ POI VIA KENNEDY, VIA PIETRALBA, VIA DANTE ECC.;"+
-				"A RICHIESTA VERRANNO EFFETTUATE TUTTE LE FERMATE PRESENTI SUL PERCORSO.", 0, new int[]{3, 4} ));
-		infos.add(new News(1, "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", "Message...", "Message...", 0, new int[]{3, 4} ));
-		infos.add(new News(2, "Verlegung der Haltestelle \"St. Jakob Str. 4\"", "Verlegung der Haltestelle \"St. Jakob Str. 4\"", "Message...", "Message...", 0, new int[]{3, 4} ));
-		infos.add(new News(3, "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Message...", "Message...", 0, new int[]{3, 4} ));
-		infos.add(new News(4, "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Message...", "Message...", 0, new int[]{3, 4} ));
+				"A RICHIESTA VERRANNO EFFETTUATE TUTTE LE FERMATE PRESENTI SUL PERCORSO.", 2, new int[]{3, 4} ));
+		infos.add(new News(1, "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", "Einrichtung einer neuen Haltestelle in Siebeneich ab 8.7.2013", "Message...", "Message...", 2, new int[]{3, 4} ));
+		infos.add(new News(2, "Verlegung der Haltestelle \"St. Jakob Str. 4\"", "Verlegung der Haltestelle \"St. Jakob Str. 4\"", "Message...", "Message...", 2, new int[]{3, 4} ));
+		infos.add(new News(3, "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Message...", "Message...", 2, new int[]{3, 4} ));
+		infos.add(new News(4, "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Nightliner Tarif der letzten Kursfahrten der Linie Bozen-Meran ab 29.3.2013", "Message...", "Message...", 2, new int[]{3, 4} ));
 		
 		
 		infos.add(new News(0, "Streckenabänderung der Linien 3 und 6 – Änderung der Fahrtenfrequenz der Linie 4 an Sonn- und Feiertagen", "Streckenabänderung der Linien 3 und 6 – Änderung der Fahrtenfrequenz der Linie 4 an Sonn- und Feiertagen", "Message...", "Message...", 1, new int[]{3, 4} ));

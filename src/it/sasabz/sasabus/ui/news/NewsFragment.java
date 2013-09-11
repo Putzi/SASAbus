@@ -3,39 +3,20 @@ package it.sasabz.sasabus.ui.news;
 import it.sasabz.android.sasabus.R;
 import it.sasabz.sasabus.data.models.News;
 import it.sasabz.sasabus.logic.DownloadNews;
-import it.sasabz.sasabus.ui.CustomDialog;
 import it.sasabz.sasabus.ui.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
 
@@ -48,9 +29,10 @@ public class NewsFragment extends SherlockFragment {
 	private NewsPagerAdapter mPagerAdapter;
 	
 	private MenuItem mOptionsMenuitemRefresh;
-	private LinearLayout mLinearlayoutInfos;
 	
 	private String[] mCities;
+	
+	private boolean loaded = false, loading = false;
 	
 	
 	@Override
@@ -74,21 +56,18 @@ public class NewsFragment extends SherlockFragment {
 	
 	
 	private void initializeViews(View view) {
-		mLinearlayoutInfos = (LinearLayout) view.findViewById(R.id.linearlayout_infos);
+		mViewPager = (ViewPager) view.findViewById(R.id.pager);
 		
 		mCities = getResources().getStringArray(R.array.cities);
 	}
 	
 	private void addTabs(View view) {
-		// Instantiate the ViewPager
-		 mViewPager = (ViewPager) view.findViewById(R.id.pager);
-		 
 		 // Instantiate the PagerAdapter
 		 mPagerAdapter = new NewsPagerAdapter(mViewPager, getChildFragmentManager(), getSherlockActivity());
 		 
 		 // Add Tabs to the Adapter
-		 mPagerAdapter.addTab(null, mCities[0], DownloadNews.getInfosFromCache());
-		 mPagerAdapter.addTab(null, mCities[1], DownloadNews.getInfosFromCache());
+		 mPagerAdapter.addTab(null, mCities[0], null);
+		 mPagerAdapter.addTab(null, mCities[1], null);
 		 
 		 mViewPager.setAdapter(mPagerAdapter);
 		 
@@ -104,34 +83,20 @@ public class NewsFragment extends SherlockFragment {
 		//If the drawer is closed, show the menu related to the content
 		if (!drawerIsOpen) {
 			menu.clear();
-			parentActivity.getSupportMenuInflater().inflate(R.menu.info_fragment, menu);
+			parentActivity.getSupportMenuInflater().inflate(R.menu.news_fragment, menu);
+			mOptionsMenuitemRefresh = menu.findItem(R.id.menu_refresh);
+			setRefreshActionButtonState();
+			if (!loaded) {
+				loadInfos();
+			}
 		}
 		super.onPrepareOptionsMenu(menu);
 	}
 	
 	
-	
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		getSherlockActivity().getSupportMenuInflater().inflate(R.menu.info_fragment, menu);
-		mOptionsMenuitemRefresh = menu.findItem(R.id.menu_refresh);
-		
-		loadInfos();
-		super.onCreateOptionsMenu(menu, inflater);
-	}
-	
-//	@Override
-//	public void onPrepareOptionsMenu(Menu menu) {
-//		getSherlockActivity().getSupportMenuInflater().inflate(R.menu.info_fragment, menu);
-//		super.onPrepareOptionsMenu(menu);
-//	}
-	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case android.R.id.home:
-//			finish();
-			break;
 		case R.id.menu_refresh:
 			loadInfos();
 			break;
@@ -139,6 +104,14 @@ public class NewsFragment extends SherlockFragment {
 			break;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	private void setRefreshActionButtonState() {
+		if(loading) {
+			mOptionsMenuitemRefresh.setActionView(R.layout.actionbar_indeterminate_progress);
+		} else {
+			mOptionsMenuitemRefresh.setActionView(null);
+		}
 	}
 	
 	
@@ -151,27 +124,18 @@ public class NewsFragment extends SherlockFragment {
 		// TODO get the infos from cache and display them 
 		// meanwhile new infos are being downloaded and 
 		// eventually the view will get refreshed
-		DownloadNews.getInfosFromCache();
+		addAdapterToListViews(DownloadNews.getInfosFromCache());
 	}
 	
 	private void loadInfos() {
-		setRefreshActionButtonState(true);
+		setLoading(true);
 		DownloadNews.downloadInfos(this, new NewsCallback() {
 			@Override
 			public void newsDownloaded(List<News> infos) {
+				setLoading(false);
 				addAdapterToListViews(infos);
-				setRefreshActionButtonState(false);
 			}
 		});
-	}
-	
-	
-	private void setRefreshActionButtonState(boolean refreshing) {
-		if(refreshing) {
-			mOptionsMenuitemRefresh.setActionView(R.layout.actionbar_indeterminate_progress);
-		} else {
-			mOptionsMenuitemRefresh.setActionView(null);
-		}
 	}
 	
 	private void addAdapterToListViews(List<News> infos) {
@@ -182,6 +146,14 @@ public class NewsFragment extends SherlockFragment {
 //			cityInfos.add(DownloadNews.getInfosForArea(infos, i));
 //		}
 		mPagerAdapter.setData(cityInfos);
+	}
+	
+	private void setLoading(boolean loading) {
+		this.loading = loading;
+		if (!loading) {
+			loaded = true;
+		}
+		setRefreshActionButtonState();
 	}
 	
 }

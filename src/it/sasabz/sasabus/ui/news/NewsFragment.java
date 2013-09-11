@@ -176,10 +176,11 @@ public class NewsFragment extends SherlockFragment {
 	
 	private void addAdapterToListViews(List<News> infos) {
 		List<List<News>> cityInfos = new ArrayList<List<News>>();
-		for (int i = 0; i < mCities.length; i++) {
-//			cityInfos.add(DownloadInfos.getInfosForArea(infos, null));
-			cityInfos.add(infos);
-		}
+		cityInfos.add(DownloadNews.getInfosForArea(infos, DownloadNews.BOLZANO));
+		cityInfos.add(DownloadNews.getInfosForArea(infos, DownloadNews.MERANO));
+//		for (int i = 1; i <= mCities.length; i++) {
+//			cityInfos.add(DownloadNews.getInfosForArea(infos, i));
+//		}
 		mPagerAdapter.setData(cityInfos);
 	}
 	

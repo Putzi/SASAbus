@@ -12,6 +12,8 @@ import it.sasabz.sasabus.ui.news.NewsFragment.NewsCallback;
 import android.app.Activity;
 
 public class DownloadNews {
+	
+	public static int BOTH = 0, MERANO = 1, BOLZANO = 2;
 
 	
 	public static List<News> getInfosFromCache() {
@@ -89,14 +91,14 @@ public class DownloadNews {
 		
 	}
 
-	public static List<News> getInfosForArea(List<News> infos, String area) {
+	public static List<News> getInfosForArea(List<News> infos, int area) {
 		// TODO return only the infos which belong to a certain area
 		List<News> filteredInfos = new ArrayList<News>();
 		
 		for (News information : infos) {
-			if (information.getCity() == 0 && area == "Bolzano") {
+			if (information.getCity() == 0 || information.getCity() == 1 && area == MERANO) {
 				filteredInfos.add(information);
-			} else if (information.getCity() == 1 && area == "Merano") {
+			} else if (information.getCity() == 0 || information.getCity() == 2 && area == BOLZANO) {
 				filteredInfos.add(information);
 			}
 		}

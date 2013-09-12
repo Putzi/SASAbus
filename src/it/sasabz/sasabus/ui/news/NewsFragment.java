@@ -142,10 +142,13 @@ public class NewsFragment extends SherlockFragment {
 			@Override
 			public void newsDownloaded(List<News> infos) {
 				setLoading(false);
-				if (infos != null) {
-					addAdapterToListViews(infos);
-				} else {
-					Utility.showNetworkErrorDialog(NewsFragment.this);
+				Log.i("infos", ""+infos);
+				if (isAdded()) {
+					if (infos != null) {
+						addAdapterToListViews(infos);
+					} else {
+						Utility.showNetworkErrorDialog(NewsFragment.this);
+					}
 				}
 				
 			}

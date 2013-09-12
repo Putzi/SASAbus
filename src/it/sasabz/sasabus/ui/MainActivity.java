@@ -205,19 +205,19 @@ public class MainActivity extends SherlockFragmentActivity {
 		mDrawerLayout.closeDrawer(mDrawerList);
 	
 		if (position != mPosition) {
-			mDrawerLayout.setDrawerListener(new DrawerListener() {
-				@Override public void onDrawerStateChanged(int arg0) { }
-				@Override public void onDrawerSlide(View arg0, float arg1) { }
-				@Override public void onDrawerOpened(View arg0) { }
-	
-				@Override
-				public void onDrawerClosed(View arg0) {
-					// Show the actual fragment only now to prevent lag
+//			mDrawerLayout.setDrawerListener(new DrawerListener() {
+//				@Override public void onDrawerStateChanged(int arg0) { }
+//				@Override public void onDrawerSlide(View arg0, float arg1) { }
+//				@Override public void onDrawerOpened(View arg0) { }
+//	
+//				@Override
+//				public void onDrawerClosed(View arg0) {
+//					// Show the actual fragment only now to prevent lag
 					mPosition = position;
 					showFragment(position);
-					mDrawerLayout.setDrawerListener(mDrawerToggle);
-				}
-			});
+//					mDrawerLayout.setDrawerListener(mDrawerToggle);
+//				}
+//			});
 		}
 		
 	}

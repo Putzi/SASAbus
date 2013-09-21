@@ -36,8 +36,14 @@ import com.actionbarsherlock.view.MenuInflater;
 
 public class SearchFragment extends SherlockFragment {
 	
-	private SearchInputField searchinputfieldDeparture;
-	private SearchInputField searchinputfieldArrival;
+	private AutoCompleteTextView autocompletetextviewDeparture;
+	private ImageButton imagebuttonMapDeparture;
+	
+	private AutoCompleteTextView autoCompleteTextViewArrival;
+	private ImageButton imagebuttonMapArrival;
+	
+	private ImageButton imagebuttonSwitch;
+	
 	private Button buttonDate;
 	private Button buttonTime;
 	private Button buttonSearch;
@@ -51,15 +57,15 @@ public class SearchFragment extends SherlockFragment {
 		
 		initializeViews(view);
 		
-		addOnClickListenerForSearchButtons();
+		addOnClickListenerForSwitch();
 		
-		insertCurrentDateIntoButton(view);
-		addOnclickListenerForDate(view);
+		insertCurrentDateIntoButton();
+		addOnclickListenerForDate();
 		
-		insertCurrentTimeIntoButton(view);
-		addOnclickListenerForTime(view);
+		insertCurrentTimeIntoButton();
+		addOnclickListenerForTime();
 		
-		addOnclickListenerForSearchButton(view);
+		addOnclickListenerForSearchButton();
 		
 		setHasOptionsMenu(true);
 		
@@ -73,10 +79,17 @@ public class SearchFragment extends SherlockFragment {
 	 */
 	private void initializeViews(View view) {
 		
-		searchinputfieldDeparture = (SearchInputField) view.findViewById
-				(R.id.searchinputfieldDeparture);
-		searchinputfieldArrival = (SearchInputField) view.findViewById
-				(R.id.searchinputfieldArrival);
+		autocompletetextviewDeparture = (AutoCompleteTextView) view.findViewById(
+				R.id.autocompletetextview_departure);
+		imagebuttonMapDeparture = (ImageButton) view.findViewById(
+				R.id.imagebutton_map_departure);
+		
+		autoCompleteTextViewArrival = (AutoCompleteTextView) view.findViewById(
+				R.id.autocompletetextview_arrival);
+		imagebuttonMapArrival = (ImageButton) view.findViewById(
+				R.id.imagebutton_map_arrival);
+		
+		imagebuttonSwitch = (ImageButton) view.findViewById(R.id.imagebutton_switch);
 		
 		buttonDate = (Button) view.findViewById(R.id.button_date);
 		buttonTime = (Button) view.findViewById(R.id.button_time);
@@ -85,9 +98,17 @@ public class SearchFragment extends SherlockFragment {
 		buttonSearch = (Button) bs.findViewById(R.id.button_search);
 	}
 	
-	private void addOnClickListenerForSearchButtons() {
-		searchinputfieldArrival.addOnClickListenerForSearchButtons(getSherlockActivity());
-		searchinputfieldDeparture.addOnClickListenerForSearchButtons(getSherlockActivity());
+	private void addOnClickListenerForSwitch() {
+		imagebuttonSwitch.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String departure = autocompletetextviewDeparture.getText().toString();
+				String arrival = autoCompleteTextViewArrival.getText().toString();
+				
+				autocompletetextviewDeparture.setText(arrival);
+				autoCompleteTextViewArrival.setText(departure);
+			}
+		});
 	}
 
 
@@ -97,7 +118,7 @@ public class SearchFragment extends SherlockFragment {
 	 * @param view
 	 * 			is the total view of the fragment
 	 */
-	private void insertCurrentDateIntoButton(View view){
+	private void insertCurrentDateIntoButton(){
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DatePicker.dateFormat, Locale.ITALY);
         String currentDate = simpleDateFormat.format(new Date());
@@ -111,7 +132,7 @@ public class SearchFragment extends SherlockFragment {
 	 * @param view
 	 * 			is the total view of the fragment
 	 */
-	private void addOnclickListenerForDate(View view){
+	private void addOnclickListenerForDate(){
 		buttonDate.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -149,7 +170,7 @@ public class SearchFragment extends SherlockFragment {
 	 * @param view
 	 * 			is the total view of the fragment
 	 */
-	private void insertCurrentTimeIntoButton(View view){
+	private void insertCurrentTimeIntoButton(){
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(TimePicker.timeFormat, Locale.ITALY);
         String currentTime = simpleDateFormat.format(new Date());
@@ -163,7 +184,7 @@ public class SearchFragment extends SherlockFragment {
 	 * @param view
 	 * 			is the total view of the fragment
 	 */
-	private void addOnclickListenerForTime(View view){
+	private void addOnclickListenerForTime(){
 		buttonTime.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -200,15 +221,15 @@ public class SearchFragment extends SherlockFragment {
 	
 	
 	//Search Button
-	private void addOnclickListenerForSearchButton(View view) {
+	private void addOnclickListenerForSearchButton() {
 		buttonSearch.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				
 				//Get the contents of the views
-				String departurePredefined = searchinputfieldDeparture.getHint();
-				String departure = searchinputfieldDeparture.getText();;
-				String arrival = searchinputfieldArrival.getText();
+				String departurePredefined = (String) autocompletetextviewDeparture.getHint();
+				String departure = autocompletetextviewDeparture.getText().toString();
+				String arrival = autoCompleteTextViewArrival.getText().toString();
 				String date = buttonDate.getText().toString();
 				String time = buttonTime.getText().toString();
 				

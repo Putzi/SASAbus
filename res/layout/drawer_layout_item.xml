@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TextView
+<CheckedTextView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/list_selector_holo_light"
     android:id="@+id/textview_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,6 +10,5 @@
     android:paddingTop="13dp"
     android:paddingBottom="13dp"
     android:gravity="center_vertical"
-    android:background="@android:color/transparent"
     android:textSize="20sp"
     android:textColor="@color/text_grey" />

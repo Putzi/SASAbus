@@ -160,6 +160,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		getSupportActionBar().setHomeButtonEnabled(true);
+		
+		mDrawerList.setItemChecked(0, true);
 	
 	}
 	
@@ -203,6 +205,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	private void selectItem(final int position) {
 
 		mDrawerLayout.closeDrawer(mDrawerList);
+		mDrawerList.setItemChecked(position, true);
 	
 		if (position != mPosition) {
 //			mDrawerLayout.setDrawerListener(new DrawerListener() {
@@ -226,7 +229,6 @@ public class MainActivity extends SherlockFragmentActivity {
 		
 		SherlockFragment fragmentToShow = (SherlockFragment) SherlockFragment
 				.instantiate(MainActivity.this, mFragments[position]);
-		
 		 
 		FragmentManager fragmentManager = getSupportFragmentManager();
 		fragmentManager
@@ -234,7 +236,6 @@ public class MainActivity extends SherlockFragmentActivity {
 			.replace(R.id.content_frame, fragmentToShow)
 			.commit();
 		
-		mDrawerList.setItemChecked(position, true);
 		mTitle = mNavigationTitles[position];
 		
 		getSupportActionBar().setTitle(mTitle);

@@ -14,6 +14,7 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:cacheColorHint="@color/transparent"
         android:choiceMode="singleChoice"
         android:divider="@color/divider_grey"
         android:dividerHeight="1dp"
